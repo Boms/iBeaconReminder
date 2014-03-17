@@ -15,12 +15,12 @@
 @property (nonatomic, strong) NSString *baseURL;
 @property (atomic) BOOL loggedIn;
 @property (nonatomic, strong) UILocalNotification *tappedPushLocalNotification;
-@property (nonatomic, strong) NSMutableArray *beaconInfoArray;//content is an dictionary, {"majorid:"1234","minorid":"5678",  "action":"wanda"}
+@property (nonatomic, strong) NSMutableArray *beaconInfoArray;
 @property (nonatomic, strong) NSArray *triggerInfoArray;
 @property (nonatomic, strong) NSArray *triggerActionArray;
 @property (nonatomic, strong) NSArray *beaconArray;
 @property (nonatomic, strong) NSArray *cruiseActionArray;
-@property (nonatomic, strong) NSMutableArray *beaconsNearMe;//element is CLBeacon
+@property (nonatomic, strong) NSMutableArray *beaconsNearMe;
 
 + (iBeaconUser *)sharedInstance;
 -(void)startMonitor;
@@ -31,7 +31,6 @@
 -(void)stopUpdateHeading;
 -(void)stopMonitor;
 -(NSArray *)findBeaconNearMe;//return list of CLBeacon
--(NSArray *)loadPromotInfoByBeaconID:(NSString *) uuid major:(NSNumber *)majorid minor:(NSNumber *)minorid;//return list of promotInfo
 -(NSDictionary *)findBeaconInfoBy:(NSString *) majorminorid;
 
 -(CLBeacon *) findOutNearestBeaconIndex;
