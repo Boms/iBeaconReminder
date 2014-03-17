@@ -7,12 +7,23 @@
 //
 
 #import "graAppDelegate.h"
+#import "iBeaconUser.h"
+#import "reminderOnBeaconViewController.h"
+#import "nearBeaconViewController.h"
 
 @implementation graAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+
     // Override point for customization after application launch.
+    nearBeaconViewController *vc = [[nearBeaconViewController alloc] initWithNibName:@"nearBeaconViewController" bundle:nil];
+    UINavigationController  *rootvc = [[UINavigationController alloc] initWithRootViewController:vc];
+    self.window.rootViewController = rootvc;
+    iBeaconUser *beaconUser = [iBeaconUser sharedInstance];
+    beaconUser.loggedIn = NO;
+    self.user = beaconUser;
     return YES;
 }
 							

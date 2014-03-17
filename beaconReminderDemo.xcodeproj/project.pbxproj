@@ -21,6 +21,15 @@
 		F2EE4B0218D693DC00E5EEE6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2EE4AE418D693DC00E5EEE6 /* UIKit.framework */; };
 		F2EE4B0A18D693DC00E5EEE6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F2EE4B0818D693DC00E5EEE6 /* InfoPlist.strings */; };
 		F2EE4B0C18D693DC00E5EEE6 /* beaconReminderDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4B0B18D693DC00E5EEE6 /* beaconReminderDemoTests.m */; };
+		F2EE4B1F18D6941900E5EEE6 /* reminderOnBeaconViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4B1718D6941900E5EEE6 /* reminderOnBeaconViewController.m */; };
+		F2EE4B2018D6941900E5EEE6 /* reminderOnBeaconViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2EE4B1818D6941900E5EEE6 /* reminderOnBeaconViewController.xib */; };
+		F2EE4B2118D6941900E5EEE6 /* updateNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4B1A18D6941900E5EEE6 /* updateNameViewController.m */; };
+		F2EE4B2218D6941900E5EEE6 /* updateNameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2EE4B1B18D6941900E5EEE6 /* updateNameViewController.xib */; };
+		F2EE4B2318D6941900E5EEE6 /* AddReminderOfBeacon.m in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4B1D18D6941900E5EEE6 /* AddReminderOfBeacon.m */; };
+		F2EE4B2418D6941900E5EEE6 /* AddReminderOfBeacon.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2EE4B1E18D6941900E5EEE6 /* AddReminderOfBeacon.xib */; };
+		F2EE4B2718D6946F00E5EEE6 /* iBeaconUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4B2618D6946F00E5EEE6 /* iBeaconUser.m */; };
+		F2EE4B2C18D6964700E5EEE6 /* nearBeaconViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4B2A18D6964700E5EEE6 /* nearBeaconViewController.m */; };
+		F2EE4B2D18D6964700E5EEE6 /* nearBeaconViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2EE4B2B18D6964700E5EEE6 /* nearBeaconViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +62,20 @@
 		F2EE4B0718D693DC00E5EEE6 /* beaconReminderDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "beaconReminderDemoTests-Info.plist"; sourceTree = "<group>"; };
 		F2EE4B0918D693DC00E5EEE6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F2EE4B0B18D693DC00E5EEE6 /* beaconReminderDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = beaconReminderDemoTests.m; sourceTree = "<group>"; };
+		F2EE4B1618D6941900E5EEE6 /* reminderOnBeaconViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reminderOnBeaconViewController.h; sourceTree = "<group>"; };
+		F2EE4B1718D6941900E5EEE6 /* reminderOnBeaconViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = reminderOnBeaconViewController.m; sourceTree = "<group>"; };
+		F2EE4B1818D6941900E5EEE6 /* reminderOnBeaconViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = reminderOnBeaconViewController.xib; sourceTree = "<group>"; };
+		F2EE4B1918D6941900E5EEE6 /* updateNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = updateNameViewController.h; sourceTree = "<group>"; };
+		F2EE4B1A18D6941900E5EEE6 /* updateNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = updateNameViewController.m; sourceTree = "<group>"; };
+		F2EE4B1B18D6941900E5EEE6 /* updateNameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = updateNameViewController.xib; sourceTree = "<group>"; };
+		F2EE4B1C18D6941900E5EEE6 /* AddReminderOfBeacon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddReminderOfBeacon.h; sourceTree = "<group>"; };
+		F2EE4B1D18D6941900E5EEE6 /* AddReminderOfBeacon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddReminderOfBeacon.m; sourceTree = "<group>"; };
+		F2EE4B1E18D6941900E5EEE6 /* AddReminderOfBeacon.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddReminderOfBeacon.xib; sourceTree = "<group>"; };
+		F2EE4B2518D6946F00E5EEE6 /* iBeaconUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iBeaconUser.h; sourceTree = "<group>"; };
+		F2EE4B2618D6946F00E5EEE6 /* iBeaconUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iBeaconUser.m; sourceTree = "<group>"; };
+		F2EE4B2918D6964700E5EEE6 /* nearBeaconViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nearBeaconViewController.h; sourceTree = "<group>"; };
+		F2EE4B2A18D6964700E5EEE6 /* nearBeaconViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = nearBeaconViewController.m; sourceTree = "<group>"; };
+		F2EE4B2B18D6964700E5EEE6 /* nearBeaconViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = nearBeaconViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +105,8 @@
 		F2EE4AD418D693DC00E5EEE6 = {
 			isa = PBXGroup;
 			children = (
+				F2EE4B2818D6947600E5EEE6 /* iBeacon */,
+				F2EE4B1518D6941100E5EEE6 /* reminder */,
 				F2EE4AE618D693DC00E5EEE6 /* beaconReminderDemo */,
 				F2EE4B0518D693DC00E5EEE6 /* beaconReminderDemoTests */,
 				F2EE4ADF18D693DC00E5EEE6 /* Frameworks */,
@@ -112,6 +137,9 @@
 		F2EE4AE618D693DC00E5EEE6 /* beaconReminderDemo */ = {
 			isa = PBXGroup;
 			children = (
+				F2EE4B2918D6964700E5EEE6 /* nearBeaconViewController.h */,
+				F2EE4B2A18D6964700E5EEE6 /* nearBeaconViewController.m */,
+				F2EE4B2B18D6964700E5EEE6 /* nearBeaconViewController.xib */,
 				F2EE4AEF18D693DC00E5EEE6 /* graAppDelegate.h */,
 				F2EE4AF018D693DC00E5EEE6 /* graAppDelegate.m */,
 				F2EE4AF218D693DC00E5EEE6 /* Main.storyboard */,
@@ -150,6 +178,31 @@
 				F2EE4B0818D693DC00E5EEE6 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F2EE4B1518D6941100E5EEE6 /* reminder */ = {
+			isa = PBXGroup;
+			children = (
+				F2EE4B1618D6941900E5EEE6 /* reminderOnBeaconViewController.h */,
+				F2EE4B1718D6941900E5EEE6 /* reminderOnBeaconViewController.m */,
+				F2EE4B1818D6941900E5EEE6 /* reminderOnBeaconViewController.xib */,
+				F2EE4B1918D6941900E5EEE6 /* updateNameViewController.h */,
+				F2EE4B1A18D6941900E5EEE6 /* updateNameViewController.m */,
+				F2EE4B1B18D6941900E5EEE6 /* updateNameViewController.xib */,
+				F2EE4B1C18D6941900E5EEE6 /* AddReminderOfBeacon.h */,
+				F2EE4B1D18D6941900E5EEE6 /* AddReminderOfBeacon.m */,
+				F2EE4B1E18D6941900E5EEE6 /* AddReminderOfBeacon.xib */,
+			);
+			name = reminder;
+			sourceTree = "<group>";
+		};
+		F2EE4B2818D6947600E5EEE6 /* iBeacon */ = {
+			isa = PBXGroup;
+			children = (
+				F2EE4B2518D6946F00E5EEE6 /* iBeaconUser.h */,
+				F2EE4B2618D6946F00E5EEE6 /* iBeaconUser.m */,
+			);
+			name = iBeacon;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,8 +283,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2EE4AF918D693DC00E5EEE6 /* Images.xcassets in Resources */,
+				F2EE4B2018D6941900E5EEE6 /* reminderOnBeaconViewController.xib in Resources */,
+				F2EE4B2D18D6964700E5EEE6 /* nearBeaconViewController.xib in Resources */,
+				F2EE4B2418D6941900E5EEE6 /* AddReminderOfBeacon.xib in Resources */,
 				F2EE4AEB18D693DC00E5EEE6 /* InfoPlist.strings in Resources */,
 				F2EE4AF418D693DC00E5EEE6 /* Main.storyboard in Resources */,
+				F2EE4B2218D6941900E5EEE6 /* updateNameViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,7 +309,12 @@
 			files = (
 				F2EE4AED18D693DC00E5EEE6 /* main.m in Sources */,
 				F2EE4AF118D693DC00E5EEE6 /* graAppDelegate.m in Sources */,
+				F2EE4B2C18D6964700E5EEE6 /* nearBeaconViewController.m in Sources */,
+				F2EE4B1F18D6941900E5EEE6 /* reminderOnBeaconViewController.m in Sources */,
 				F2EE4AF718D693DC00E5EEE6 /* graViewController.m in Sources */,
+				F2EE4B2318D6941900E5EEE6 /* AddReminderOfBeacon.m in Sources */,
+				F2EE4B2118D6941900E5EEE6 /* updateNameViewController.m in Sources */,
+				F2EE4B2718D6946F00E5EEE6 /* iBeaconUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
