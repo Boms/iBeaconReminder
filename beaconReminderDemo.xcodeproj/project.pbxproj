@@ -1,0 +1,472 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F2EE4AE118D693DC00E5EEE6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2EE4AE018D693DC00E5EEE6 /* Foundation.framework */; };
+		F2EE4AE318D693DC00E5EEE6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2EE4AE218D693DC00E5EEE6 /* CoreGraphics.framework */; };
+		F2EE4AE518D693DC00E5EEE6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2EE4AE418D693DC00E5EEE6 /* UIKit.framework */; };
+		F2EE4AEB18D693DC00E5EEE6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F2EE4AE918D693DC00E5EEE6 /* InfoPlist.strings */; };
+		F2EE4AED18D693DC00E5EEE6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4AEC18D693DC00E5EEE6 /* main.m */; };
+		F2EE4AF118D693DC00E5EEE6 /* graAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4AF018D693DC00E5EEE6 /* graAppDelegate.m */; };
+		F2EE4AF418D693DC00E5EEE6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2EE4AF218D693DC00E5EEE6 /* Main.storyboard */; };
+		F2EE4AF718D693DC00E5EEE6 /* graViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4AF618D693DC00E5EEE6 /* graViewController.m */; };
+		F2EE4AF918D693DC00E5EEE6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2EE4AF818D693DC00E5EEE6 /* Images.xcassets */; };
+		F2EE4B0018D693DC00E5EEE6 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2EE4AFF18D693DC00E5EEE6 /* XCTest.framework */; };
+		F2EE4B0118D693DC00E5EEE6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2EE4AE018D693DC00E5EEE6 /* Foundation.framework */; };
+		F2EE4B0218D693DC00E5EEE6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2EE4AE418D693DC00E5EEE6 /* UIKit.framework */; };
+		F2EE4B0A18D693DC00E5EEE6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F2EE4B0818D693DC00E5EEE6 /* InfoPlist.strings */; };
+		F2EE4B0C18D693DC00E5EEE6 /* beaconReminderDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4B0B18D693DC00E5EEE6 /* beaconReminderDemoTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F2EE4B0318D693DC00E5EEE6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F2EE4AD518D693DC00E5EEE6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F2EE4ADC18D693DC00E5EEE6;
+			remoteInfo = beaconReminderDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F2EE4ADD18D693DC00E5EEE6 /* beaconReminderDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = beaconReminderDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2EE4AE018D693DC00E5EEE6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F2EE4AE218D693DC00E5EEE6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F2EE4AE418D693DC00E5EEE6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F2EE4AE818D693DC00E5EEE6 /* beaconReminderDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "beaconReminderDemo-Info.plist"; sourceTree = "<group>"; };
+		F2EE4AEA18D693DC00E5EEE6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F2EE4AEC18D693DC00E5EEE6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F2EE4AEE18D693DC00E5EEE6 /* beaconReminderDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "beaconReminderDemo-Prefix.pch"; sourceTree = "<group>"; };
+		F2EE4AEF18D693DC00E5EEE6 /* graAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = graAppDelegate.h; sourceTree = "<group>"; };
+		F2EE4AF018D693DC00E5EEE6 /* graAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = graAppDelegate.m; sourceTree = "<group>"; };
+		F2EE4AF318D693DC00E5EEE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F2EE4AF518D693DC00E5EEE6 /* graViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = graViewController.h; sourceTree = "<group>"; };
+		F2EE4AF618D693DC00E5EEE6 /* graViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = graViewController.m; sourceTree = "<group>"; };
+		F2EE4AF818D693DC00E5EEE6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F2EE4AFE18D693DC00E5EEE6 /* beaconReminderDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = beaconReminderDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2EE4AFF18D693DC00E5EEE6 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		F2EE4B0718D693DC00E5EEE6 /* beaconReminderDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "beaconReminderDemoTests-Info.plist"; sourceTree = "<group>"; };
+		F2EE4B0918D693DC00E5EEE6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F2EE4B0B18D693DC00E5EEE6 /* beaconReminderDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = beaconReminderDemoTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F2EE4ADA18D693DC00E5EEE6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2EE4AE318D693DC00E5EEE6 /* CoreGraphics.framework in Frameworks */,
+				F2EE4AE518D693DC00E5EEE6 /* UIKit.framework in Frameworks */,
+				F2EE4AE118D693DC00E5EEE6 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F2EE4AFB18D693DC00E5EEE6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2EE4B0018D693DC00E5EEE6 /* XCTest.framework in Frameworks */,
+				F2EE4B0218D693DC00E5EEE6 /* UIKit.framework in Frameworks */,
+				F2EE4B0118D693DC00E5EEE6 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F2EE4AD418D693DC00E5EEE6 = {
+			isa = PBXGroup;
+			children = (
+				F2EE4AE618D693DC00E5EEE6 /* beaconReminderDemo */,
+				F2EE4B0518D693DC00E5EEE6 /* beaconReminderDemoTests */,
+				F2EE4ADF18D693DC00E5EEE6 /* Frameworks */,
+				F2EE4ADE18D693DC00E5EEE6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F2EE4ADE18D693DC00E5EEE6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F2EE4ADD18D693DC00E5EEE6 /* beaconReminderDemo.app */,
+				F2EE4AFE18D693DC00E5EEE6 /* beaconReminderDemoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F2EE4ADF18D693DC00E5EEE6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F2EE4AE018D693DC00E5EEE6 /* Foundation.framework */,
+				F2EE4AE218D693DC00E5EEE6 /* CoreGraphics.framework */,
+				F2EE4AE418D693DC00E5EEE6 /* UIKit.framework */,
+				F2EE4AFF18D693DC00E5EEE6 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F2EE4AE618D693DC00E5EEE6 /* beaconReminderDemo */ = {
+			isa = PBXGroup;
+			children = (
+				F2EE4AEF18D693DC00E5EEE6 /* graAppDelegate.h */,
+				F2EE4AF018D693DC00E5EEE6 /* graAppDelegate.m */,
+				F2EE4AF218D693DC00E5EEE6 /* Main.storyboard */,
+				F2EE4AF518D693DC00E5EEE6 /* graViewController.h */,
+				F2EE4AF618D693DC00E5EEE6 /* graViewController.m */,
+				F2EE4AF818D693DC00E5EEE6 /* Images.xcassets */,
+				F2EE4AE718D693DC00E5EEE6 /* Supporting Files */,
+			);
+			path = beaconReminderDemo;
+			sourceTree = "<group>";
+		};
+		F2EE4AE718D693DC00E5EEE6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F2EE4AE818D693DC00E5EEE6 /* beaconReminderDemo-Info.plist */,
+				F2EE4AE918D693DC00E5EEE6 /* InfoPlist.strings */,
+				F2EE4AEC18D693DC00E5EEE6 /* main.m */,
+				F2EE4AEE18D693DC00E5EEE6 /* beaconReminderDemo-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F2EE4B0518D693DC00E5EEE6 /* beaconReminderDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				F2EE4B0B18D693DC00E5EEE6 /* beaconReminderDemoTests.m */,
+				F2EE4B0618D693DC00E5EEE6 /* Supporting Files */,
+			);
+			path = beaconReminderDemoTests;
+			sourceTree = "<group>";
+		};
+		F2EE4B0618D693DC00E5EEE6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F2EE4B0718D693DC00E5EEE6 /* beaconReminderDemoTests-Info.plist */,
+				F2EE4B0818D693DC00E5EEE6 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F2EE4ADC18D693DC00E5EEE6 /* beaconReminderDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F2EE4B0F18D693DC00E5EEE6 /* Build configuration list for PBXNativeTarget "beaconReminderDemo" */;
+			buildPhases = (
+				F2EE4AD918D693DC00E5EEE6 /* Sources */,
+				F2EE4ADA18D693DC00E5EEE6 /* Frameworks */,
+				F2EE4ADB18D693DC00E5EEE6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = beaconReminderDemo;
+			productName = beaconReminderDemo;
+			productReference = F2EE4ADD18D693DC00E5EEE6 /* beaconReminderDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F2EE4AFD18D693DC00E5EEE6 /* beaconReminderDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F2EE4B1218D693DC00E5EEE6 /* Build configuration list for PBXNativeTarget "beaconReminderDemoTests" */;
+			buildPhases = (
+				F2EE4AFA18D693DC00E5EEE6 /* Sources */,
+				F2EE4AFB18D693DC00E5EEE6 /* Frameworks */,
+				F2EE4AFC18D693DC00E5EEE6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F2EE4B0418D693DC00E5EEE6 /* PBXTargetDependency */,
+			);
+			name = beaconReminderDemoTests;
+			productName = beaconReminderDemoTests;
+			productReference = F2EE4AFE18D693DC00E5EEE6 /* beaconReminderDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F2EE4AD518D693DC00E5EEE6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = gra;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "li lin";
+				TargetAttributes = {
+					F2EE4AFD18D693DC00E5EEE6 = {
+						TestTargetID = F2EE4ADC18D693DC00E5EEE6;
+					};
+				};
+			};
+			buildConfigurationList = F2EE4AD818D693DC00E5EEE6 /* Build configuration list for PBXProject "beaconReminderDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F2EE4AD418D693DC00E5EEE6;
+			productRefGroup = F2EE4ADE18D693DC00E5EEE6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F2EE4ADC18D693DC00E5EEE6 /* beaconReminderDemo */,
+				F2EE4AFD18D693DC00E5EEE6 /* beaconReminderDemoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F2EE4ADB18D693DC00E5EEE6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2EE4AF918D693DC00E5EEE6 /* Images.xcassets in Resources */,
+				F2EE4AEB18D693DC00E5EEE6 /* InfoPlist.strings in Resources */,
+				F2EE4AF418D693DC00E5EEE6 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F2EE4AFC18D693DC00E5EEE6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2EE4B0A18D693DC00E5EEE6 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F2EE4AD918D693DC00E5EEE6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2EE4AED18D693DC00E5EEE6 /* main.m in Sources */,
+				F2EE4AF118D693DC00E5EEE6 /* graAppDelegate.m in Sources */,
+				F2EE4AF718D693DC00E5EEE6 /* graViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F2EE4AFA18D693DC00E5EEE6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2EE4B0C18D693DC00E5EEE6 /* beaconReminderDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F2EE4B0418D693DC00E5EEE6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F2EE4ADC18D693DC00E5EEE6 /* beaconReminderDemo */;
+			targetProxy = F2EE4B0318D693DC00E5EEE6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F2EE4AE918D693DC00E5EEE6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F2EE4AEA18D693DC00E5EEE6 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F2EE4AF218D693DC00E5EEE6 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F2EE4AF318D693DC00E5EEE6 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F2EE4B0818D693DC00E5EEE6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F2EE4B0918D693DC00E5EEE6 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F2EE4B0D18D693DC00E5EEE6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		F2EE4B0E18D693DC00E5EEE6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F2EE4B1018D693DC00E5EEE6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "beaconReminderDemo/beaconReminderDemo-Prefix.pch";
+				INFOPLIST_FILE = "beaconReminderDemo/beaconReminderDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		F2EE4B1118D693DC00E5EEE6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "beaconReminderDemo/beaconReminderDemo-Prefix.pch";
+				INFOPLIST_FILE = "beaconReminderDemo/beaconReminderDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		F2EE4B1318D693DC00E5EEE6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/beaconReminderDemo.app/beaconReminderDemo";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "beaconReminderDemo/beaconReminderDemo-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "beaconReminderDemoTests/beaconReminderDemoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		F2EE4B1418D693DC00E5EEE6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/beaconReminderDemo.app/beaconReminderDemo";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "beaconReminderDemo/beaconReminderDemo-Prefix.pch";
+				INFOPLIST_FILE = "beaconReminderDemoTests/beaconReminderDemoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F2EE4AD818D693DC00E5EEE6 /* Build configuration list for PBXProject "beaconReminderDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2EE4B0D18D693DC00E5EEE6 /* Debug */,
+				F2EE4B0E18D693DC00E5EEE6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F2EE4B0F18D693DC00E5EEE6 /* Build configuration list for PBXNativeTarget "beaconReminderDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2EE4B1018D693DC00E5EEE6 /* Debug */,
+				F2EE4B1118D693DC00E5EEE6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F2EE4B1218D693DC00E5EEE6 /* Build configuration list for PBXNativeTarget "beaconReminderDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2EE4B1318D693DC00E5EEE6 /* Debug */,
+				F2EE4B1418D693DC00E5EEE6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F2EE4AD518D693DC00E5EEE6 /* Project object */;
+}
