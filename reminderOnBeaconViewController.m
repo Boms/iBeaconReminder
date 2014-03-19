@@ -73,21 +73,25 @@
 {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-    }
     
     
     iBeaconUser *user  = [iBeaconUser sharedInstance];
     NSMutableArray *reminderOfBeacon = [user findRemindersWith:self.myBeacon];
 
     if (indexPath.section == 1) {
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        }
         cell.textLabel.text = @"添加提醒";
         cell.textLabel.textAlignment = NSTextAlignmentCenter;
         return cell;
     }
 
     if (indexPath.section == 0) {
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        }
+
         NSDictionary *reminderDict = [reminderOfBeacon objectAtIndex:indexPath.row];
         NSString *reminder = [reminderDict objectForKey:@"reminder"];
         cell.textLabel.text = reminder;
