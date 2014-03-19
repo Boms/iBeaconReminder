@@ -162,6 +162,7 @@
         }
         iBeaconUser *user = [iBeaconUser sharedInstance];
         [user setNameForBeacon:self.myBeacon with:beaconName];
+        [user saveAllData];
         [self.navigationController popViewControllerAnimated:YES];
     }
     if (indexPath.section == 1) {

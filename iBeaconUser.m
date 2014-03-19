@@ -153,11 +153,14 @@
 -(void) setNameForBeacon:(CLBeacon *)beaconOne with:(NSString *)newName
 {
     NSInteger i;
-    NSDictionary *newDict = [NSDictionary dictionaryWithObjectsAndKeys:beaconOne.major, @"major", beaconOne.minor, @"minor", newName, @"name", nil];
+    NSData *archieved = [NSKeyedArchiver archivedDataWithRootObject:beaconOne];
+    NSDictionary *newDict = [NSDictionary dictionaryWithObjectsAndKeys:archieved, @"beacon", newName, @"name", nil];
     for (i = 0; i < [self.namesOfBeacon count]; i++) {
         NSDictionary *each = [self.namesOfBeacon objectAtIndex:i];
-        NSNumber *major = [each objectForKey:@"major"];
-        NSNumber *minor = [each objectForKey:@"minor"];
+        NSData *archieved = [each objectForKey:@"beacon"];
+        CLBeacon *thisBeacon = [NSKeyedUnarchiver unarchiveObjectWithData:archieved];
+        NSNumber *major = thisBeacon.major;
+        NSNumber *minor = thisBeacon.minor;
         if ([major isEqualToNumber:beaconOne.major] && [minor isEqualToNumber:beaconOne.minor]) {
             [self.namesOfBeacon replaceObjectAtIndex:i withObject:newDict];
             return;
@@ -171,8 +174,10 @@
     NSInteger i;
     for (i = 0; i < [self.namesOfBeacon count]; i++) {
         NSDictionary *each = [self.namesOfBeacon objectAtIndex:i];
-        NSNumber *major = [each objectForKey:@"major"];
-        NSNumber *minor = [each objectForKey:@"minor"];
+        NSData *archieved = [each objectForKey:@"beacon"];
+        CLBeacon *thisBeacon = [NSKeyedUnarchiver unarchiveObjectWithData:archieved];
+        NSNumber *major = thisBeacon.major;
+        NSNumber *minor = thisBeacon.minor;
         NSString *name = [each objectForKey:@"name"];
         if ([major isEqualToNumber:beaconOne.major] && [minor isEqualToNumber:beaconOne.minor]) {
             return name;
