@@ -22,8 +22,6 @@
 @property (nonatomic, strong) NSString *nextLeaveString;
 @property (atomic) BOOL leaveRegionEnventTriggered;
 @property (atomic) BOOL loading;
-@property (nonatomic, strong) NSMutableArray *namesOfBeacon;//content is an dictionary, key is major, minor, name
-@property (nonatomic, strong) NSMutableArray *reminderOfBeacon; //content is an dictionary, key is major, minor, reminder
 @end
 
 

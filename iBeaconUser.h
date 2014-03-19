@@ -21,6 +21,9 @@
 @property (nonatomic, strong) NSArray *beaconArray;
 @property (nonatomic, strong) NSArray *cruiseActionArray;
 @property (nonatomic, strong) NSMutableArray *beaconsNearMe;
+@property (nonatomic, strong) NSMutableArray *namesOfBeacon;//content is an dictionary, key is major, minor, name
+@property (nonatomic, strong) NSMutableArray *reminderOfBeacon; //content is an dictionary, key is major, minor, reminder
+
 
 + (iBeaconUser *)sharedInstance;
 -(void)startMonitor;

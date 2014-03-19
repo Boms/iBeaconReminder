@@ -9,6 +9,7 @@
 #import "nearBeaconViewController.h"
 #import "iBeaconUser.h"
 #import "reminderOnBeaconViewController.h"
+#import "updateNameViewController.h"
 @interface nearBeaconViewController ()
 @property (nonatomic, strong) iBeaconUser *myUser;
 @property (nonatomic, strong) NSMutableArray *beaconArray;
@@ -46,7 +47,6 @@
     iBeaconUser *user = [iBeaconUser sharedInstance];
     _myUser = user;
     [self.myUser stopMonitor];
-
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -156,7 +156,7 @@
         }
         cell.detailTextLabel.text = thingsToDo;
     }else{
-        cell.textLabel.text = title;
+        cell.textLabel.text = @"起个名字吧";
     }
     return cell;
 }
@@ -222,17 +222,28 @@
 {
     // Navigation logic may go here, for example:
     // Create the next view controller.
-    reminderOnBeaconViewController *detailViewController = [[reminderOnBeaconViewController alloc] initWithNibName:@"reminderOnBeaconViewController" bundle:nil];
 
     // Pass the selected object to the new view controller.
     
     // Push the view controller.
     CLBeacon *selectedBeacon = self.beaconArray[indexPath.row];
-    detailViewController.myBeacon = selectedBeacon;
-    iBeaconUser *user = [iBeaconUser sharedInstance];
-    detailViewController.title = [user findNameByBeacon:selectedBeacon];
 
-    [self.navigationController pushViewController:detailViewController animated:YES];
+    iBeaconUser *user = [iBeaconUser sharedInstance];
+
+    NSString *beaconName = [user findNameByBeacon:selectedBeacon];
+    UIViewController *vc = nil;
+    if (beaconName && ![beaconName isEqualToString:@""]) {
+        reminderOnBeaconViewController *detailViewController = [[reminderOnBeaconViewController alloc] initWithNibName:@"reminderOnBeaconViewController" bundle:nil];
+        detailViewController.myBeacon = selectedBeacon;
+        detailViewController.title = beaconName;
+        vc = detailViewController;
+    }else{
+        updateNameViewController* detailViewController = [[updateNameViewController alloc] initWithNibName:@"updateNameViewController" bundle:nil];
+        detailViewController.myBeacon = selectedBeacon;
+        vc = detailViewController;
+    }
+
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end
