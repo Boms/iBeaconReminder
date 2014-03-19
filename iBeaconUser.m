@@ -82,13 +82,19 @@
 -(void)saveAllData
 {
     [[NSUserDefaults standardUserDefaults] setObject:self.namesOfBeacon forKey:@"beaconName"];
+    [[NSUserDefaults standardUserDefaults] setObject:self.reminderOfBeacon forKey:@"remindeOfBeacon"];
 }
 
 -(NSMutableArray *)reminderOfBeacon
 {
     if (!_reminderOfBeacon) {
-        NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:10];
-        _reminderOfBeacon = array;
+        NSArray *myArray = [[NSUserDefaults standardUserDefaults] arrayForKey:@"remindeOfBeacon"];
+        if (!myArray) {
+            NSArray *emptyArray = [[NSArray alloc] init];
+            [[NSUserDefaults standardUserDefaults] setObject:emptyArray forKey:@"remindeOfBeacon"];
+            myArray = [[NSUserDefaults standardUserDefaults] arrayForKey:@"remindeOfBeacon"];
+        }
+        _reminderOfBeacon = [NSMutableArray arrayWithArray:myArray];
     }
     return _reminderOfBeacon;
 }
