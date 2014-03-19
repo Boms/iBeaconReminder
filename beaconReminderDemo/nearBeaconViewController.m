@@ -123,7 +123,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
-    cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     // Configure the cell...
     CLBeacon *thisOne = self.beaconArray[indexPath.row];
@@ -147,7 +147,14 @@
     NSString *beaconLocaton = [user findNameByBeacon:thisOne];
     if (beaconLocaton) {
         cell.textLabel.text = beaconLocaton;
-        cell.detailTextLabel.text = title;
+        iBeaconUser *user = [iBeaconUser sharedInstance];
+        NSMutableArray *reminderOfBeacon = [user findRemindersWith:thisOne];
+        NSInteger count = [reminderOfBeacon count];
+        NSString *thingsToDo = @"现在就记一个";
+        if (count != 0) {
+            thingsToDo = [NSString stringWithFormat:@"%d件事情", count];
+        }
+        cell.detailTextLabel.text = thingsToDo;
     }else{
         cell.textLabel.text = title;
     }
@@ -222,6 +229,9 @@
     // Push the view controller.
     CLBeacon *selectedBeacon = self.beaconArray[indexPath.row];
     detailViewController.myBeacon = selectedBeacon;
+    iBeaconUser *user = [iBeaconUser sharedInstance];
+    detailViewController.title = [user findNameByBeacon:selectedBeacon];
+
     [self.navigationController pushViewController:detailViewController animated:YES];
 }
 

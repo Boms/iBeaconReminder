@@ -53,21 +53,15 @@
 {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 3;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-
-    if (section == 0) {
-        return 1;
-    }
-    if (section == 2) {
-        return 1;
-    }
     if (section == 1) {
+        return 1;
+    }
+    if (section == 0) {
         iBeaconUser *user = [iBeaconUser sharedInstance];
         NSMutableArray *reminderOfBeacon = [user findRemindersWith:self.myBeacon];
         return [reminderOfBeacon count];
@@ -86,26 +80,19 @@
     
     iBeaconUser *user  = [iBeaconUser sharedInstance];
     NSMutableArray *reminderOfBeacon = [user findRemindersWith:self.myBeacon];
-    if (indexPath.section == 0) {
-        NSString *title = [user findNameByBeacon:self.myBeacon];
-        if (title) {
-            cell.textLabel.text = [@"in " stringByAppendingString:title];
-        }else{
-            cell.textLabel.text = @"设置位置";
-        }
-        return cell;
-    }
-    if (indexPath.section == 2) {
+
+    if (indexPath.section == 1) {
         cell.textLabel.text = @"添加提醒";
+        cell.textLabel.textAlignment = NSTextAlignmentCenter;
         return cell;
     }
 
-    if (indexPath.section == 1) {
+    if (indexPath.section == 0) {
         NSDictionary *reminderDict = [reminderOfBeacon objectAtIndex:indexPath.row];
         NSString *reminder = [reminderDict objectForKey:@"reminder"];
         cell.textLabel.text = reminder;
         NSString *friends = [reminderDict objectForKey:@"friends"];
-        if (friends) {
+        if (friends && [friends length] != 0) {
             cell.detailTextLabel.text = [@"@" stringByAppendingString: friends];
         }
     }
@@ -119,7 +106,7 @@
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
-    if (indexPath.section == 1) {
+    if (indexPath.section == 0) {
         return YES;
     }
     return NO;
@@ -165,20 +152,16 @@
     // Create the next view controller.
     iBeaconUser *user  = [iBeaconUser sharedInstance];
 
-    if (indexPath.section == 0) {
-        updateNameViewController *detailViewController = [[updateNameViewController alloc] initWithNibName:@"updateNameViewController" bundle:nil];
-        detailViewController.myBeacon = self.myBeacon;
-        [self.navigationController pushViewController:detailViewController animated:YES];
-        return;
-    }
-    if (indexPath.section == 2) {
+    if (indexPath.section == 1) {
         AddReminderOfBeacon *vc = [[AddReminderOfBeacon alloc] initWithNibName:@"AddReminderOfBeacon" bundle:nil];
         vc.reminder = nil;
         vc.myBeacon = self.myBeacon;
+        iBeaconUser *user = [iBeaconUser sharedInstance];
+        vc.title = [user findNameByBeacon:self.myBeacon];
         [self.navigationController pushViewController:vc animated:YES];
         return;
     }
-    if (indexPath.section == 1) {
+    if (indexPath.section == 0) {
         AddReminderOfBeacon *vc = [[AddReminderOfBeacon alloc] initWithNibName:@"AddReminderOfBeacon" bundle:nil];
         NSMutableArray *reminderStringArray = [user findRemindersWith:self.myBeacon];
         NSDictionary *reminderDict = [reminderStringArray objectAtIndex:indexPath.row];
@@ -186,6 +169,8 @@
         vc.reminder = reminderString;
         vc.myBeacon = self.myBeacon;
         vc.reminderDict = reminderDict;
+        iBeaconUser *user = [iBeaconUser sharedInstance];
+        vc.title = [user findNameByBeacon:self.myBeacon];
         [self.navigationController pushViewController:vc animated:YES];
     }
     return;
