@@ -11,6 +11,7 @@
 #import "reminderOnBeaconViewController.h"
 #import "updateNameViewController.h"
 #import "AddReminderOfBeacon.h"
+#import "selectNameForBeaconTableViewController.h"
 @interface nearBeaconViewController ()
 @property (nonatomic, strong) iBeaconUser *myUser;
 @property (nonatomic, strong) NSMutableArray *beaconArray;
@@ -253,7 +254,10 @@
         }
 
     }else{
+        selectNameForBeaconTableViewController *detailViewController = [[selectNameForBeaconTableViewController alloc] initWithNibName:@"selectNameForBeaconTableViewController" bundle:nil];
+#if 0
         updateNameViewController* detailViewController = [[updateNameViewController alloc] initWithNibName:@"updateNameViewController" bundle:nil];
+#endif
         detailViewController.myBeacon = selectedBeacon;
         [self.navigationController pushViewController:detailViewController animated:YES];
         return;

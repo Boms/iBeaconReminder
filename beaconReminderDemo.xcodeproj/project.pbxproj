@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F26E872318D9DF2500A8D55E /* selectNameForBeaconTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F26E872118D9DF2500A8D55E /* selectNameForBeaconTableViewController.m */; };
+		F26E872418D9DF2500A8D55E /* selectNameForBeaconTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F26E872218D9DF2500A8D55E /* selectNameForBeaconTableViewController.xib */; };
 		F2EE4AE118D693DC00E5EEE6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2EE4AE018D693DC00E5EEE6 /* Foundation.framework */; };
 		F2EE4AE318D693DC00E5EEE6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2EE4AE218D693DC00E5EEE6 /* CoreGraphics.framework */; };
 		F2EE4AE518D693DC00E5EEE6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2EE4AE418D693DC00E5EEE6 /* UIKit.framework */; };
@@ -43,6 +45,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F26E872018D9DF2500A8D55E /* selectNameForBeaconTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = selectNameForBeaconTableViewController.h; sourceTree = "<group>"; };
+		F26E872118D9DF2500A8D55E /* selectNameForBeaconTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = selectNameForBeaconTableViewController.m; sourceTree = "<group>"; };
+		F26E872218D9DF2500A8D55E /* selectNameForBeaconTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = selectNameForBeaconTableViewController.xib; sourceTree = "<group>"; };
 		F2EE4ADD18D693DC00E5EEE6 /* beaconReminderDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = beaconReminderDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2EE4AE018D693DC00E5EEE6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F2EE4AE218D693DC00E5EEE6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -192,6 +197,9 @@
 				F2EE4B1C18D6941900E5EEE6 /* AddReminderOfBeacon.h */,
 				F2EE4B1D18D6941900E5EEE6 /* AddReminderOfBeacon.m */,
 				F2EE4B1E18D6941900E5EEE6 /* AddReminderOfBeacon.xib */,
+				F26E872018D9DF2500A8D55E /* selectNameForBeaconTableViewController.h */,
+				F26E872118D9DF2500A8D55E /* selectNameForBeaconTableViewController.m */,
+				F26E872218D9DF2500A8D55E /* selectNameForBeaconTableViewController.xib */,
 			);
 			name = reminder;
 			sourceTree = "<group>";
@@ -284,6 +292,7 @@
 			files = (
 				F2EE4AF918D693DC00E5EEE6 /* Images.xcassets in Resources */,
 				F2EE4B2018D6941900E5EEE6 /* reminderOnBeaconViewController.xib in Resources */,
+				F26E872418D9DF2500A8D55E /* selectNameForBeaconTableViewController.xib in Resources */,
 				F2EE4B2D18D6964700E5EEE6 /* nearBeaconViewController.xib in Resources */,
 				F2EE4B2418D6941900E5EEE6 /* AddReminderOfBeacon.xib in Resources */,
 				F2EE4AEB18D693DC00E5EEE6 /* InfoPlist.strings in Resources */,
@@ -312,6 +321,7 @@
 				F2EE4B2C18D6964700E5EEE6 /* nearBeaconViewController.m in Sources */,
 				F2EE4B1F18D6941900E5EEE6 /* reminderOnBeaconViewController.m in Sources */,
 				F2EE4AF718D693DC00E5EEE6 /* graViewController.m in Sources */,
+				F26E872318D9DF2500A8D55E /* selectNameForBeaconTableViewController.m in Sources */,
 				F2EE4B2318D6941900E5EEE6 /* AddReminderOfBeacon.m in Sources */,
 				F2EE4B2118D6941900E5EEE6 /* updateNameViewController.m in Sources */,
 				F2EE4B2718D6946F00E5EEE6 /* iBeaconUser.m in Sources */,
@@ -519,6 +529,7 @@
 				F2EE4B1118D693DC00E5EEE6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F2EE4B1218D693DC00E5EEE6 /* Build configuration list for PBXNativeTarget "beaconReminderDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -527,6 +538,7 @@
 				F2EE4B1418D693DC00E5EEE6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
