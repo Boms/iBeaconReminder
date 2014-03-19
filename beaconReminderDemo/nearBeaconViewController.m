@@ -123,52 +123,37 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
+    cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
     
     // Configure the cell...
     CLBeacon *thisOne = self.beaconArray[indexPath.row];
     iBeaconUser *user = [iBeaconUser sharedInstance];
-    NSString *title =[NSString stringWithFormat:@"Ma-%04x Mi-%04x:%d", [thisOne.major integerValue], [thisOne.minor integerValue], thisOne.rssi];
+    NSString *title =[NSString stringWithFormat:@"%04x %04x", [thisOne.major integerValue], [thisOne.minor integerValue]];
 
-    if (thisOne.proximity == CLProximityFar) {
-        title = [title stringByAppendingString:@" Far"];
-        if (self.lastFoundBeacon) {
-            NSInteger averageRSSI = (thisOne.rssi + self.lastFoundBeacon.rssi);
-            averageRSSI  = ABS(averageRSSI)/2;
-            if (averageRSSI < 82) {
-                title = [title stringByAppendingString:@" M"];
-            }else if (averageRSSI < 95){
-                title = [title stringByAppendingString:@" L"];
-            }
-        }else{
-            self.lastFoundBeacon = thisOne;
-        }
+    switch (thisOne.proximity) {
+        case CLProximityFar:
+            title = [title stringByAppendingString:@" 远"];
+            break;
+        case CLProximityNear:
+            title = [title stringByAppendingString:@" 近"];
+            break;
+        case CLProximityImmediate:
+            title = [title stringByAppendingString:@" 贴住"];
+            break;
+        default:
+            break;
     }
-    if (thisOne.proximity == CLProximityUnknown) {
-        title = [title stringByAppendingString:@" Unknown"];
-    }
-    if (thisOne.proximity == CLProximityNear) {
-        title = [title stringByAppendingString:@" Near"];
-    }
-    if (thisOne.proximity == CLProximityImmediate) {
-        title = [title stringByAppendingString:@" Immediate"];
-    }
-    NSString *detail =[@"uuid-" stringByAppendingString:[thisOne.proximityUUID UUIDString]];
     
     NSString *beaconLocaton = [user findNameByBeacon:thisOne];
     if (beaconLocaton) {
         cell.textLabel.text = beaconLocaton;
         cell.detailTextLabel.text = title;
     }else{
-        cell.detailTextLabel.text = detail;
         cell.textLabel.text = title;
     }
     return cell;
 }
 
--(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 100;
-}
 
 
 #if 1

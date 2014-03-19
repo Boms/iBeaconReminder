@@ -51,6 +51,8 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
+    iBeaconUser *beaconUser = [iBeaconUser sharedInstance];
+    [beaconUser saveAllData];
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 

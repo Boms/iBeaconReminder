@@ -67,10 +67,21 @@
 -(NSMutableArray *)namesOfBeacon
 {
     if(!_namesOfBeacon){
-        NSMutableArray *array = [[NSMutableArray alloc] init];
-        _namesOfBeacon = array;
+        NSArray *myArray = [[NSUserDefaults standardUserDefaults] arrayForKey:@"beaconName"];
+        if (!myArray) {
+            NSArray *emptyArray = [[NSArray alloc] init];
+            [[NSUserDefaults standardUserDefaults] setObject:emptyArray forKey:@"beaconName"];
+            myArray = [[NSUserDefaults standardUserDefaults] arrayForKey:@"beaconName"];
+        }
+        _namesOfBeacon = [NSMutableArray arrayWithArray:myArray];
     }
     return _namesOfBeacon;
+}
+
+
+-(void)saveAllData
+{
+    [[NSUserDefaults standardUserDefaults] setObject:self.namesOfBeacon forKey:@"beaconName"];
 }
 
 -(NSMutableArray *)reminderOfBeacon

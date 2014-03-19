@@ -39,6 +39,8 @@
 
 -(NSString *)findNameByBeacon:(CLBeacon *)beaconOne;
 -(void) setNameForBeacon:(CLBeacon *)beaconOne with:(NSString *)newName;
+-(void)saveAllData;
+
 -(NSMutableArray *)findRemindersWith:(CLBeacon *)beaconOne;
 -(void)removeReminderWith:(CLBeacon *)beaconOne with:(NSString *)reminder;
 -(void)AddRemindersWith:(CLBeacon *)beaconOne with:(NSString *)reminder;
