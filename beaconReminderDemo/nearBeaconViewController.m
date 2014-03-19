@@ -10,6 +10,7 @@
 #import "iBeaconUser.h"
 #import "reminderOnBeaconViewController.h"
 #import "updateNameViewController.h"
+#import "AddReminderOfBeacon.h"
 @interface nearBeaconViewController ()
 @property (nonatomic, strong) iBeaconUser *myUser;
 @property (nonatomic, strong) NSMutableArray *beaconArray;
@@ -132,10 +133,10 @@
 
     switch (thisOne.proximity) {
         case CLProximityFar:
-            title = [title stringByAppendingString:@" 远"];
+            title = [title stringByAppendingString:@"                                远"];
             break;
         case CLProximityNear:
-            title = [title stringByAppendingString:@" 近"];
+            title = [title stringByAppendingString:@"               近"];
             break;
         case CLProximityImmediate:
             title = [title stringByAppendingString:@" 贴住"];
@@ -150,13 +151,14 @@
         iBeaconUser *user = [iBeaconUser sharedInstance];
         NSMutableArray *reminderOfBeacon = [user findRemindersWith:thisOne];
         NSInteger count = [reminderOfBeacon count];
-        NSString *thingsToDo = @"现在就记一个";
+        NSString *thingsToDo = @"来添加第一个事情吧";
         if (count != 0) {
             thingsToDo = [NSString stringWithFormat:@"%d件事情", count];
         }
         cell.detailTextLabel.text = thingsToDo;
     }else{
-        cell.textLabel.text = @"起个名字吧";
+        cell.textLabel.text = title;
+        cell.detailTextLabel.text = @"起个名字吧";
     }
     return cell;
 }
@@ -233,17 +235,29 @@
     NSString *beaconName = [user findNameByBeacon:selectedBeacon];
     UIViewController *vc = nil;
     if (beaconName && ![beaconName isEqualToString:@""]) {
-        reminderOnBeaconViewController *detailViewController = [[reminderOnBeaconViewController alloc] initWithNibName:@"reminderOnBeaconViewController" bundle:nil];
-        detailViewController.myBeacon = selectedBeacon;
-        detailViewController.title = beaconName;
-        vc = detailViewController;
+        NSMutableArray *reminderOfBeacon = [user findRemindersWith:selectedBeacon];
+        NSInteger count = [reminderOfBeacon count];
+        if (count == 0) {
+            AddReminderOfBeacon *detailViewController = [[AddReminderOfBeacon alloc] initWithNibName:@"AddReminderOfBeacon" bundle:nil];
+            detailViewController.myBeacon = selectedBeacon;
+            detailViewController.reminder = nil;
+            [self.navigationController pushViewController:detailViewController animated:YES];
+            return;
+        }else{
+
+            reminderOnBeaconViewController *detailViewController = [[reminderOnBeaconViewController alloc] initWithNibName:@"reminderOnBeaconViewController" bundle:nil];
+            detailViewController.myBeacon = selectedBeacon;
+            detailViewController.title = beaconName;
+            [self.navigationController pushViewController:detailViewController animated:YES];
+            return;
+        }
+
     }else{
         updateNameViewController* detailViewController = [[updateNameViewController alloc] initWithNibName:@"updateNameViewController" bundle:nil];
         detailViewController.myBeacon = selectedBeacon;
-        vc = detailViewController;
+        [self.navigationController pushViewController:detailViewController animated:YES];
+        return;
     }
-
-    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end
