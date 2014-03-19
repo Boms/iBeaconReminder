@@ -7,7 +7,7 @@
 //
 
 #import "selectNameForBeaconTableViewController.h"
-
+#import "updateNameViewController.h"
 @interface selectNameForBeaconTableViewController ()
 
 @end
@@ -130,7 +130,7 @@
 }
 */
 
-/*
+
 #pragma mark - Table view delegate
 
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
@@ -138,13 +138,39 @@
 {
     // Navigation logic may go here, for example:
     // Create the next view controller.
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
-    
     // Pass the selected object to the new view controller.
     
     // Push the view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
+    if (indexPath.section == 0) {
+        //show know name
+        NSString *beaconName = nil;
+        switch (indexPath.row) {
+            case 0:
+                beaconName = @"随时提醒";
+                break;
+            case 1:
+                beaconName = @"家";
+                break;
+            case 2:
+                beaconName = @"办公室";
+                break;
+            case 3:
+                beaconName = @"车";
+                break;
+            default:
+                break;
+        }
+        iBeaconUser *user = [iBeaconUser sharedInstance];
+        [user setNameForBeacon:self.myBeacon with:beaconName];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    if (indexPath.section == 1) {
+        if (indexPath.row == 0) {
+            updateNameViewController *vc = [[updateNameViewController alloc] initWithNibName:@"updateNameViewController" bundle:nil];
+            vc.myBeacon = self.myBeacon;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+    }
 }
-*/
 
 @end

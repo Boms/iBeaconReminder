@@ -27,7 +27,7 @@
 {
     iBeaconUser *user = [iBeaconUser sharedInstance];
     [user setNameForBeacon:self.myBeacon with:self.name.text];
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 -(void)cancelButton
 {
