@@ -49,6 +49,11 @@
     iBeaconUser *user = [iBeaconUser sharedInstance];
     _myUser = user;
     [self.myUser stopMonitor];
+    for (NSDictionary *eachBeaconName in user.namesOfBeacon) {
+        NSData *archieved = [eachBeaconName objectForKey:@"beacon"];
+        CLBeacon *beacon = [NSKeyedUnarchiver unarchiveObjectWithData:archieved];
+        [self.beaconArray addObject:beacon];
+    }
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -65,8 +70,7 @@
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         [self.myUser startMonitorWithFoundNewBeacon:^(CLBeacon *foundOne){
-            [self.beaconArray addObject:foundOne];
-            [self.tableView reloadData];
+            ;
         } withKnowBeacon:^(CLBeacon *foundOne){
             NSInteger len = 0;
             for (; len < [self.beaconArray count]; len++) {
