@@ -58,13 +58,16 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 1) {
+    if (section == 0) {
         return 1;
     }
-    if (section == 0) {
+    if (section == 1) {
         iBeaconUser *user = [iBeaconUser sharedInstance];
         NSMutableArray *reminderOfBeacon = [user findRemindersWith:self.myBeacon];
         return [reminderOfBeacon count];
+    }
+    if (section == 2) {
+        return 1;
     }
     return 0;
 }
@@ -78,18 +81,20 @@
     iBeaconUser *user  = [iBeaconUser sharedInstance];
     NSMutableArray *reminderOfBeacon = [user findRemindersWith:self.myBeacon];
 
-    if (indexPath.section == 1) {
+    if (indexPath.section == 0) {
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
         cell.textLabel.text = @"添加提醒";
         cell.textLabel.textAlignment = NSTextAlignmentCenter;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         return cell;
     }
 
-    if (indexPath.section == 0) {
+    if (indexPath.section == 1) {
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
 
         NSDictionary *reminderDict = [reminderOfBeacon objectAtIndex:indexPath.row];
@@ -101,6 +106,15 @@
         }
     }
     
+    if (indexPath.section == 2) {
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        }
+        cell.textLabel.text = @"更改名字";
+        cell.textLabel.textAlignment = NSTextAlignmentCenter;
+        return cell;
+    }
+    
     // Configure the cell...
     
     return cell;
@@ -110,7 +124,7 @@
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
-    if (indexPath.section == 0) {
+    if (indexPath.section == 1) {
         return YES;
     }
     return NO;
@@ -156,7 +170,7 @@
     // Create the next view controller.
     iBeaconUser *user  = [iBeaconUser sharedInstance];
 
-    if (indexPath.section == 1) {
+    if (indexPath.section == 0) {
         AddReminderOfBeacon *vc = [[AddReminderOfBeacon alloc] initWithNibName:@"AddReminderOfBeacon" bundle:nil];
         vc.reminder = nil;
         vc.myBeacon = self.myBeacon;
@@ -165,7 +179,7 @@
         [self.navigationController pushViewController:vc animated:YES];
         return;
     }
-    if (indexPath.section == 0) {
+    if (indexPath.section == 1) {
         AddReminderOfBeacon *vc = [[AddReminderOfBeacon alloc] initWithNibName:@"AddReminderOfBeacon" bundle:nil];
         NSMutableArray *reminderStringArray = [user findRemindersWith:self.myBeacon];
         NSDictionary *reminderDict = [reminderStringArray objectAtIndex:indexPath.row];
@@ -176,6 +190,13 @@
         iBeaconUser *user = [iBeaconUser sharedInstance];
         vc.title = [user findNameByBeacon:self.myBeacon];
         [self.navigationController pushViewController:vc animated:YES];
+    }
+    
+    if (indexPath.section == 2) {
+        updateNameViewController *detailViewController = [[updateNameViewController alloc] initWithNibName:@"updateNameViewController" bundle:nil];
+        detailViewController.myBeacon = self.myBeacon;
+        [self.navigationController pushViewController:detailViewController animated:YES];
+        return;
     }
     return;
     
