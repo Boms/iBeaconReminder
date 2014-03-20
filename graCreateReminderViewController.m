@@ -33,6 +33,12 @@
     [self.beaconSlider setDelegate:self];
     [self.beaconSlider setDataSource:self];
     [self.reminderString setDelegate:self];
+    UIBarButtonItem *saveBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(Save)];
+    UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(Cancel)];
+    UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    self.toolbarItems = @[flexSpace, saveBtn, flexSpace, cancelBtn, flexSpace];
+    self.navigationController.toolbarHidden = NO;
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,6 +51,7 @@
 {
     [super viewDidAppear:animated];
     [self.beaconSlider selectRow:0 inComponent:0 animated:YES];
+    [self.reminderString becomeFirstResponder];
 }
 
 -(NSInteger) numberOfComponentsInPickerView:(UIPickerView *)pickerView
@@ -63,17 +70,21 @@
     }
     return 0;
 }
-- (IBAction)OKButton:(id)sender {
+
+-(void) Save
+{
     if (self.reminderString.text && ![self.reminderString.text isEqualToString:@""]) {
         iBeaconUser *user = [iBeaconUser sharedInstance];
         [user AddRemindersWith:self.selectedBeacon with:self.reminderString.text friends:@""];
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
-- (IBAction)CancelButton:(id)sender {
+
+
+-(void)Cancel
+{
     [self.navigationController popViewControllerAnimated:YES];
 }
-
 -(NSString *) pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
     NSString *title = nil;

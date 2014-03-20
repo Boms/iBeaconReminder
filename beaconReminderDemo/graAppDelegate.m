@@ -20,16 +20,8 @@
     // Override point for customization after application launch.
     nearBeaconViewController *beaconVC = [[nearBeaconViewController alloc] initWithNibName:@"nearBeaconViewController" bundle:nil];
     UINavigationController  *reminderNav = [[UINavigationController alloc] initWithRootViewController:beaconVC];
-    reminderNav.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"提醒" image:nil selectedImage:nil];
 
-    graBeaconManagerTableViewController *beaconMangerVC = [[graBeaconManagerTableViewController alloc] initWithNibName:@"graBeaconManagerTableViewController" bundle:nil];
-    UINavigationController *beaconManagerNav = [[UINavigationController alloc] initWithRootViewController:beaconMangerVC];
-    beaconManagerNav.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"我的Mozi" image:nil selectedImage:nil];
-    
-    UITabBarController *tabvc = [[UITabBarController alloc]  init];
-    NSArray *tabArray = [NSArray arrayWithObjects:reminderNav, beaconManagerNav, nil];
-    tabvc.viewControllers = tabArray;
-    self.window.rootViewController = tabvc;
+    self.window.rootViewController = reminderNav;
     iBeaconUser *beaconUser = [iBeaconUser sharedInstance];
     beaconUser.loggedIn = NO;
     self.user = beaconUser;

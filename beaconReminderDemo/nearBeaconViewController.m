@@ -13,10 +13,12 @@
 #import "AddReminderOfBeacon.h"
 #import "selectNameForBeaconTableViewController.h"
 #import "graCreateReminderViewController.h"
+#import "graBeaconManagerTableViewController.h"
 @interface nearBeaconViewController ()
 @property (nonatomic, strong) iBeaconUser *myUser;
 @property (nonatomic, strong) NSMutableArray *beaconArray;
 @property (nonatomic, strong) CLBeacon *lastFoundBeacon;
+@property (nonatomic, strong) UIToolbar *toolbar;
 @end
 
 @implementation nearBeaconViewController
@@ -38,6 +40,27 @@
     return _beaconArray;
 }
 
+-(void)showBeaconManagement
+{
+    graBeaconManagerTableViewController *vc = [[graBeaconManagerTableViewController alloc] initWithNibName:@"graBeaconManagerTableViewController" bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)adjustToolbarSize
+{
+    // size up the toolbar and set its frame
+	[self.toolbar sizeToFit];
+    
+    // since the toolbar may have adjusted its height, it's origin will have to be adjusted too
+	CGRect mainViewBounds = self.view.bounds;
+	[self.toolbar setFrame:CGRectMake(CGRectGetMinX(mainViewBounds),
+                                      CGRectGetMinY(mainViewBounds) + CGRectGetHeight(mainViewBounds) - CGRectGetHeight(self.toolbar.frame),
+                                      CGRectGetWidth(mainViewBounds),
+                                      CGRectGetHeight(self.toolbar.frame))];
+}
+
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -55,7 +78,37 @@
         CLBeacon *beacon = [NSKeyedUnarchiver unarchiveObjectWithData:archieved];
         [self.beaconArray addObject:beacon];
     }
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"+" style:UIBarButtonItemStylePlain target:self action:@selector(createNewReminder)];
+    UIBarButtonItem *btnItem =[[UIBarButtonItem alloc] initWithTitle:@"设备管理" style:UIBarButtonItemStyleBordered target:self action:@selector(showBeaconManagement)];
+    [btnItem setTitle:@"位置管理"];
+    self.navigationItem.rightBarButtonItem = btnItem;
+
+    UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(createNewReminder)];
+    UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    self.toolbarItems = @[flexSpace, btn, flexSpace];
+    self.navigationController.toolbarHidden = NO;
+#if 0
+	_toolbar = [[UIToolbar alloc] initWithFrame:CGRectZero];
+	self.toolbar.barStyle = UIBarStyleDefault;
+	
+	// size up the toolbar and set its frame
+    [self adjustToolbarSize];
+    
+	[self.toolbar setFrame:CGRectMake(CGRectGetMinX(self.tableView.bounds),
+                                      CGRectGetMinY(self.tableView.bounds) + CGRectGetHeight(self.tableView.bounds) - CGRectGetHeight(self.toolbar.frame) - CGRectGetHeight(self.navigationController.navigationBar.frame),
+                                      CGRectGetWidth(self.view.bounds),
+                                      CGRectGetHeight(self.toolbar.frame))];
+    self.toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+    
+	[self.view addSubview:self.toolbar];
+	UIBarButtonItem *customItem2 = [[UIBarButtonItem alloc] initWithTitle:@"Item2"
+																	style:UIBarButtonItemStyleBordered	// note you can use "UIBarButtonItemStyleDone" to make it blue
+																   target:self
+																   action:@selector(createNewReminder)];
+    
+	// apply the bar button items to the toolbar
+    [self.toolbar setItems:@[ customItem2] animated:NO];
+#endif
+
 }
 
 -(void) createNewReminder
