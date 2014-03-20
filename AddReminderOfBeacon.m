@@ -9,8 +9,8 @@
 #import "AddReminderOfBeacon.h"
 
 @interface AddReminderOfBeacon ()
-@property (nonatomic,strong) UITextField *name;
-@property (nonatomic,strong) UITextField *friends;
+@property (nonatomic,strong) UITextField *reminderTextField;
+@property (nonatomic,strong) UITextField *friendsTextField;
 @end
 
 @implementation AddReminderOfBeacon
@@ -30,7 +30,7 @@
     if (self.reminder) {
         [user removeReminderWith:self.myBeacon with:self.reminder];
     }
-    [user AddRemindersWith:self.myBeacon with:self.name.text friends:self.friends.text];
+    [user AddRemindersWith:self.myBeacon with:self.reminderTextField.text friends:self.friendsTextField.text];
     [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)cancelButton
@@ -49,7 +49,8 @@
     title.placeholder = @"TODO list";
     title.delegate = self;
     title.allowsEditingTextAttributes = NO;
-    self.name = title;
+    title.returnKeyType = UIReturnKeyDone;
+    self.reminderTextField = title;
 
     
     UITextField *friends = [[UITextField alloc] initWithFrame:CGRectMake(30, 170, 250, 50)];
@@ -57,30 +58,33 @@
     friends.placeholder = @"朋友";
     friends.delegate = self;
     friends.allowsEditingTextAttributes = NO;
-    self.friends = friends;
+    friends.returnKeyType = UIReturnKeyDone;
+    self.friendsTextField = friends;
     
     NSString *reminder = self.reminder;
     if (reminder) {
         title.text = reminder;
     }
     if (self.reminderDict) {
-        self.friends.text = [self.reminderDict objectForKey:@"friends"];
+        self.friendsTextField.text = [self.reminderDict objectForKey:@"friends"];
     }
     [self.view addSubview:title];
     [self.view addSubview:friends];
-    
-    UIButton *updateButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [updateButton addTarget:self action:@selector(okButton) forControlEvents:UIControlEventTouchUpInside];
-    [updateButton setTitle:@"Confirm" forState:UIControlStateNormal];
-    updateButton.frame = CGRectMake(80, 250, 100, 50);
-    [self.view addSubview:updateButton];
-    
-    UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [cancelButton addTarget:self action:@selector(cancelButton) forControlEvents:UIControlEventTouchUpInside];
-    [cancelButton setTitle:@"cancel" forState:UIControlStateNormal];
-    cancelButton.frame = CGRectMake(180, 250, 100, 50);
-    [self.view addSubview:cancelButton];
 
+    UIBarButtonItem *saveBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(okButton)];
+    UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButton)];
+    UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    self.toolbarItems = @[flexSpace, saveBtn, flexSpace, cancelBtn, flexSpace];
+    self.navigationController.toolbarHidden = NO;
+
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if (textField == self.reminderTextField || textField ==self.friendsTextField) {
+        [textField resignFirstResponder];
+    }
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning

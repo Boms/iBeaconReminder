@@ -33,7 +33,10 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
      self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    self.editButtonItem.title = @"编辑";
+    UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(pushToAddReminderOnThisBeacon)];
+    UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    self.toolbarItems = @[flexSpace, btn, flexSpace];
+    self.navigationController.toolbarHidden = NO;
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -54,23 +57,15 @@
 {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0) {
-        return 1;
-    }
-    if (section == 1) {
-        iBeaconUser *user = [iBeaconUser sharedInstance];
-        NSMutableArray *reminderOfBeacon = [user findRemindersWith:self.myBeacon];
-        return [reminderOfBeacon count];
-    }
-    if (section == 2) {
-        return 1;
-    }
-    return 0;
+    
+    iBeaconUser *user = [iBeaconUser sharedInstance];
+    NSMutableArray *reminderOfBeacon = [user findRemindersWith:self.myBeacon];
+    return [reminderOfBeacon count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -81,43 +76,19 @@
     
     iBeaconUser *user  = [iBeaconUser sharedInstance];
     NSMutableArray *reminderOfBeacon = [user findRemindersWith:self.myBeacon];
-
-    if (indexPath.section == 0) {
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        }
-        cell.textLabel.text = @"添加新的";
-        cell.textLabel.textAlignment = NSTextAlignmentCenter;
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        return cell;
-    }
-
-    if (indexPath.section == 1) {
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        }
-
-        NSDictionary *reminderDict = [reminderOfBeacon objectAtIndex:indexPath.row];
-        NSString *reminder = [reminderDict objectForKey:@"reminder"];
-        cell.textLabel.text = reminder;
-        NSString *friends = [reminderDict objectForKey:@"friends"];
-        if (friends && [friends length] != 0) {
-            cell.detailTextLabel.text = [@"@" stringByAppendingString: friends];
-        }
     }
     
-    if (indexPath.section == 2) {
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        }
-        cell.textLabel.text = @"更改名字";
-        cell.textLabel.textAlignment = NSTextAlignmentCenter;
-        return cell;
+    NSDictionary *reminderDict = [reminderOfBeacon objectAtIndex:indexPath.row];
+    NSString *reminder = [reminderDict objectForKey:@"reminder"];
+    cell.textLabel.text = reminder;
+    NSString *friends = [reminderDict objectForKey:@"friends"];
+    if (friends && [friends length] != 0) {
+        cell.detailTextLabel.text = [@"@" stringByAppendingString: friends];
     }
-    
-    // Configure the cell...
-    
     return cell;
 }
 
@@ -125,10 +96,7 @@
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
-    if (indexPath.section == 1) {
-        return YES;
-    }
-    return NO;
+    return YES;
 }
 
 
@@ -164,6 +132,17 @@
 
 #pragma mark - Table view delegate
 
+-(void)pushToAddReminderOnThisBeacon
+{
+    AddReminderOfBeacon *vc = [[AddReminderOfBeacon alloc] initWithNibName:@"AddReminderOfBeacon" bundle:nil];
+    vc.reminder = nil;
+    vc.myBeacon = self.myBeacon;
+    iBeaconUser *user = [iBeaconUser sharedInstance];
+    vc.title = [user findNameByBeacon:self.myBeacon];
+    [self.navigationController pushViewController:vc animated:YES];
+    return;
+}
+
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -171,16 +150,6 @@
     // Create the next view controller.
     iBeaconUser *user  = [iBeaconUser sharedInstance];
 
-    if (indexPath.section == 0) {
-        AddReminderOfBeacon *vc = [[AddReminderOfBeacon alloc] initWithNibName:@"AddReminderOfBeacon" bundle:nil];
-        vc.reminder = nil;
-        vc.myBeacon = self.myBeacon;
-        iBeaconUser *user = [iBeaconUser sharedInstance];
-        vc.title = [user findNameByBeacon:self.myBeacon];
-        [self.navigationController pushViewController:vc animated:YES];
-        return;
-    }
-    if (indexPath.section == 1) {
         AddReminderOfBeacon *vc = [[AddReminderOfBeacon alloc] initWithNibName:@"AddReminderOfBeacon" bundle:nil];
         NSMutableArray *reminderStringArray = [user findRemindersWith:self.myBeacon];
         NSDictionary *reminderDict = [reminderStringArray objectAtIndex:indexPath.row];
@@ -188,17 +157,8 @@
         vc.reminder = reminderString;
         vc.myBeacon = self.myBeacon;
         vc.reminderDict = reminderDict;
-        iBeaconUser *user = [iBeaconUser sharedInstance];
         vc.title = [user findNameByBeacon:self.myBeacon];
         [self.navigationController pushViewController:vc animated:YES];
-    }
-    
-    if (indexPath.section == 2) {
-        updateNameViewController *detailViewController = [[updateNameViewController alloc] initWithNibName:@"updateNameViewController" bundle:nil];
-        detailViewController.myBeacon = self.myBeacon;
-        [self.navigationController pushViewController:detailViewController animated:YES];
-        return;
-    }
     return;
     
 }
