@@ -122,7 +122,7 @@
     NSString *beaconLocaton = [user findNameByBeacon:thisOne];
     if (beaconLocaton) {
         cell.textLabel.text = beaconLocaton;
-        cell.detailTextLabel.text = distance;
+        cell.detailTextLabel.text = [uuid stringByAppendingString:distance];
     }else{
         cell.textLabel.text = @"起个名字吧";
         cell.detailTextLabel.text = [uuid stringByAppendingString:distance];
