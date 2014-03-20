@@ -10,4 +10,5 @@
 #import "iBeaconUser.h"
 @interface updateNameViewController : UIViewController<UITextFieldDelegate>
 @property (nonatomic, strong) CLBeacon *myBeacon;
+@property (nonatomic, strong) void (^nameChanged)(CLBeacon *);
 @end

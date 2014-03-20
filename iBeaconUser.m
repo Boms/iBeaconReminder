@@ -481,6 +481,22 @@
     
 }
 
+-(BOOL) replaceBeacon:(CLBeacon *)this inArray:(NSMutableArray *)array
+{
+    NSInteger j = 0;
+    for (j = 0;j < [array count] ; j++) {
+        CLBeacon *eachNamedBeacon = [array objectAtIndex:j];
+        if ([self isBeacon:eachNamedBeacon SameWith:this]) {
+            [array replaceObjectAtIndex:j withObject:this];
+            return YES;
+        }
+    }
+    if (j == [array count]) {
+        [array addObject:this];
+    }
+    return YES;
+}
+
 -(NSMutableArray *)UniqueBeaconInRecent40Beacon
 {
     NSMutableArray *result = [[NSMutableArray alloc] init];

@@ -38,7 +38,7 @@
 
 -(CLBeacon *) findOutNearestBeaconIndex;
 -(BOOL) isBeacon:(CLBeacon *)this SameWith:(CLBeacon *)that;
-
+-(BOOL) replaceBeacon:(CLBeacon *)this inArray:(NSMutableArray *)array;
 
 -(NSString *)findNameByBeacon:(CLBeacon *)beaconOne;
 -(void) setNameForBeacon:(CLBeacon *)beaconOne with:(NSString *)newName;

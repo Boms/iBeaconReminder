@@ -11,6 +11,8 @@
 @interface graBeaconManagerTableViewController ()
 @property (nonatomic, strong) iBeaconUser *myUser;
 @property (nonatomic, strong) NSMutableArray *beaconArray;
+@property (nonatomic, strong) NSMutableArray *namedBeacon;
+@property (nonatomic, strong) NSMutableArray *unamedBeacon;
 @property (nonatomic, strong) CLBeacon *lastFoundBeacon;
 @end
 
@@ -25,6 +27,14 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    iBeaconUser *user = [iBeaconUser sharedInstance];
+    _myUser = user;
+    [self.myUser stopMonitor];
+    for (NSDictionary *eachBeaconName in user.namesOfBeacon) {
+        NSData *archieved = [eachBeaconName objectForKey:@"beacon"];
+        CLBeacon *beacon = [NSKeyedUnarchiver unarchiveObjectWithData:archieved];
+        [self.namedBeacon addObject:beacon];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -41,52 +51,66 @@
     return _beaconArray;
 }
 
+-(NSMutableArray *)unamedBeacon
+{
+    if(_unamedBeacon == nil){
+        _unamedBeacon = [[NSMutableArray alloc] init];
+    }
+    return _unamedBeacon;
+}
+
+-(NSMutableArray *)namedBeacon
+{
+    if(_namedBeacon == nil){
+        _namedBeacon = [[NSMutableArray alloc] init];
+    }
+    return _namedBeacon;
+}
+
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     iBeaconUser *user = [iBeaconUser sharedInstance];
     _myUser = user;
-    double delayInSeconds = 1.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [self.myUser startMonitorWithFoundNewBeacon:^(CLBeacon *foundOne){
-            ;
-        } withKnowBeacon:^(CLBeacon *foundOne){
-            NSInteger len = 0;
-            for (; len < [self.beaconArray count]; len++) {
-                CLBeacon *eachBeacon = [self.beaconArray objectAtIndex:len];
-                if ([eachBeacon.proximityUUID isEqual:foundOne.proximityUUID]) {
-                    if([eachBeacon.major isEqualToNumber:foundOne.major]){
-                        if([eachBeacon.minor isEqualToNumber:foundOne.minor]){
-                            [self.beaconArray replaceObjectAtIndex:len withObject:foundOne];
-                            [self.tableView reloadData];
-                            break;
-                        }
-                    }
+    [self.myUser startMonitorWithFoundNewBeacon:^(CLBeacon *foundOne){
+        ;
+    } withKnowBeacon:^(CLBeacon *foundOne){
+        NSInteger i = 0;
+        if ([user findNameByBeacon:foundOne]) {
+            for (;i < [self.namedBeacon count] ; i++) {
+                CLBeacon *eachNamedBeacon = [self.namedBeacon objectAtIndex:i];
+                if ([user isBeacon:eachNamedBeacon SameWith:foundOne]) {
+                    [self.namedBeacon replaceObjectAtIndex:i withObject:foundOne];
+                    break;
                 }
             }
-            if (len == [self.beaconArray count]) {
-                [self.beaconArray addObject:foundOne];
-                [self.tableView reloadData];
+            if (i == [self.namedBeacon count]){
+                [self.namedBeacon addObject:foundOne];
             }
-        }];
-    });
-    
+            [self.tableView reloadData];
+        }else{
+            [user replaceBeacon:foundOne inArray:self.unamedBeacon];
+            [self.tableView reloadData];
+        }
+    }];
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return [self.beaconArray count];
+    if (section == 0) {
+        return [self.namedBeacon count];
+    }
+    else {
+        return [self.unamedBeacon count];
+    }
 }
 
 
@@ -100,7 +124,12 @@
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     // Configure the cell...
-    CLBeacon *thisOne = self.beaconArray[indexPath.row];
+    CLBeacon *thisOne = nil;
+    if (indexPath.section == 0) {
+        thisOne = self.namedBeacon[indexPath.row];
+    }else{
+        thisOne = self.unamedBeacon[indexPath.row];
+    }
     iBeaconUser *user = [iBeaconUser sharedInstance];
     NSString *uuid =[NSString stringWithFormat:@"%04x %04x", [thisOne.major integerValue], [thisOne.minor integerValue]];
     NSString *distance = nil;
@@ -175,10 +204,26 @@
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CLBeacon *selectedBeacon = self.beaconArray[indexPath.row];
-
+    CLBeacon *selectedBeacon = nil;
+    if (indexPath.section == 0) {
+        selectedBeacon = self.namedBeacon[indexPath.row];
+    }
+    if (indexPath.section == 1) {
+        selectedBeacon = self.unamedBeacon[indexPath.row];
+    }
     updateNameViewController *detailViewController = [[updateNameViewController alloc] initWithNibName:@"updateNameViewController" bundle:nil];
     detailViewController.myBeacon = selectedBeacon;
+    iBeaconUser *user = [iBeaconUser sharedInstance];
+    detailViewController.nameChanged = ^(CLBeacon *nameChangedBeacon){
+        NSInteger i =0;
+        for (; i < [self.unamedBeacon count]; i++) {
+            CLBeacon *eachUnamedBeacon = self.unamedBeacon[i];
+            if ([user isBeacon:eachUnamedBeacon SameWith:nameChangedBeacon]) {
+                [self.unamedBeacon removeObjectAtIndex:i];
+                [self.tableView reloadData];
+            }
+        }
+    };
     [self.navigationController pushViewController:detailViewController animated:YES];
     return;
 }
