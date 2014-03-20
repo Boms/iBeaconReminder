@@ -10,7 +10,8 @@
 #import "updateNameViewController.h"
 #import "AddReminderOfBeacon.h"
 @interface reminderOnBeaconViewController ()
-
+@property (nonatomic, strong) UIBarButtonItem *removeButton;
+@property (nonatomic, strong) UIBarButtonItem *composeButton;
 @end
 
 @implementation reminderOnBeaconViewController
@@ -24,6 +25,26 @@
     return self;
 }
 
+-(void)doneEditing
+{
+    [self.tableView setEditing:NO animated:YES];
+    self.navigationItem.rightBarButtonItem = nil;
+
+    [self.composeButton setEnabled:YES];
+    if ([self tableView:self.tableView numberOfRowsInSection:0] != 0) {
+        [self.removeButton setEnabled:YES];
+    }
+}
+
+-(void)prepareRemoveReminder
+{
+    [self.tableView setEditing:YES animated:YES];
+    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneEditing)];
+    self.navigationItem.rightBarButtonItem = cancelButton;
+    [self.removeButton setEnabled:NO];
+    [self.composeButton setEnabled:NO];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -32,10 +53,12 @@
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    UIBarButtonItem *remove =[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(prepareRemoveReminder)];
+    self.removeButton = remove;
     UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(pushToAddReminderOnThisBeacon)];
+    self.composeButton = btn;
     UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    self.toolbarItems = @[flexSpace, btn, flexSpace];
+    self.toolbarItems = @[flexSpace, btn, flexSpace, remove,flexSpace];
     self.navigationController.toolbarHidden = NO;
 }
 
@@ -43,6 +66,16 @@
 {
     [super viewWillAppear:animated];
     [self.tableView reloadData];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if ([self tableView:self.tableView numberOfRowsInSection:0] != 0) {
+        [self.removeButton setEnabled:YES];
+    }else{
+        [self.removeButton setEnabled:NO];
+    }
 }
 
 - (void)didReceiveMemoryWarning

@@ -52,6 +52,12 @@
     [super viewDidAppear:animated];
     [self.beaconSlider selectRow:0 inComponent:0 animated:YES];
     [self.reminderString becomeFirstResponder];
+    iBeaconUser *user = [iBeaconUser sharedInstance];
+    NSDictionary *each = [user.namesOfBeacon objectAtIndex:0];
+    NSData *archieved = [each objectForKey:@"beacon"];
+    CLBeacon *thisBeacon = [NSKeyedUnarchiver unarchiveObjectWithData:archieved];
+    self.selectedBeacon =thisBeacon;
+
 }
 
 -(NSInteger) numberOfComponentsInPickerView:(UIPickerView *)pickerView
