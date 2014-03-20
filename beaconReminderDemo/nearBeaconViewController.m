@@ -12,6 +12,7 @@
 #import "updateNameViewController.h"
 #import "AddReminderOfBeacon.h"
 #import "selectNameForBeaconTableViewController.h"
+#import "graCreateReminderViewController.h"
 @interface nearBeaconViewController ()
 @property (nonatomic, strong) iBeaconUser *myUser;
 @property (nonatomic, strong) NSMutableArray *beaconArray;
@@ -59,7 +60,8 @@
 
 -(void) createNewReminder
 {
-    ;
+    graCreateReminderViewController *vc = [[graCreateReminderViewController alloc] initWithNibName:@"graCreateReminderViewController" bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void) viewWillAppear:(BOOL)animated
