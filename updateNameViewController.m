@@ -49,6 +49,7 @@
     title.placeholder = @"title  will be here";
     title.delegate = self;
     title.allowsEditingTextAttributes = NO;
+    title.returnKeyType = UIReturnKeyDone;
     self.name = title;
     
     iBeaconUser *user = [iBeaconUser sharedInstance];
@@ -58,17 +59,29 @@
     }
     [self.view addSubview:title];
     
-    UIButton *updateButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [updateButton addTarget:self action:@selector(okButton) forControlEvents:UIControlEventTouchUpInside];
-    [updateButton setTitle:@"Confirm" forState:UIControlStateNormal];
-    updateButton.frame = CGRectMake(80, 200, 100, 50);
-    [self.view addSubview:updateButton];
+    UIBarButtonItem *saveBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(okButton)];
+    UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButton)];
+    UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    self.toolbarItems = @[flexSpace, saveBtn, flexSpace, cancelBtn, flexSpace];
+    self.navigationController.toolbarHidden = NO;
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.name becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self.name resignFirstResponder];
+    return YES;
 }
 
 @end

@@ -46,7 +46,7 @@
     // Do any additional setup after loading the view from its nib.
     UITextField *title = [[UITextField alloc] initWithFrame:CGRectMake(30, 100, 250, 50)];
     title.borderStyle = UITextBorderStyleRoundedRect;
-    title.placeholder = @"TODO list";
+    title.placeholder = @"想做什么事?";
     title.delegate = self;
     title.allowsEditingTextAttributes = NO;
     title.returnKeyType = UIReturnKeyDone;
@@ -77,6 +77,12 @@
     self.toolbarItems = @[flexSpace, saveBtn, flexSpace, cancelBtn, flexSpace];
     self.navigationController.toolbarHidden = NO;
 
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.reminderTextField becomeFirstResponder];
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
