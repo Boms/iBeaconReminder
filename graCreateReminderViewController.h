@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface graCreateReminderViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate>
+@interface graCreateReminderViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate>
 
 @end

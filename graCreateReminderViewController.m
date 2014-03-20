@@ -32,6 +32,7 @@
     // Do any additional setup after loading the view from its nib.
     [self.beaconSlider setDelegate:self];
     [self.beaconSlider setDataSource:self];
+    [self.reminderString setDelegate:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -96,4 +97,14 @@
         self.selectedBeacon =thisBeacon;
     }
 }
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if (textField == self.reminderString) {
+        [textField resignFirstResponder];
+    }
+    return YES;
+    
+}
+
 @end
