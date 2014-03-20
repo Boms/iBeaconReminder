@@ -1,32 +1,36 @@
 //
-//  nearBeaconViewController.m
-//  beaconDemo
+//  graBeaconManagerTableViewController.m
+//  beaconReminderDemo
 //
-//  Created by li lin on 1/11/14.
+//  Created by li lin on 3/20/14.
 //  Copyright (c) 2014 li lin. All rights reserved.
 //
 
-#import "nearBeaconViewController.h"
-#import "iBeaconUser.h"
-#import "reminderOnBeaconViewController.h"
+#import "graBeaconManagerTableViewController.h"
 #import "updateNameViewController.h"
-#import "AddReminderOfBeacon.h"
-#import "selectNameForBeaconTableViewController.h"
-@interface nearBeaconViewController ()
+@interface graBeaconManagerTableViewController ()
 @property (nonatomic, strong) iBeaconUser *myUser;
 @property (nonatomic, strong) NSMutableArray *beaconArray;
 @property (nonatomic, strong) CLBeacon *lastFoundBeacon;
 @end
 
-@implementation nearBeaconViewController
+@implementation graBeaconManagerTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (void)viewDidLoad
 {
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+    [super viewDidLoad];
+    
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+    
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 -(NSMutableArray *)beaconArray
@@ -35,37 +39,6 @@
         _beaconArray = [[NSMutableArray alloc] init];
     }
     return _beaconArray;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    iBeaconUser *user = [iBeaconUser sharedInstance];
-    _myUser = user;
-    [self.myUser stopMonitor];
-    for (NSDictionary *eachBeaconName in user.namesOfBeacon) {
-        NSData *archieved = [eachBeaconName objectForKey:@"beacon"];
-        CLBeacon *beacon = [NSKeyedUnarchiver unarchiveObjectWithData:archieved];
-        [self.beaconArray addObject:beacon];
-    }
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"+" style:UIBarButtonItemStylePlain target:self action:@selector(createNewReminder)];
-}
-
--(void) createNewReminder
-{
-    ;
-}
-
--(void) viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [self.tableView reloadData];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -97,19 +70,7 @@
             }
         }];
     });
-
-}
-
--(void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    iBeaconUser *user = [iBeaconUser sharedInstance];
-    _myUser = user;
-}
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
 }
 
 #pragma mark - Table view data source
@@ -128,6 +89,7 @@
     return [self.beaconArray count];
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
@@ -140,17 +102,18 @@
     // Configure the cell...
     CLBeacon *thisOne = self.beaconArray[indexPath.row];
     iBeaconUser *user = [iBeaconUser sharedInstance];
-    NSString *title =[NSString stringWithFormat:@"%04x %04x", [thisOne.major integerValue], [thisOne.minor integerValue]];
-
+    NSString *uuid =[NSString stringWithFormat:@"%04x %04x", [thisOne.major integerValue], [thisOne.minor integerValue]];
+    NSString *distance = nil;
+    
     switch (thisOne.proximity) {
         case CLProximityFar:
-            title = [title stringByAppendingString:@"                                远"];
+            distance = @"                                远";
             break;
         case CLProximityNear:
-            title = [title stringByAppendingString:@"               近"];
+            distance = @"               近";
             break;
         case CLProximityImmediate:
-            title = [title stringByAppendingString:@" 贴住"];
+            distance = @" 贴住";
             break;
         default:
             break;
@@ -159,34 +122,14 @@
     NSString *beaconLocaton = [user findNameByBeacon:thisOne];
     if (beaconLocaton) {
         cell.textLabel.text = beaconLocaton;
-        iBeaconUser *user = [iBeaconUser sharedInstance];
-        NSMutableArray *reminderOfBeacon = [user findRemindersWith:thisOne];
-        NSInteger count = [reminderOfBeacon count];
-        NSString *thingsToDo = @"来添加第一个事情吧";
-        if (count != 0) {
-            thingsToDo = [NSString stringWithFormat:@"%d件事情", count];
-        }
-        cell.detailTextLabel.text = thingsToDo;
+        cell.detailTextLabel.text = distance;
     }else{
-        cell.textLabel.text = title;
-        cell.detailTextLabel.text = @"起个名字吧";
+        cell.textLabel.text = @"起个名字吧";
+        cell.detailTextLabel.text = [uuid stringByAppendingString:distance];
     }
     return cell;
 }
 
-
-
-#if 1
--(CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    return 2;
-}
-
--(CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 1;
-}
-#endif
 
 /*
 // Override to support conditional editing of the table view.
@@ -204,8 +147,7 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
+    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
@@ -233,45 +175,13 @@
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here, for example:
-    // Create the next view controller.
-
-    // Pass the selected object to the new view controller.
-    
-    // Push the view controller.
     CLBeacon *selectedBeacon = self.beaconArray[indexPath.row];
 
-    iBeaconUser *user = [iBeaconUser sharedInstance];
-
-    NSString *beaconName = [user findNameByBeacon:selectedBeacon];
-    UIViewController *vc = nil;
-    if (beaconName && ![beaconName isEqualToString:@""]) {
-        NSMutableArray *reminderOfBeacon = [user findRemindersWith:selectedBeacon];
-        NSInteger count = [reminderOfBeacon count];
-        if (count == 0) {
-            AddReminderOfBeacon *detailViewController = [[AddReminderOfBeacon alloc] initWithNibName:@"AddReminderOfBeacon" bundle:nil];
-            detailViewController.myBeacon = selectedBeacon;
-            detailViewController.reminder = nil;
-            [self.navigationController pushViewController:detailViewController animated:YES];
-            return;
-        }else{
-
-            reminderOnBeaconViewController *detailViewController = [[reminderOnBeaconViewController alloc] initWithNibName:@"reminderOnBeaconViewController" bundle:nil];
-            detailViewController.myBeacon = selectedBeacon;
-            detailViewController.title = beaconName;
-            [self.navigationController pushViewController:detailViewController animated:YES];
-            return;
-        }
-
-    }else{
-        selectNameForBeaconTableViewController *detailViewController = [[selectNameForBeaconTableViewController alloc] initWithNibName:@"selectNameForBeaconTableViewController" bundle:nil];
-#if 0
-        updateNameViewController* detailViewController = [[updateNameViewController alloc] initWithNibName:@"updateNameViewController" bundle:nil];
-#endif
-        detailViewController.myBeacon = selectedBeacon;
-        [self.navigationController pushViewController:detailViewController animated:YES];
-        return;
-    }
+    updateNameViewController *detailViewController = [[updateNameViewController alloc] initWithNibName:@"updateNameViewController" bundle:nil];
+    detailViewController.myBeacon = selectedBeacon;
+    [self.navigationController pushViewController:detailViewController animated:YES];
+    return;
 }
+
 
 @end
