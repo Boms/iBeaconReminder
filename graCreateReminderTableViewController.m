@@ -63,7 +63,6 @@
 {
     [super viewDidAppear:animated];
     [self.titleField becomeFirstResponder];
-    [self.beaconPickerView selectRow:0 inComponent:0 animated:YES];
     iBeaconUser *user = [iBeaconUser sharedInstance];
     NSDictionary *each = [user.namesOfBeacon objectAtIndex:0];
     NSData *archieved = [each objectForKey:@"beacon"];
@@ -124,26 +123,49 @@
         NSData *archieved = [each objectForKey:@"beacon"];
         CLBeacon *thisBeacon = [NSKeyedUnarchiver unarchiveObjectWithData:archieved];
         self.selectedBeacon =thisBeacon;
+        NSString *beaconName = [each objectForKey:@"name"];
+        self.locationField.text = beaconName;
     }
 }
 
+-(void)RemovePickerView
+{
+    NSArray *insertIndexPaths = @[[NSIndexPath indexPathForRow:2 inSection:0]];
+    self.currentRowCount = 2;
+    [self.tableView beginUpdates];
+    [self.tableView deleteRowsAtIndexPaths:insertIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView endUpdates];
+    
+}
+
+
+-(void)AddPickerView
+{
+    NSArray *insertIndexPaths = @[[NSIndexPath indexPathForRow:2 inSection:0]];
+    self.currentRowCount = 3;
+    [self.tableView beginUpdates];
+    [self.tableView insertRowsAtIndexPaths:insertIndexPaths withRowAnimation:UITableViewRowAnimationBottom];
+    [self.tableView endUpdates];
+}
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    if (textField == self.titleField) {
-        [textField resignFirstResponder];
+    if (textField == self.locationField) {
+        [self RemovePickerView];
     }
+    [textField resignFirstResponder];
     return YES;
     
 }
 
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
+    if (textField == self.titleField) {
+        if (self.currentRowCount == 3) {
+            [self RemovePickerView];
+        }
+    }
     if (textField == self.locationField) {
-        NSArray *insertIndexPaths = @[[NSIndexPath indexPathForRow:2 inSection:0]];
-        self.currentRowCount = 3;
-        [self.tableView beginUpdates];
-        [self.tableView insertRowsAtIndexPaths:insertIndexPaths withRowAnimation:UITableViewRowAnimationBottom];
-        [self.tableView endUpdates];
+        [self AddPickerView];
         return YES;
     }
     return YES;
@@ -155,58 +177,68 @@
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        
+        if (indexPath.row == 0) {
+            
+            CGRect cellBounds = cell.bounds;
+            CGFloat textFieldBorder = 10.f;
+            // Don't align the field exactly in the vertical middle, as the text
+            // is not actually in the middle of the field.
+            CGRect aRect = CGRectMake(textFieldBorder, 9.f, CGRectGetWidth(cellBounds)-(2*textFieldBorder), 31.f );
+            UITextField *titleField = [[UITextField alloc] initWithFrame:aRect];
+            titleField.enablesReturnKeyAutomatically = YES;
+            titleField.placeholder = @"比如中午交个外卖";
+            titleField.tintColor = [UIColor redColor];
+            titleField.returnKeyType = UIReturnKeyDone;
+            [titleField setDelegate:self];
+            //        titleField.borderStyle = UITextBorderStyleRoundedRect;
+            self.titleField = titleField;
+            [cell.contentView addSubview:titleField];
+        }
+        if (indexPath.row == 1) {
+            CGRect cellBounds = cell.bounds;
+            CGFloat textFieldBorder = 10.f;
+            CGRect aRect = CGRectMake(textFieldBorder, 9.f, CGRectGetWidth(cellBounds)-(2*textFieldBorder), 31.f );
+            UITextField *titleField = [[UITextField alloc] initWithFrame:aRect];
+            titleField.enablesReturnKeyAutomatically = YES;
+            titleField.placeholder = @"位置";
+            titleField.tintColor = [UIColor redColor];
+            titleField.returnKeyType = UIReturnKeyDone;
+            [titleField setDelegate:self];
+            self.locationField = titleField;
+            [cell.contentView addSubview:titleField];
+            
+            cell.textLabel.text = self.selectedBeaconName;
+            
+        }
+        if (indexPath.row ==2 ) {
+            CGRect cellBounds = cell.bounds;
+            cell.frame = CGRectMake(cellBounds.origin.x, cellBounds.origin.y, cellBounds.size.width, 162);
+            CGFloat textFieldBorder = 10.f;
+            CGRect aRect = CGRectMake(textFieldBorder, 9.f, CGRectGetWidth(cellBounds)-(2*textFieldBorder), 150.f );
+            UIPickerView *beaconPicker = [[UIPickerView alloc] initWithFrame:aRect];
+            beaconPicker.delegate = self;
+            beaconPicker.dataSource = self;
+            self.beaconPickerView = beaconPicker;
+            [cell.contentView addSubview:beaconPicker];
+            
+        }
     }
-   
-    if (indexPath.row == 0) {
 
-        CGRect cellBounds = cell.bounds;
-        CGFloat textFieldBorder = 10.f;
-        // Don't align the field exactly in the vertical middle, as the text
-        // is not actually in the middle of the field.
-        CGRect aRect = CGRectMake(textFieldBorder, 9.f, CGRectGetWidth(cellBounds)-(2*textFieldBorder), 31.f );
-        UITextField *titleField = [[UITextField alloc] initWithFrame:aRect];
-        titleField.enablesReturnKeyAutomatically = YES;
-        titleField.placeholder = @"比如中午交个外卖";
-        titleField.tintColor = [UIColor redColor];
-        titleField.returnKeyType = UIReturnKeyDone;
-        [titleField setDelegate:self];
-//        titleField.borderStyle = UITextBorderStyleRoundedRect;
-        self.titleField = titleField;
-        [cell.contentView addSubview:titleField];
-    }
-    if (indexPath.row == 1) {
-        CGRect cellBounds = cell.bounds;
-        CGFloat textFieldBorder = 10.f;
-        CGRect aRect = CGRectMake(textFieldBorder, 9.f, CGRectGetWidth(cellBounds)-(2*textFieldBorder), 31.f );
-        UITextField *titleField = [[UITextField alloc] initWithFrame:aRect];
-        titleField.enablesReturnKeyAutomatically = YES;
-        titleField.placeholder = @"位置";
-        titleField.tintColor = [UIColor redColor];
-        titleField.returnKeyType = UIReturnKeyDone;
-        [titleField setDelegate:self];
-        self.locationField = titleField;
-        [cell.contentView addSubview:titleField];
-
-        cell.textLabel.text = self.selectedBeaconName;
-
-    }
-    if (indexPath.row ==2 ) {
-        CGRect cellBounds = cell.bounds;
-        CGFloat textFieldBorder = 10.f;
-        CGRect aRect = CGRectMake(textFieldBorder, 9.f, CGRectGetWidth(cellBounds)-(2*textFieldBorder), 31.f );
-        UIPickerView *beaconPicker = [[UIPickerView alloc] initWithFrame:aRect];
-        beaconPicker.delegate = self;
-        beaconPicker.dataSource = self;
-        self.beaconPickerView = beaconPicker;
-        [cell.contentView addSubview:beaconPicker];
-
-    }
     
     // Configure the cell...
     
     return cell;
 }
 
+-(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 2) {
+        return 162.0f;
+    }else{
+        return 40.0f;
+    }
+}
 
 /*
 // Override to support conditional editing of the table view.
