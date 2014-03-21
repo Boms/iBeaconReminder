@@ -211,7 +211,7 @@
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     if ([self.namedBeacon count] > 0 && (section == 0)) {
-        return @"现有地点";
+        return @"选地点";
     }else{
         return @"新设备";
     }

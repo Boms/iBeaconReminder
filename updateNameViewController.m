@@ -80,8 +80,14 @@
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [self.name resignFirstResponder];
-    return YES;
+    if (self.name && ![self.name.text isEqualToString:@""]) {
+        [self.name resignFirstResponder];
+        [self okButton];
+        return YES;
+    }
+    return NO;
+
+
 }
 
 @end
