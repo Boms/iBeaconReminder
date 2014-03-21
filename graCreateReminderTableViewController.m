@@ -91,7 +91,7 @@
             titleField.enablesReturnKeyAutomatically = YES;
             titleField.placeholder = @"比如中午交个外卖";
             titleField.tintColor = [UIColor redColor];
-            titleField.returnKeyType = UIReturnKeyDone;
+            titleField.returnKeyType = UIReturnKeyNext;
             [titleField setDelegate:self];
             //        titleField.borderStyle = UITextBorderStyleRoundedRect;
             self.titleField = titleField;
@@ -105,7 +105,7 @@
             titleField.enablesReturnKeyAutomatically = YES;
             titleField.placeholder = @"位置";
             titleField.tintColor = [UIColor redColor];
-            titleField.returnKeyType = UIReturnKeyDone;
+            titleField.returnKeyType = UIReturnKeyGo;
             [titleField setDelegate:self];
             self.locationField = titleField;
             [cell.contentView addSubview:titleField];
@@ -283,6 +283,7 @@
     [textField resignFirstResponder];
     if (textField == self.locationField) {
         [self RemovePickerView];
+        [self Save];
     }
     if (textField == self.titleField) {
         [self.locationField becomeFirstResponder];

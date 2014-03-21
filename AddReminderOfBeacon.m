@@ -49,7 +49,7 @@
     title.placeholder = @"交个外卖?";
     title.delegate = self;
     title.allowsEditingTextAttributes = NO;
-    title.returnKeyType = UIReturnKeyDone;
+    title.returnKeyType = UIReturnKeyNext;
     self.reminderTextField = title;
 
     
@@ -58,7 +58,7 @@
     friends.placeholder = @"和张三?";
     friends.delegate = self;
     friends.allowsEditingTextAttributes = NO;
-    friends.returnKeyType = UIReturnKeyDone;
+    friends.returnKeyType = UIReturnKeyGo;
     self.friendsTextField = friends;
     
     NSString *reminder = self.reminder;
@@ -87,18 +87,16 @@
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    if (textField == self.reminderTextField || textField ==self.friendsTextField) {
-        [textField resignFirstResponder];
+    [textField resignFirstResponder];
+    if (textField == self.reminderTextField){
+        [self.friendsTextField becomeFirstResponder];
     }
-    self.navigationItem.rightBarButtonItem = nil;
+    if (textField == self.friendsTextField) {
+        [self okButton];
+    }
     return YES;
 }
 
--(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
-{
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(okButton)];
-    return YES;
-}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
