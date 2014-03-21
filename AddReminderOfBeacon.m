@@ -46,7 +46,7 @@
     // Do any additional setup after loading the view from its nib.
     UITextField *title = [[UITextField alloc] initWithFrame:CGRectMake(30, 100, 250, 50)];
     title.borderStyle = UITextBorderStyleRoundedRect;
-    title.placeholder = @"想做什么事?";
+    title.placeholder = @"交个外卖?";
     title.delegate = self;
     title.allowsEditingTextAttributes = NO;
     title.returnKeyType = UIReturnKeyDone;
@@ -55,7 +55,7 @@
     
     UITextField *friends = [[UITextField alloc] initWithFrame:CGRectMake(30, 170, 250, 50)];
     friends.borderStyle = UITextBorderStyleRoundedRect;
-    friends.placeholder = @"朋友";
+    friends.placeholder = @"和张三?";
     friends.delegate = self;
     friends.allowsEditingTextAttributes = NO;
     friends.returnKeyType = UIReturnKeyDone;

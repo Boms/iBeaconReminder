@@ -43,6 +43,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.titleField becomeFirstResponder];
+    
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [self RemovePickerView];
+    [super viewWillDisappear:animated];
+}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -57,119 +69,6 @@
     return self.currentRowCount;
 }
 
-
-
--(void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    [self.titleField becomeFirstResponder];
-    iBeaconUser *user = [iBeaconUser sharedInstance];
-    NSDictionary *each = [user.namesOfBeacon objectAtIndex:0];
-    NSData *archieved = [each objectForKey:@"beacon"];
-    CLBeacon *thisBeacon = [NSKeyedUnarchiver unarchiveObjectWithData:archieved];
-    self.selectedBeacon =thisBeacon;
-    NSString *beaconName = [each objectForKey:@"name"];
-    self.selectedBeaconName = beaconName;
-
-}
-
--(NSInteger) numberOfComponentsInPickerView:(UIPickerView *)pickerView
-{
-    if (pickerView == self.beaconPickerView) {
-        return 1;
-    }
-    return 1;
-}
-
--(NSInteger) pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
-{
-    iBeaconUser *user = [iBeaconUser sharedInstance];
-    if(pickerView == self.beaconPickerView){
-        return [user.namesOfBeacon count];
-    }
-    return 0;
-}
-
--(void) Save
-{
-    if (self.titleField.text && ![self.titleField.text isEqualToString:@""]) {
-        iBeaconUser *user = [iBeaconUser sharedInstance];
-        [user AddRemindersWith:self.selectedBeacon with:self.titleField.text friends:@""];
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-}
-
-
--(void)Cancel
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
--(NSString *) pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-{
-    NSString *title = nil;
-    iBeaconUser *user = [iBeaconUser sharedInstance];
-    if (pickerView == self.beaconPickerView) {
-        NSDictionary *each = [user.namesOfBeacon objectAtIndex:row];
-        NSString *beaconName = [each objectForKey:@"name"];
-        title = beaconName;
-    }
-    return title;
-}
--(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
-    iBeaconUser *user = [iBeaconUser sharedInstance];
-    
-    if (pickerView == self.beaconPickerView) {
-        NSDictionary *each = [user.namesOfBeacon objectAtIndex:row];
-        NSData *archieved = [each objectForKey:@"beacon"];
-        CLBeacon *thisBeacon = [NSKeyedUnarchiver unarchiveObjectWithData:archieved];
-        self.selectedBeacon =thisBeacon;
-        NSString *beaconName = [each objectForKey:@"name"];
-        self.locationField.text = beaconName;
-    }
-}
-
--(void)RemovePickerView
-{
-    NSArray *insertIndexPaths = @[[NSIndexPath indexPathForRow:2 inSection:0]];
-    self.currentRowCount = 2;
-    [self.tableView beginUpdates];
-    [self.tableView deleteRowsAtIndexPaths:insertIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
-    [self.tableView endUpdates];
-    
-}
-
-
--(void)AddPickerView
-{
-    NSArray *insertIndexPaths = @[[NSIndexPath indexPathForRow:2 inSection:0]];
-    self.currentRowCount = 3;
-    [self.tableView beginUpdates];
-    [self.tableView insertRowsAtIndexPaths:insertIndexPaths withRowAnimation:UITableViewRowAnimationBottom];
-    [self.tableView endUpdates];
-}
--(BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    if (textField == self.locationField) {
-        [self RemovePickerView];
-    }
-    [textField resignFirstResponder];
-    return YES;
-    
-}
-
--(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
-{
-    if (textField == self.titleField) {
-        if (self.currentRowCount == 3) {
-            [self RemovePickerView];
-        }
-    }
-    if (textField == self.locationField) {
-        [self AddPickerView];
-        return YES;
-    }
-    return YES;
-}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
@@ -224,7 +123,7 @@
             
         }
     }
-
+    
     
     // Configure the cell...
     
@@ -241,58 +140,174 @@
 }
 
 /*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
+
+/*
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }
+ }
+ */
+
+/*
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+ {
+ }
+ */
+
+/*
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
+
+/*
+ #pragma mark - Table view delegate
+ 
+ // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
+ - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Navigation logic may go here, for example:
+ // Create the next view controller.
+ <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
+ 
+ // Pass the selected object to the new view controller.
+ 
+ // Push the view controller.
+ [self.navigationController pushViewController:detailViewController animated:YES];
+ }
+ */
+
+
+#pragma mark toolbar
+
+-(void) Save
 {
-    // Return NO if you do not want the specified item to be editable.
+    if (self.titleField.text && ![self.titleField.text isEqualToString:@""]) {
+        iBeaconUser *user = [iBeaconUser sharedInstance];
+        [user AddRemindersWith:self.selectedBeacon with:self.titleField.text friends:@""];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
+
+-(void)Cancel
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark PickerView delegate
+-(NSInteger) numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    if (pickerView == self.beaconPickerView) {
+        return 1;
+    }
+    return 1;
+}
+
+-(NSInteger) pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    iBeaconUser *user = [iBeaconUser sharedInstance];
+    if(pickerView == self.beaconPickerView){
+        return [user.namesOfBeacon count];
+    }
+    return 0;
+}
+
+-(NSString *) pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    NSString *title = nil;
+    iBeaconUser *user = [iBeaconUser sharedInstance];
+    if (pickerView == self.beaconPickerView) {
+        NSDictionary *each = [user.namesOfBeacon objectAtIndex:row];
+        NSString *beaconName = [each objectForKey:@"name"];
+        title = beaconName;
+    }
+    return title;
+}
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+    iBeaconUser *user = [iBeaconUser sharedInstance];
+    
+    if (pickerView == self.beaconPickerView) {
+        NSDictionary *each = [user.namesOfBeacon objectAtIndex:row];
+        NSData *archieved = [each objectForKey:@"beacon"];
+        CLBeacon *thisBeacon = [NSKeyedUnarchiver unarchiveObjectWithData:archieved];
+        self.selectedBeacon =thisBeacon;
+        NSString *beaconName = [each objectForKey:@"name"];
+        self.locationField.text = beaconName;
+    }
+}
+
+-(void)RemovePickerView
+{
+    NSArray *insertIndexPaths = @[[NSIndexPath indexPathForRow:2 inSection:0]];
+    self.currentRowCount = 2;
+    [self.tableView beginUpdates];
+    [self.tableView deleteRowsAtIndexPaths:insertIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView endUpdates];
+    
+}
+
+
+-(void)AddPickerView
+{
+    NSArray *insertIndexPaths = @[[NSIndexPath indexPathForRow:2 inSection:0]];
+    self.currentRowCount = 3;
+    [self.tableView beginUpdates];
+    [self.tableView insertRowsAtIndexPaths:insertIndexPaths withRowAnimation:UITableViewRowAnimationBottom];
+    [self.tableView endUpdates];
+}
+
+#pragma mark textfield delegate
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if (textField == self.locationField) {
+        [self RemovePickerView];
+    }
+    [textField resignFirstResponder];
+    return YES;
+    
+}
+
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    if (textField == self.titleField) {
+        if (self.currentRowCount == 3) {
+            [self RemovePickerView];
+        }
+    }
+    if (textField == self.locationField) {
+        [self AddPickerView];
+        if (!self.selectedBeacon) {
+            [self.beaconPickerView selectedRowInComponent:0];
+            iBeaconUser *user = [iBeaconUser sharedInstance];
+            NSDictionary *each = [user.namesOfBeacon objectAtIndex:0];
+            NSData *archieved = [each objectForKey:@"beacon"];
+            NSString *beaconName = [each objectForKey:@"name"];
+            self.locationField.text = beaconName;
+            CLBeacon *thisBeacon = [NSKeyedUnarchiver unarchiveObjectWithData:archieved];
+            self.selectedBeacon =thisBeacon;
+        }
+        return YES;
+    }
     return YES;
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Table view delegate
-
-// In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here, for example:
-    // Create the next view controller.
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
-    
-    // Pass the selected object to the new view controller.
-    
-    // Push the view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
-}
-*/
 
 @end
