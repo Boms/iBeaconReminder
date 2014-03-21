@@ -15,6 +15,7 @@
 #import "graCreateReminderViewController.h"
 #import "graBeaconManagerTableViewController.h"
 #import "graCreateReminderTableViewController.h"
+#import "graCreateBeaconNameTableViewController.h"
 @interface nearBeaconViewController ()
 @property (nonatomic, strong) iBeaconUser *myUser;
 @property (nonatomic, strong) NSMutableArray *beaconArray;
@@ -85,7 +86,8 @@
 	// apply the bar button items to the toolbar
     [self.toolbar setItems:@[ customItem2] animated:NO];
 #endif
-    
+//    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+//        self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
 
@@ -127,6 +129,12 @@
         }
     }];
     
+}
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    self.unamedBeacon = nil;
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -201,6 +209,15 @@
 
 #pragma mark - Table view data source
 
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if ([self.namedBeacon count] > 0 && (section == 0)) {
+        return @"现有地点";
+    }else{
+        return @"新设备";
+    }
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
@@ -251,14 +268,14 @@
         return cell;
 
     }else{
-        cell.textLabel.text = [NSString stringWithFormat:@"发现 %d 个新设备", [self.unamedBeacon count]];
+        cell.textLabel.text = [NSString stringWithFormat:@"发现 %d 个", [self.unamedBeacon count]];
         return cell;
     }
 }
 
 
 
-#if 1
+#if 0
 -(CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     return 2;
@@ -322,18 +339,12 @@
     
     // Push the view controller.
     CLBeacon *thisOne = nil;
-    if ([self.namedBeacon count] > 0 && indexPath.section == 0) {
-        thisOne = self.namedBeacon[indexPath.row];
-        
-    }else{
-        thisOne = self.unamedBeacon[indexPath.row];
-    }
     iBeaconUser *user = [iBeaconUser sharedInstance];
 
-    CLBeacon *selectedBeacon = thisOne;
+    if ([self.namedBeacon count] > 0 && indexPath.section == 0) {
+        thisOne = self.namedBeacon[indexPath.row];
+        CLBeacon *selectedBeacon = thisOne;
 
-    NSString *beaconName = [user findNameByBeacon:selectedBeacon];
-    if (beaconName && ![beaconName isEqualToString:@""]) {
         NSMutableArray *reminderOfBeacon = [user findRemindersWith:selectedBeacon];
         NSInteger count = [reminderOfBeacon count];
         if (count == 0) {
@@ -343,21 +354,17 @@
             [self.navigationController pushViewController:detailViewController animated:YES];
             return;
         }else{
-
+            NSString *beaconName = [user findNameByBeacon:selectedBeacon];
             reminderOnBeaconViewController *detailViewController = [[reminderOnBeaconViewController alloc] initWithNibName:@"reminderOnBeaconViewController" bundle:nil];
             detailViewController.myBeacon = selectedBeacon;
             detailViewController.title = beaconName;
             [self.navigationController pushViewController:detailViewController animated:YES];
             return;
         }
-
     }else{
-        selectNameForBeaconTableViewController *detailViewController = [[selectNameForBeaconTableViewController alloc] initWithNibName:@"selectNameForBeaconTableViewController" bundle:nil];
-#if 0
-        updateNameViewController* detailViewController = [[updateNameViewController alloc] initWithNibName:@"updateNameViewController" bundle:nil];
-#endif
-        detailViewController.myBeacon = selectedBeacon;
-        [self.navigationController pushViewController:detailViewController animated:YES];
+        thisOne = self.unamedBeacon[indexPath.row];
+        graCreateBeaconNameTableViewController *vc = [[graCreateBeaconNameTableViewController alloc] initWithNibName:@"graCreateBeaconNameTableViewController" bundle:nil];
+        [self.navigationController pushViewController:vc animated:YES];
         return;
     }
 }
