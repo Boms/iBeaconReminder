@@ -10,8 +10,11 @@
 
 @interface graCreateReminderTableViewController ()
 @property (nonatomic, strong) UITextField *titleField;
+@property (nonatomic, strong) UITextField *locationField;
 @property (nonatomic, strong) UITextView *content;
+@property (nonatomic, strong) NSString *selectedBeaconName;
 @property (nonatomic, strong) CLBeacon *selectedBeacon;
+@property (nonatomic, strong) UIPickerView* beaconSlider;
 @end
 
 @implementation graCreateReminderTableViewController
@@ -37,18 +40,94 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
     return 2;
 }
 
+
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.titleField becomeFirstResponder];
+    [self.beaconSlider selectRow:0 inComponent:0 animated:YES];
+    iBeaconUser *user = [iBeaconUser sharedInstance];
+    NSDictionary *each = [user.namesOfBeacon objectAtIndex:0];
+    NSData *archieved = [each objectForKey:@"beacon"];
+    CLBeacon *thisBeacon = [NSKeyedUnarchiver unarchiveObjectWithData:archieved];
+    self.selectedBeacon =thisBeacon;
+    NSString *beaconName = [each objectForKey:@"name"];
+    self.selectedBeaconName = beaconName;
+
+}
+
+-(NSInteger) numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    if (pickerView == self.beaconSlider) {
+        return 1;
+    }
+    return 1;
+}
+
+-(NSInteger) pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    iBeaconUser *user = [iBeaconUser sharedInstance];
+    if(pickerView == self.beaconSlider){
+        return [user.namesOfBeacon count];
+    }
+    return 0;
+}
+
+-(void) Save
+{
+    if (self.titleField.text && ![self.titleField.text isEqualToString:@""]) {
+        iBeaconUser *user = [iBeaconUser sharedInstance];
+        [user AddRemindersWith:self.selectedBeacon with:self.titleField.text friends:@""];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
+
+-(void)Cancel
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+-(NSString *) pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    NSString *title = nil;
+    iBeaconUser *user = [iBeaconUser sharedInstance];
+    if (pickerView == self.beaconSlider) {
+        NSDictionary *each = [user.namesOfBeacon objectAtIndex:row];
+        NSString *beaconName = [each objectForKey:@"name"];
+        title = beaconName;
+    }
+    return title;
+}
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+    iBeaconUser *user = [iBeaconUser sharedInstance];
+    
+    if (pickerView == self.beaconSlider) {
+        NSDictionary *each = [user.namesOfBeacon objectAtIndex:row];
+        NSData *archieved = [each objectForKey:@"beacon"];
+        CLBeacon *thisBeacon = [NSKeyedUnarchiver unarchiveObjectWithData:archieved];
+        self.selectedBeacon =thisBeacon;
+    }
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if (textField == self.titleField) {
+        [textField resignFirstResponder];
+    }
+    return YES;
+    
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -68,11 +147,29 @@
         CGRect aRect = CGRectMake(textFieldBorder, 9.f, CGRectGetWidth(cellBounds)-(2*textFieldBorder), 31.f );
         UITextField *titleField = [[UITextField alloc] initWithFrame:aRect];
         titleField.enablesReturnKeyAutomatically = YES;
+        titleField.placeholder = @"比如中午交个外卖";
+        titleField.tintColor = [UIColor redColor];
+        titleField.returnKeyType = UIReturnKeyDone;
+        [titleField setDelegate:self];
+//        titleField.borderStyle = UITextBorderStyleRoundedRect;
         self.titleField = titleField;
         [cell.contentView addSubview:titleField];
     }
     if (indexPath.row == 1) {
-        cell.textLabel.text = @"content";
+        CGRect cellBounds = cell.bounds;
+        CGFloat textFieldBorder = 10.f;
+        CGRect aRect = CGRectMake(textFieldBorder, 9.f, CGRectGetWidth(cellBounds)-(2*textFieldBorder), 31.f );
+        UITextField *titleField = [[UITextField alloc] initWithFrame:aRect];
+        titleField.enablesReturnKeyAutomatically = YES;
+        titleField.placeholder = @"位置";
+        titleField.tintColor = [UIColor redColor];
+        titleField.returnKeyType = UIReturnKeyDone;
+        [titleField setDelegate:self];
+        self.locationField = titleField;
+        [cell.contentView addSubview:titleField];
+
+        cell.textLabel.text = self.selectedBeaconName;
+
     }
     
     // Configure the cell...
