@@ -14,7 +14,7 @@
 @property (nonatomic, strong) UITextView *content;
 @property (nonatomic, strong) NSString *selectedBeaconName;
 @property (nonatomic, strong) CLBeacon *selectedBeacon;
-@property (nonatomic, strong) UIPickerView* beaconSlider;
+@property (nonatomic, strong) UIPickerView* beaconPickerView;
 @property (nonatomic) NSInteger currentRowCount;
 @end
 
@@ -63,7 +63,7 @@
 {
     [super viewDidAppear:animated];
     [self.titleField becomeFirstResponder];
-    [self.beaconSlider selectRow:0 inComponent:0 animated:YES];
+    [self.beaconPickerView selectRow:0 inComponent:0 animated:YES];
     iBeaconUser *user = [iBeaconUser sharedInstance];
     NSDictionary *each = [user.namesOfBeacon objectAtIndex:0];
     NSData *archieved = [each objectForKey:@"beacon"];
@@ -76,7 +76,7 @@
 
 -(NSInteger) numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
-    if (pickerView == self.beaconSlider) {
+    if (pickerView == self.beaconPickerView) {
         return 1;
     }
     return 1;
@@ -85,7 +85,7 @@
 -(NSInteger) pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
     iBeaconUser *user = [iBeaconUser sharedInstance];
-    if(pickerView == self.beaconSlider){
+    if(pickerView == self.beaconPickerView){
         return [user.namesOfBeacon count];
     }
     return 0;
@@ -109,7 +109,7 @@
 {
     NSString *title = nil;
     iBeaconUser *user = [iBeaconUser sharedInstance];
-    if (pickerView == self.beaconSlider) {
+    if (pickerView == self.beaconPickerView) {
         NSDictionary *each = [user.namesOfBeacon objectAtIndex:row];
         NSString *beaconName = [each objectForKey:@"name"];
         title = beaconName;
@@ -119,7 +119,7 @@
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     iBeaconUser *user = [iBeaconUser sharedInstance];
     
-    if (pickerView == self.beaconSlider) {
+    if (pickerView == self.beaconPickerView) {
         NSDictionary *each = [user.namesOfBeacon objectAtIndex:row];
         NSData *archieved = [each objectForKey:@"beacon"];
         CLBeacon *thisBeacon = [NSKeyedUnarchiver unarchiveObjectWithData:archieved];
@@ -191,7 +191,15 @@
 
     }
     if (indexPath.row ==2 ) {
-        cell.textLabel.text = @"slide here";
+        CGRect cellBounds = cell.bounds;
+        CGFloat textFieldBorder = 10.f;
+        CGRect aRect = CGRectMake(textFieldBorder, 9.f, CGRectGetWidth(cellBounds)-(2*textFieldBorder), 31.f );
+        UIPickerView *beaconPicker = [[UIPickerView alloc] initWithFrame:aRect];
+        beaconPicker.delegate = self;
+        beaconPicker.dataSource = self;
+        self.beaconPickerView = beaconPicker;
+        [cell.contentView addSubview:beaconPicker];
+
     }
     
     // Configure the cell...
