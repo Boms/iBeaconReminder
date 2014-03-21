@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSString *selectedBeaconName;
 @property (nonatomic, strong) CLBeacon *selectedBeacon;
 @property (nonatomic, strong) UIPickerView* beaconSlider;
+@property (nonatomic) NSInteger currentRowCount;
 @end
 
 @implementation graCreateReminderTableViewController
@@ -28,6 +29,12 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    UIBarButtonItem *saveBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(Save)];
+    UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(Cancel)];
+    UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    self.toolbarItems = @[flexSpace, saveBtn, flexSpace, cancelBtn, flexSpace];
+    self.navigationController.toolbarHidden = NO;
+    self.currentRowCount = 2;
 }
 
 - (void)didReceiveMemoryWarning
@@ -47,7 +54,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 2;
+    return self.currentRowCount;
 }
 
 
@@ -129,6 +136,18 @@
     
 }
 
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    if (textField == self.locationField) {
+        NSArray *insertIndexPaths = @[[NSIndexPath indexPathForRow:2 inSection:0]];
+        self.currentRowCount = 3;
+        [self.tableView beginUpdates];
+        [self.tableView insertRowsAtIndexPaths:insertIndexPaths withRowAnimation:UITableViewRowAnimationBottom];
+        [self.tableView endUpdates];
+        return YES;
+    }
+    return YES;
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
@@ -170,6 +189,9 @@
 
         cell.textLabel.text = self.selectedBeaconName;
 
+    }
+    if (indexPath.row ==2 ) {
+        cell.textLabel.text = @"slide here";
     }
     
     // Configure the cell...
