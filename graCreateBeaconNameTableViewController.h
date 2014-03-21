@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 #import "iBeaconUser.h"
 @interface graCreateBeaconNameTableViewController : UITableViewController
-
+@property (nonatomic, strong) void (^nameChanged)(CLBeacon *);
 @end

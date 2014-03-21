@@ -53,7 +53,7 @@
     for (NSDictionary *eachBeaconName in user.namesOfBeacon) {
         NSData *archieved = [eachBeaconName objectForKey:@"beacon"];
         CLBeacon *beacon = [NSKeyedUnarchiver unarchiveObjectWithData:archieved];
-        [self.beaconArray addObject:beacon];
+        [self.namedBeacon addObject:beacon];
     }
     UIBarButtonItem *btnItem =[[UIBarButtonItem alloc] initWithTitle:@"设备管理" style:UIBarButtonItemStyleBordered target:self action:@selector(showBeaconManagement)];
     [btnItem setTitle:@"位置管理"];
@@ -186,7 +186,6 @@
     graCreateReminderViewController *vc = [[graCreateReminderViewController alloc] initWithNibName:@"graCreateReminderViewController" bundle:nil];
     [self.navigationController pushViewController:vc animated:YES];
 #endif
-    iBeaconUser *user = [iBeaconUser sharedInstance];
 
     graCreateReminderTableViewController *vc = [[graCreateReminderTableViewController alloc] initWithNibName:@"graCreateReminderTableViewController" bundle:nil];
     [self.navigationController pushViewController:vc animated:YES];

@@ -8,6 +8,8 @@
 
 #import "graCreateBeaconNameTableViewController.h"
 #import "updateNameViewController.h"
+#import "selectNameForBeaconTableViewController.h"
+
 @interface graCreateBeaconNameTableViewController ()
 @property (nonatomic, strong) iBeaconUser *myUser;
 @property (nonatomic, strong) NSMutableArray *beaconArray;
@@ -174,19 +176,8 @@
 {
     CLBeacon *selectedBeacon = nil;
     selectedBeacon = self.unamedBeacon[indexPath.row];
-    updateNameViewController *detailViewController = [[updateNameViewController alloc] initWithNibName:@"updateNameViewController" bundle:nil];
+    selectNameForBeaconTableViewController *detailViewController = [[selectNameForBeaconTableViewController alloc] initWithNibName:@"selectNameForBeaconTableViewController" bundle:nil];
     detailViewController.myBeacon = selectedBeacon;
-    iBeaconUser *user = [iBeaconUser sharedInstance];
-    detailViewController.nameChanged = ^(CLBeacon *nameChangedBeacon){
-        NSInteger i =0;
-        for (; i < [self.unamedBeacon count]; i++) {
-            CLBeacon *eachUnamedBeacon = self.unamedBeacon[i];
-            if ([user isBeacon:eachUnamedBeacon SameWith:nameChangedBeacon]) {
-                [self.unamedBeacon removeObjectAtIndex:i];
-                [self.tableView reloadData];
-            }
-        }
-    };
     [self.navigationController pushViewController:detailViewController animated:YES];
     return;
 }

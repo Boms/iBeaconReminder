@@ -90,9 +90,15 @@
     if (textField == self.reminderTextField || textField ==self.friendsTextField) {
         [textField resignFirstResponder];
     }
+    self.navigationItem.rightBarButtonItem = nil;
     return YES;
 }
 
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(okButton)];
+    return YES;
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

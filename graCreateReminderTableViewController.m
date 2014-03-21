@@ -280,10 +280,14 @@
 #pragma mark textfield delegate
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    [textField resignFirstResponder];
     if (textField == self.locationField) {
         [self RemovePickerView];
     }
-    [textField resignFirstResponder];
+    if (textField == self.titleField) {
+        [self.locationField becomeFirstResponder];
+    }
+
     return YES;
     
 }

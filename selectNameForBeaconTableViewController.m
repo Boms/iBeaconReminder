@@ -164,7 +164,7 @@
         iBeaconUser *user = [iBeaconUser sharedInstance];
         [user setNameForBeacon:self.myBeacon with:beaconName];
         [user saveAllData];
-        [self.navigationController popViewControllerAnimated:YES];
+        [self.navigationController popToRootViewControllerAnimated:YES];
     }
     if (indexPath.section == 1) {
         if (indexPath.row == 0) {
