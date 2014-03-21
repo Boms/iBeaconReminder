@@ -12,7 +12,6 @@
 #import "updateNameViewController.h"
 #import "AddReminderOfBeacon.h"
 #import "selectNameForBeaconTableViewController.h"
-#import "graCreateReminderViewController.h"
 #import "graBeaconManagerTableViewController.h"
 #import "graCreateReminderTableViewController.h"
 #import "graCreateBeaconNameTableViewController.h"
@@ -64,28 +63,6 @@
     UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     self.toolbarItems = @[flexSpace, btn, flexSpace];
     self.navigationController.toolbarHidden = NO;
-#if 0
-	_toolbar = [[UIToolbar alloc] initWithFrame:CGRectZero];
-	self.toolbar.barStyle = UIBarStyleDefault;
-	
-	// size up the toolbar and set its frame
-    [self adjustToolbarSize];
-    
-	[self.toolbar setFrame:CGRectMake(CGRectGetMinX(self.tableView.bounds),
-                                      CGRectGetMinY(self.tableView.bounds) + CGRectGetHeight(self.tableView.bounds) - CGRectGetHeight(self.toolbar.frame) - CGRectGetHeight(self.navigationController.navigationBar.frame),
-                                      CGRectGetWidth(self.view.bounds),
-                                      CGRectGetHeight(self.toolbar.frame))];
-    self.toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
-    
-	[self.view addSubview:self.toolbar];
-	UIBarButtonItem *customItem2 = [[UIBarButtonItem alloc] initWithTitle:@"Item2"
-																	style:UIBarButtonItemStyleBordered	// note you can use "UIBarButtonItemStyleDone" to make it blue
-																   target:self
-																   action:@selector(createNewReminder)];
-    
-	// apply the bar button items to the toolbar
-    [self.toolbar setItems:@[ customItem2] animated:NO];
-#endif
 //    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
 //        self.edgesForExtendedLayout = UIRectEdgeNone;
 }
