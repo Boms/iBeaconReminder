@@ -285,6 +285,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "li lin";
 				TargetAttributes = {
+					F2EE4ADC18D693DC00E5EEE6 = {
+						DevelopmentTeam = 29T9RVU57K;
+					};
 					F2EE4AFD18D693DC00E5EEE6 = {
 						TestTargetID = F2EE4ADC18D693DC00E5EEE6;
 					};
@@ -479,9 +482,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "beaconReminderDemo/beaconReminderDemo-Prefix.pch";
 				INFOPLIST_FILE = "beaconReminderDemo/beaconReminderDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -492,9 +497,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "beaconReminderDemo/beaconReminderDemo-Prefix.pch";
 				INFOPLIST_FILE = "beaconReminderDemo/beaconReminderDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

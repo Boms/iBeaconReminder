@@ -52,7 +52,10 @@
 
 -(void)viewWillDisappear:(BOOL)animated
 {
-    [self RemovePickerView];
+    if (self.currentRowCount == 3) {
+        [self RemovePickerView];
+    }
+
     [super viewWillDisappear:animated];
 }
 #pragma mark - Table view data source

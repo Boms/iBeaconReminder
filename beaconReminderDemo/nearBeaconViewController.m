@@ -20,6 +20,7 @@
 @property (nonatomic, strong) NSMutableArray *beaconArray;
 @property (nonatomic, strong) CLBeacon *lastFoundBeacon;
 @property (nonatomic, strong) UIToolbar *toolbar;
+@property (nonatomic, strong) UIBarButtonItem *composeButton;
 @end
 
 @implementation nearBeaconViewController
@@ -33,42 +34,14 @@
     return self;
 }
 
--(NSMutableArray *)beaconArray
-{
-    if (_beaconArray == Nil) {
-        _beaconArray = [[NSMutableArray alloc] init];
-    }
-    return _beaconArray;
-}
-
--(void)showBeaconManagement
-{
-    graBeaconManagerTableViewController *vc = [[graBeaconManagerTableViewController alloc] initWithNibName:@"graBeaconManagerTableViewController" bundle:nil];
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
-- (void)adjustToolbarSize
-{
-    // size up the toolbar and set its frame
-	[self.toolbar sizeToFit];
-    
-    // since the toolbar may have adjusted its height, it's origin will have to be adjusted too
-	CGRect mainViewBounds = self.view.bounds;
-	[self.toolbar setFrame:CGRectMake(CGRectGetMinX(mainViewBounds),
-                                      CGRectGetMinY(mainViewBounds) + CGRectGetHeight(mainViewBounds) - CGRectGetHeight(self.toolbar.frame),
-                                      CGRectGetWidth(mainViewBounds),
-                                      CGRectGetHeight(self.toolbar.frame))];
-}
-
-
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
- 
+    
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     iBeaconUser *user = [iBeaconUser sharedInstance];
@@ -82,8 +55,9 @@
     UIBarButtonItem *btnItem =[[UIBarButtonItem alloc] initWithTitle:@"设备管理" style:UIBarButtonItemStyleBordered target:self action:@selector(showBeaconManagement)];
     [btnItem setTitle:@"位置管理"];
     self.navigationItem.rightBarButtonItem = btnItem;
-
+    
     UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(createNewReminder)];
+    self.composeButton = btn;
     UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     self.toolbarItems = @[flexSpace, btn, flexSpace];
     self.navigationController.toolbarHidden = NO;
@@ -109,23 +83,21 @@
 	// apply the bar button items to the toolbar
     [self.toolbar setItems:@[ customItem2] animated:NO];
 #endif
-
+    
 }
 
--(void) createNewReminder
-{
-#if 0
-    graCreateReminderViewController *vc = [[graCreateReminderViewController alloc] initWithNibName:@"graCreateReminderViewController" bundle:nil];
-    [self.navigationController pushViewController:vc animated:YES];
-#endif
-    graCreateReminderTableViewController *vc = [[graCreateReminderTableViewController alloc] initWithNibName:@"graCreateReminderTableViewController" bundle:nil];
-    [self.navigationController pushViewController:vc animated:YES];
-}
+
 
 -(void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [self.tableView reloadData];
+    iBeaconUser *user = [iBeaconUser sharedInstance];
+    if ([user.namesOfBeacon count] == 0) {
+        [self.composeButton setEnabled:NO];
+    }else{
+        [self.composeButton setEnabled:YES];
+    }
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -157,7 +129,7 @@
             }
         }];
     });
-
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -172,18 +144,60 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+-(NSMutableArray *)beaconArray
+{
+    if (_beaconArray == Nil) {
+        _beaconArray = [[NSMutableArray alloc] init];
+    }
+    return _beaconArray;
+}
+
+#pragma mark button action
+-(void)showBeaconManagement
+{
+    graBeaconManagerTableViewController *vc = [[graBeaconManagerTableViewController alloc] initWithNibName:@"graBeaconManagerTableViewController" bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+
+-(void) createNewReminder
+{
+#if 0
+    graCreateReminderViewController *vc = [[graCreateReminderViewController alloc] initWithNibName:@"graCreateReminderViewController" bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
+#endif
+    iBeaconUser *user = [iBeaconUser sharedInstance];
+
+    graCreateReminderTableViewController *vc = [[graCreateReminderTableViewController alloc] initWithNibName:@"graCreateReminderTableViewController" bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)adjustToolbarSize
+{
+    // size up the toolbar and set its frame
+	[self.toolbar sizeToFit];
+    
+    // since the toolbar may have adjusted its height, it's origin will have to be adjusted too
+	CGRect mainViewBounds = self.view.bounds;
+	[self.toolbar setFrame:CGRectMake(CGRectGetMinX(mainViewBounds),
+                                      CGRectGetMinY(mainViewBounds) + CGRectGetHeight(mainViewBounds) - CGRectGetHeight(self.toolbar.frame),
+                                      CGRectGetWidth(mainViewBounds),
+                                      CGRectGetHeight(self.toolbar.frame))];
+}
+
+
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
     return [self.beaconArray count];
 }
