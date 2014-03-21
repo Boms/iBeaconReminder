@@ -18,6 +18,8 @@
 @interface nearBeaconViewController ()
 @property (nonatomic, strong) iBeaconUser *myUser;
 @property (nonatomic, strong) NSMutableArray *beaconArray;
+@property (nonatomic, strong) NSMutableArray *namedBeacon;
+@property (nonatomic, strong) NSMutableArray *unamedBeacon;
 @property (nonatomic, strong) CLBeacon *lastFoundBeacon;
 @property (nonatomic, strong) UIToolbar *toolbar;
 @property (nonatomic, strong) UIBarButtonItem *composeButton;
@@ -101,34 +103,29 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
     iBeaconUser *user = [iBeaconUser sharedInstance];
     _myUser = user;
-    double delayInSeconds = 1.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [self.myUser startMonitorWithFoundNewBeacon:^(CLBeacon *foundOne){
-            ;
-        } withKnowBeacon:^(CLBeacon *foundOne){
-            NSInteger len = 0;
-            for (; len < [self.beaconArray count]; len++) {
-                CLBeacon *eachBeacon = [self.beaconArray objectAtIndex:len];
-                if ([eachBeacon.proximityUUID isEqual:foundOne.proximityUUID]) {
-                    if([eachBeacon.major isEqualToNumber:foundOne.major]){
-                        if([eachBeacon.minor isEqualToNumber:foundOne.minor]){
-                            [self.beaconArray replaceObjectAtIndex:len withObject:foundOne];
-                            [self.tableView reloadData];
-                            break;
-                        }
-                    }
+    [self.myUser startMonitorWithFoundNewBeacon:^(CLBeacon *foundOne){
+        ;
+    } withKnowBeacon:^(CLBeacon *foundOne){
+        NSInteger i = 0;
+        if ([user findNameByBeacon:foundOne]) {
+            for (;i < [self.namedBeacon count] ; i++) {
+                CLBeacon *eachNamedBeacon = [self.namedBeacon objectAtIndex:i];
+                if ([user isBeacon:eachNamedBeacon SameWith:foundOne]) {
+                    [self.namedBeacon replaceObjectAtIndex:i withObject:foundOne];
+                    break;
                 }
             }
-            if (len == [self.beaconArray count]) {
-                [self.beaconArray addObject:foundOne];
-                [self.tableView reloadData];
+            if (i == [self.namedBeacon count]){
+                [self.namedBeacon addObject:foundOne];
             }
-        }];
-    });
+            [self.tableView reloadData];
+        }else{
+            [user replaceBeacon:foundOne inArray:self.unamedBeacon];
+            [self.tableView reloadData];
+        }
+    }];
     
 }
 
@@ -152,7 +149,21 @@
     }
     return _beaconArray;
 }
+-(NSMutableArray *)unamedBeacon
+{
+    if(_unamedBeacon == nil){
+        _unamedBeacon = [[NSMutableArray alloc] init];
+    }
+    return _unamedBeacon;
+}
 
+-(NSMutableArray *)namedBeacon
+{
+    if(_namedBeacon == nil){
+        _namedBeacon = [[NSMutableArray alloc] init];
+    }
+    return _namedBeacon;
+}
 #pragma mark button action
 -(void)showBeaconManagement
 {
@@ -193,13 +204,24 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    NSInteger i = 0;
+    if ([self.namedBeacon count] > 0) {
+        i++;
+    }
+    if ([self.unamedBeacon count] > 0) {
+        i++;
+    }
+    return i;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [self.beaconArray count];
+    if ([self.namedBeacon count] > 0 && (section == 0)) {
+        return [self.namedBeacon count];
+    }else{
+        return 1;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -211,29 +233,14 @@
     }
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
-    // Configure the cell...
-    CLBeacon *thisOne = self.beaconArray[indexPath.row];
+    CLBeacon *thisOne = nil;
     iBeaconUser *user = [iBeaconUser sharedInstance];
-    NSString *title =[NSString stringWithFormat:@"%04x %04x", [thisOne.major integerValue], [thisOne.minor integerValue]];
 
-    switch (thisOne.proximity) {
-        case CLProximityFar:
-            title = [title stringByAppendingString:@"                                远"];
-            break;
-        case CLProximityNear:
-            title = [title stringByAppendingString:@"               近"];
-            break;
-        case CLProximityImmediate:
-            title = [title stringByAppendingString:@" 贴住"];
-            break;
-        default:
-            break;
-    }
-    
-    NSString *beaconLocaton = [user findNameByBeacon:thisOne];
-    if (beaconLocaton) {
+    if ([self.namedBeacon count] > 0 && indexPath.section == 0) {
+        thisOne = self.namedBeacon[indexPath.row];
+        NSString *beaconLocaton = [user findNameByBeacon:thisOne];
+
         cell.textLabel.text = beaconLocaton;
-        iBeaconUser *user = [iBeaconUser sharedInstance];
         NSMutableArray *reminderOfBeacon = [user findRemindersWith:thisOne];
         NSInteger count = [reminderOfBeacon count];
         NSString *thingsToDo = @"来添加第一个事情吧";
@@ -241,11 +248,12 @@
             thingsToDo = [NSString stringWithFormat:@"%d件事情", count];
         }
         cell.detailTextLabel.text = thingsToDo;
+        return cell;
+
     }else{
-        cell.textLabel.text = title;
-        cell.detailTextLabel.text = @"起个名字吧";
+        cell.textLabel.text = [NSString stringWithFormat:@"发现 %d 个新设备", [self.unamedBeacon count]];
+        return cell;
     }
-    return cell;
 }
 
 
@@ -313,12 +321,18 @@
     // Pass the selected object to the new view controller.
     
     // Push the view controller.
-    CLBeacon *selectedBeacon = self.beaconArray[indexPath.row];
-
+    CLBeacon *thisOne = nil;
+    if ([self.namedBeacon count] > 0 && indexPath.section == 0) {
+        thisOne = self.namedBeacon[indexPath.row];
+        
+    }else{
+        thisOne = self.unamedBeacon[indexPath.row];
+    }
     iBeaconUser *user = [iBeaconUser sharedInstance];
 
+    CLBeacon *selectedBeacon = thisOne;
+
     NSString *beaconName = [user findNameByBeacon:selectedBeacon];
-    UIViewController *vc = nil;
     if (beaconName && ![beaconName isEqualToString:@""]) {
         NSMutableArray *reminderOfBeacon = [user findRemindersWith:selectedBeacon];
         NSInteger count = [reminderOfBeacon count];
