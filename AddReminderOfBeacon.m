@@ -92,10 +92,15 @@
         [self.friendsTextField becomeFirstResponder];
     }
     if (textField == self.friendsTextField) {
-        [self okButton];
+        if (self.reminderTextField.text && ![self.reminderTextField.text isEqualToString:@""]) {
+            [self okButton];
+        }else{
+            [self.reminderTextField becomeFirstResponder];
+        }
     }
     return YES;
 }
+
 
 - (void)didReceiveMemoryWarning
 {
