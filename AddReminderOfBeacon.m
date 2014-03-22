@@ -23,21 +23,38 @@
     }
     return self;
 }
--(void)okButton
+
+-(void)removeMySelf
 {
     iBeaconUser *user = [iBeaconUser sharedInstance];
-    
     if (self.reminder) {
         [user removeReminderWith:self.myBeacon with:self.reminder];
     }
+}
+
+-(void)trashAction
+{
+    [self removeMySelf];
+    [self cancelButtonAction];
+}
+
+-(void)okButtonAction
+{
+    iBeaconUser *user = [iBeaconUser sharedInstance];
+
+    [self removeMySelf];
     [user AddRemindersWith:self.myBeacon with:self.reminderTextField.text friends:self.friendsTextField.text];
     [self.navigationController popViewControllerAnimated:YES];
 }
--(void)cancelButton
+-(void)cancelButtonAction
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+-(void)inviteFriends
+{
+    ;
+}
 
 - (void)viewDidLoad
 {
@@ -50,6 +67,16 @@
     title.delegate = self;
     title.allowsEditingTextAttributes = NO;
     title.returnKeyType = UIReturnKeyNext;
+    title.clearButtonMode = UITextFieldViewModeWhileEditing;
+    
+    UIToolbar *doneButtonbar = [[UIToolbar alloc] init];
+    [doneButtonbar sizeToFit];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(okButtonAction)];
+    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonAction)];
+    UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+
+    [doneButtonbar setItems:@[flexSpace, doneButton, flexSpace, cancelButton, flexSpace]];
+    title.inputAccessoryView = doneButtonbar;
     self.reminderTextField = title;
 
     
@@ -59,6 +86,7 @@
     friends.delegate = self;
     friends.allowsEditingTextAttributes = NO;
     friends.returnKeyType = UIReturnKeyGo;
+    friends.clearButtonMode = UITextFieldViewModeWhileEditing;
     self.friendsTextField = friends;
     
     NSString *reminder = self.reminder;
@@ -71,18 +99,18 @@
     [self.view addSubview:title];
     [self.view addSubview:friends];
 
-    UIBarButtonItem *saveBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(okButton)];
-    UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButton)];
-    UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    self.toolbarItems = @[flexSpace, saveBtn, flexSpace, cancelBtn, flexSpace];
-    self.navigationController.toolbarHidden = NO;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(trashAction)];
 
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self.reminderTextField becomeFirstResponder];
+    NSString *reminder = self.reminder;
+    if (!reminder) {
+        [self.reminderTextField becomeFirstResponder];
+    }
+
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -93,7 +121,7 @@
     }
     if (textField == self.friendsTextField) {
         if (self.reminderTextField.text && ![self.reminderTextField.text isEqualToString:@""]) {
-            [self okButton];
+            [self okButtonAction];
         }else{
             [self.reminderTextField becomeFirstResponder];
         }
