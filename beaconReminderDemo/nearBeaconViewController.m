@@ -62,7 +62,7 @@
     self.composeButton = btn;
     UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     self.toolbarItems = @[flexSpace, btn, flexSpace];
-    self.navigationController.toolbarHidden = NO;
+
 //    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
 //        self.edgesForExtendedLayout = UIRectEdgeNone;
 }
@@ -79,6 +79,7 @@
     }else{
         [self.composeButton setEnabled:YES];
     }
+    self.navigationController.toolbarHidden = NO;
 }
 
 -(void)viewDidAppear:(BOOL)animated{

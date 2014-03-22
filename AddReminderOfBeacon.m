@@ -42,18 +42,20 @@
 {
     iBeaconUser *user = [iBeaconUser sharedInstance];
 
-    [self removeMySelf];
-    [user AddRemindersWith:self.myBeacon with:self.reminderTextField.text friends:self.friendsTextField.text];
-    [self.navigationController popViewControllerAnimated:YES];
+    if (self.reminderTextField.text && ![self.reminderTextField.text isEqualToString:@""]) {
+        [self removeMySelf];
+        [user AddRemindersWith:self.myBeacon with:self.reminderTextField.text friends:self.friendsTextField.text];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 -(void)cancelButtonAction
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
--(void)inviteFriends
+-(void)inviteFriendsButtonAction
 {
-    ;
+    [self.friendsTextField becomeFirstResponder];
 }
 
 - (void)viewDidLoad
@@ -74,8 +76,11 @@
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(okButtonAction)];
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonAction)];
     UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    
+    UIBarButtonItem *fixedButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    UIBarButtonItem *inviteFriendsButton = [[UIBarButtonItem alloc] initWithTitle:@"邀请" style:UIBarButtonItemStylePlain target:self action:@selector(inviteFriendsButtonAction)];
 
-    [doneButtonbar setItems:@[flexSpace, doneButton, flexSpace, cancelButton, flexSpace]];
+    [doneButtonbar setItems:@[flexSpace, inviteFriendsButton, doneButton, cancelButton]];
     title.inputAccessoryView = doneButtonbar;
     self.reminderTextField = title;
 
@@ -85,8 +90,18 @@
     friends.placeholder = @"和张三?";
     friends.delegate = self;
     friends.allowsEditingTextAttributes = NO;
-    friends.returnKeyType = UIReturnKeyGo;
+
     friends.clearButtonMode = UITextFieldViewModeWhileEditing;
+    friends.returnKeyType = UIReturnKeyDone;
+    UIToolbar *inviteFriendsBar = [[UIToolbar alloc] init];
+    [inviteFriendsBar sizeToFit];
+    UIBarButtonItem *doneButton2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(okButtonAction)];
+
+    UIBarButtonItem *cancelButton2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonAction)];
+    UIBarButtonItem *emptyButton = [[UIBarButtonItem alloc] initWithTitle:@"invite" style:UIBarButtonItemStyleBordered target:nil action:nil];
+
+    [inviteFriendsBar setItems:@[flexSpace,  doneButton2, cancelButton2]];
+    friends.inputAccessoryView = inviteFriendsBar;
     self.friendsTextField = friends;
     
     NSString *reminder = self.reminder;
@@ -100,6 +115,7 @@
     [self.view addSubview:friends];
 
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(trashAction)];
+    self.navigationController.toolbarHidden = YES;
 
 }
 
@@ -121,14 +137,13 @@
     }
     if (textField == self.friendsTextField) {
         if (self.reminderTextField.text && ![self.reminderTextField.text isEqualToString:@""]) {
-            [self okButtonAction];
+            [textField resignFirstResponder];
         }else{
             [self.reminderTextField becomeFirstResponder];
         }
     }
     return YES;
 }
-
 
 - (void)didReceiveMemoryWarning
 {
