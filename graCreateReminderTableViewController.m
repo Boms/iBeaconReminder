@@ -78,8 +78,9 @@
         if (indexPath.row == 0) {
             
             CGRect cellBounds = cell.bounds;
-            CGFloat textFieldBorder = 70.0f;
+            CGFloat textFieldBorder = 100;
             cell.textLabel.text = @"标题";
+            cell.textLabel.textColor = [UIColor purpleColor];
             CGFloat widthOfTextLabel = CGRectGetWidth(cell.textLabel.frame);
             // Don't align the field exactly in the vertical middle, as the text
             // is not actually in the middle of the field.
@@ -103,8 +104,14 @@
         }
     }
     if (indexPath.row == 1) {
+        CGRect cellBounds = cell.bounds;
+        CGFloat textFieldBorder = 100;
         cell.textLabel.text = @"提醒位置";
-        cell.detailTextLabel.text = self.selectedBeaconName;
+        cell.textLabel.textColor = [UIColor purpleColor];
+        CGRect aRect = CGRectMake(textFieldBorder, 5.f, CGRectGetWidth(cellBounds)-(2*textFieldBorder), 31.f );
+        UILabel *selectedBeaconName = [[UILabel alloc] initWithFrame:aRect];
+        selectedBeaconName.text = self.selectedBeaconName;
+        [cell.contentView addSubview:selectedBeaconName];
     }
     
     // Configure the cell...
@@ -158,26 +165,28 @@
  {
  // Navigation logic may go here, for example:
  // Create the next view controller.
-     graSelectBeaconTableViewController *detailViewController = [[graSelectBeaconTableViewController alloc] initWithNibName:@"graSelectBeaconTableViewController" bundle:nil];
-     detailViewController.seletedBeacon = self.selectedBeacon;
-     detailViewController.beaconSelected = ^(CLBeacon *thisBeacon){
-         self.selectedBeacon = thisBeacon;
-         iBeaconUser *user = [iBeaconUser sharedInstance];
-         for (NSDictionary *each in user.namesOfBeacon) {
-             NSData *archieved = [each objectForKey:@"beacon"];
-             CLBeacon *thisBeacon = [NSKeyedUnarchiver unarchiveObjectWithData:archieved];
-             NSString *beaconName = [each objectForKey:@"name"];
-             if ([user isBeacon:thisBeacon SameWith:self.selectedBeacon]) {
-                 self.selectedBeaconName = beaconName;
-                 [self.tableView reloadData];
+     if (indexPath.row == 1) {
+         graSelectBeaconTableViewController *detailViewController = [[graSelectBeaconTableViewController alloc] initWithNibName:@"graSelectBeaconTableViewController" bundle:nil];
+         detailViewController.seletedBeacon = self.selectedBeacon;
+         detailViewController.beaconSelected = ^(CLBeacon *thisBeacon){
+             self.selectedBeacon = thisBeacon;
+             iBeaconUser *user = [iBeaconUser sharedInstance];
+             for (NSDictionary *each in user.namesOfBeacon) {
+                 NSData *archieved = [each objectForKey:@"beacon"];
+                 CLBeacon *thisBeacon = [NSKeyedUnarchiver unarchiveObjectWithData:archieved];
+                 NSString *beaconName = [each objectForKey:@"name"];
+                 if ([user isBeacon:thisBeacon SameWith:self.selectedBeacon]) {
+                     self.selectedBeaconName = beaconName;
+                     [self.tableView reloadData];
+                 }
              }
-         }
-     };
- 
- // Pass the selected object to the new view controller.
- 
- // Push the view controller.
- [self.navigationController pushViewController:detailViewController animated:YES];
+         };
+         
+         // Pass the selected object to the new view controller.
+         
+         // Push the view controller.
+         [self.navigationController pushViewController:detailViewController animated:YES];
+     }
  }
 
 
