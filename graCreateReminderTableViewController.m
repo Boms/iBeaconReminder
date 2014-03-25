@@ -70,7 +70,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
@@ -100,6 +100,7 @@
             //        titleField.borderStyle = UITextBorderStyleRoundedRect;
             self.titleField = titleField;
             [cell.contentView addSubview:titleField];
+            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
             return cell;
         }
     }
@@ -108,6 +109,7 @@
         CGFloat textFieldBorder = 100;
         cell.textLabel.text = @"提醒位置";
         cell.textLabel.textColor = [UIColor purpleColor];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         CGRect aRect = CGRectMake(textFieldBorder, 5.f, CGRectGetWidth(cellBounds)-(2*textFieldBorder), 31.f );
         UILabel *selectedBeaconName = [[UILabel alloc] initWithFrame:aRect];
         selectedBeaconName.text = self.selectedBeaconName;
