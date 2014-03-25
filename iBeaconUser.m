@@ -214,9 +214,9 @@
     CLBeaconRegion *beaconRegion;
     beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:proximityUUID identifier:kIdentifier];
 //    beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:proximityUUID major:0x0000 minor:13586 identifier:kIdentifier];
-    beaconRegion.notifyEntryStateOnDisplay = YES;
-    beaconRegion.notifyOnEntry = NO;
-    beaconRegion.notifyOnExit = NO;
+    beaconRegion.notifyEntryStateOnDisplay = NO;
+    beaconRegion.notifyOnEntry = YES;
+    beaconRegion.notifyOnExit = YES;
     
     return beaconRegion;
 }
@@ -300,11 +300,22 @@
 -(void) locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region{
     NSLog(@"did enter region");
     NSLog(@"region with %@", region);
+    UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    if(localNotif){
+        localNotif.alertBody = @"提醒";
+        localNotif.alertAction = @"Read Message";
+        localNotif.applicationIconBadgeNumber = 1;
+        localNotif.soundName = @"alarmsound.caf";
+        [[UIApplication sharedApplication] presentLocalNotificationNow:localNotif];
+    }
 }
 
 -(void) locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region{
     NSLog(@"did exit region");
     NSLog(@"region with %@", region);
+    [self createBeaconRegionOfUser];
+    [self.locatinManager startMonitoringForRegion:self.beaconRegion];
 }
 
 -(void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
@@ -532,9 +543,11 @@
         self.enableInRegionPush = NO;
         self.enterRegionEnventTriggered = NO;
         self.recent40Beacon = nil;
+        [self createBeaconRegionOfUser];
+        [self.locatinManager startMonitoringForRegion:self.beaconRegion];
     }
     if (state == CLRegionStateInside) {
-        [[UIApplication sharedApplication] cancelAllLocalNotifications];
+//        [[UIApplication sharedApplication] cancelAllLocalNotifications];
 //        [self pushLocal:@"ZARA新品上架"];
         self.pushedBeacon = nil;
         self.enableInRegionPush = YES;
