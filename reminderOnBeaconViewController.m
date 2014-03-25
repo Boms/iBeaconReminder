@@ -169,7 +169,7 @@
     vc.reminder = nil;
     vc.myBeacon = self.myBeacon;
     iBeaconUser *user = [iBeaconUser sharedInstance];
-    vc.title = [user findNameByBeacon:self.myBeacon];
+    vc.title = [@"in " stringByAppendingString:[user findNameByBeacon:self.myBeacon]];;
     [self.navigationController pushViewController:vc animated:YES];
     return;
 }
@@ -188,7 +188,7 @@
         vc.reminder = reminderString;
         vc.myBeacon = self.myBeacon;
         vc.reminderDict = reminderDict;
-        vc.title = [user findNameByBeacon:self.myBeacon];
+        vc.title = [@"in " stringByAppendingString:[user findNameByBeacon:self.myBeacon]];
         [self.navigationController pushViewController:vc animated:YES];
     return;
     
