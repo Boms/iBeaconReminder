@@ -116,7 +116,7 @@
         CGRect cellBounds = cell.bounds;
         CGFloat textFieldBorder = 100;
         cell.textLabel.text = @"邀请朋友";
-        cell.textLabel.textColor = [UIColor purpleColor];
+        cell.textLabel.textColor = [colorForMarker markerColor];
         CGRect aRect = CGRectMake(textFieldBorder, 5.f, CGRectGetWidth(cellBounds)-(2*textFieldBorder), 31.f );
         UILabel *friendsLabel = [[UILabel alloc] initWithFrame:aRect];
         if (self.reminderDict) {

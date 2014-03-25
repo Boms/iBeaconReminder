@@ -94,7 +94,7 @@
             }
             titleField.enablesReturnKeyAutomatically = YES;
             
-            titleField.tintColor = [UIColor redColor];
+            titleField.tintColor = [colorForMarker markerColor];
             titleField.returnKeyType = UIReturnKeyDone;
             [titleField setDelegate:self];
             

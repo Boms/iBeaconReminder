@@ -7,6 +7,7 @@
 //
 
 #import "updateNameViewController.h"
+#import "colorForMarker.h"
 
 @interface updateNameViewController ()
 @property (nonatomic,strong) UITextField *name;
@@ -50,6 +51,7 @@
     title.delegate = self;
     title.allowsEditingTextAttributes = NO;
     title.returnKeyType = UIReturnKeyDone;
+    title.tintColor = [colorForMarker markerColor];
     self.name = title;
     
     iBeaconUser *user = [iBeaconUser sharedInstance];
