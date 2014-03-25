@@ -120,8 +120,12 @@
         CGRect aRect = CGRectMake(textFieldBorder, 5.f, CGRectGetWidth(cellBounds)-(2*textFieldBorder), 31.f );
         UILabel *friendsLabel = [[UILabel alloc] initWithFrame:aRect];
         if (self.reminderDict) {
+            
             friendsLabel.text = [self.reminderDict objectForKey:@"friends"];
             self.friends = friendsLabel.text;
+            if (self.friends == nil) {
+                self.friends = @"";
+            }
         }
         [cell.contentView addSubview:friendsLabel];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];

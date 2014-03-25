@@ -10,7 +10,6 @@
 #import "iBeaconUser.h"
 #import "reminderOnBeaconViewController.h"
 #import "updateNameViewController.h"
-#import "AddReminderOfBeacon.h"
 #import "selectNameForBeaconTableViewController.h"
 #import "graBeaconManagerTableViewController.h"
 #import "graCreateReminderTableViewController.h"

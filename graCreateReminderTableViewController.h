@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "iBeaconUser.h"
-@interface graCreateReminderTableViewController : UITableViewController<UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate>
+@interface graCreateReminderTableViewController : UITableViewController<UITextFieldDelegate>
 
 @end

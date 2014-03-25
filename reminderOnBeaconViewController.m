@@ -8,7 +8,6 @@
 
 #import "reminderOnBeaconViewController.h"
 #import "updateNameViewController.h"
-#import "AddReminderOfBeacon.h"
 #import "graAddReminderTableView.h"
 @interface reminderOnBeaconViewController ()
 @property (nonatomic, strong) UIBarButtonItem *removeButton;
@@ -89,8 +88,6 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
     return 1;
 }
 
@@ -168,7 +165,7 @@
 
 -(void)pushToAddReminderOnThisBeacon
 {
-    AddReminderOfBeacon *vc = [[AddReminderOfBeacon alloc] initWithNibName:@"AddReminderOfBeacon" bundle:nil];
+    graAddReminderTableView *vc = [[graAddReminderTableView alloc] initWithNibName:@"graAddReminderTableView" bundle:nil];
     vc.reminder = nil;
     vc.myBeacon = self.myBeacon;
     iBeaconUser *user = [iBeaconUser sharedInstance];
