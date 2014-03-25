@@ -63,8 +63,14 @@
     [super viewDidLoad];
  
     // Do any additional setup after loading the view from its nib.
-    UITextField *title = [[UITextField alloc] initWithFrame:CGRectMake(30, 100, 250, 50)];
-    title.borderStyle = UITextBorderStyleRoundedRect;
+    
+    UILabel *marker = [[UILabel alloc] initWithFrame:CGRectMake(20, 100, 50, 31)];
+    marker.text = @"标题";
+    marker.textColor = [UIColor grayColor];
+    [self.view addSubview:marker];
+    
+    UITextField *title = [[UITextField alloc] initWithFrame:CGRectMake(70, 100, 220, 31)];
+    title.borderStyle = UITextBorderStyleNone;
     title.placeholder = @"交个外卖?";
     title.delegate = self;
     title.allowsEditingTextAttributes = NO;
@@ -84,9 +90,13 @@
     title.inputAccessoryView = doneButtonbar;
     self.reminderTextField = title;
 
+    UILabel *markerForFriend = [[UILabel alloc] initWithFrame:CGRectMake(20, 170, 50, 31)];
+    markerForFriend.text = @"邀请";
+    markerForFriend.textColor = [UIColor grayColor];
+    [self.view addSubview:markerForFriend];
     
-    UITextField *friends = [[UITextField alloc] initWithFrame:CGRectMake(30, 170, 250, 50)];
-    friends.borderStyle = UITextBorderStyleRoundedRect;
+    UITextField *friends = [[UITextField alloc] initWithFrame:CGRectMake(70, 170, 220, 31)];
+    friends.borderStyle = UITextBorderStyleLine;
     friends.placeholder = @"和张三?";
     friends.delegate = self;
     friends.allowsEditingTextAttributes = NO;
