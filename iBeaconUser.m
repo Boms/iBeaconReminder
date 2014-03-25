@@ -150,6 +150,22 @@
     return result;
 }
 
+-(void) removeNameForBeacon:(CLBeacon *)beaconOne
+{
+    NSInteger i;
+    for (i = 0; i < [self.namesOfBeacon count]; i++) {
+        NSDictionary *each = [self.namesOfBeacon objectAtIndex:i];
+        NSData *archieved = [each objectForKey:@"beacon"];
+        CLBeacon *thisBeacon = [NSKeyedUnarchiver unarchiveObjectWithData:archieved];
+        NSNumber *major = thisBeacon.major;
+        NSNumber *minor = thisBeacon.minor;
+        if ([major isEqualToNumber:beaconOne.major] && [minor isEqualToNumber:beaconOne.minor]) {
+            [self.namesOfBeacon removeObjectAtIndex:i];
+            return;
+        }
+    }
+}
+
 -(void) setNameForBeacon:(CLBeacon *)beaconOne with:(NSString *)newName
 {
     NSInteger i;

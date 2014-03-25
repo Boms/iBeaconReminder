@@ -14,9 +14,30 @@
 @property (nonatomic, strong) NSMutableArray *namedBeacon;
 @property (nonatomic, strong) NSMutableArray *unamedBeacon;
 @property (nonatomic, strong) CLBeacon *lastFoundBeacon;
+@property (nonatomic, strong) UIBarButtonItem *editButton;
+@property (nonatomic, strong) UIBarButtonItem *doneButton;
+
 @end
 
 @implementation graBeaconManagerTableViewController
+
+-(void)enterEditMode
+{
+    [self.myUser stopMonitor];
+    [self.tableView setEditing:YES animated:YES];
+    self.navigationItem.rightBarButtonItem = self.doneButton;
+}
+
+-(void)exitEditMode
+{
+    [self.tableView setEditing:NO animated:YES];
+    self.navigationItem.rightBarButtonItem = self.editButton;
+    if ([self.namedBeacon count]) {
+        [self.tableView reloadData];
+    }else{
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
 
 - (void)viewDidLoad
 {
@@ -35,6 +56,15 @@
         CLBeacon *beacon = [NSKeyedUnarchiver unarchiveObjectWithData:archieved];
         [self.namedBeacon addObject:beacon];
     }
+    
+    UIBarButtonItem *trashButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(enterEditMode)];
+    
+    UIBarButtonItem *btnItem =[[UIBarButtonItem alloc] initWithTitle:@"Delete" style:UIBarButtonItemStyleBordered target:self action:@selector(enterEditMode)];
+    self.navigationItem.rightBarButtonItem = trashButton;
+    self.editButton = trashButton;
+    
+    UIBarButtonItem *doneItem =[[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(exitEditMode)];
+    self.doneButton = doneItem;
 }
 
 - (void)didReceiveMemoryWarning
@@ -160,27 +190,35 @@
 }
 
 
-/*
+
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
-    return YES;
+    if (indexPath.section == 0) {
+        return YES;
+    }
+    return NO;
 }
-*/
 
-/*
+
+
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+        if (indexPath.section == 0) {
+            CLBeacon *thisOne = nil;
+            thisOne = self.namedBeacon[indexPath.row];
+            iBeaconUser *user = [iBeaconUser sharedInstance];
+            [user removeNameForBeacon:thisOne];
+            [self.namedBeacon removeObjectAtIndex:indexPath.row];
+            [user saveAllData];
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        }
+    }
 }
-*/
 
 /*
 // Override to support rearranging the table view.

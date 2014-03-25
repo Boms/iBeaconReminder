@@ -189,8 +189,11 @@
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    if ([self.namedBeacon count] > 0 && (section == 0)) {
-        return @"选地点";
+    if (section < [self.namedBeacon count]) {
+        iBeaconUser *user = [iBeaconUser sharedInstance];
+        CLBeacon *thisOne = self.namedBeacon[section];
+        NSString *beaconLocaton = [user findNameByBeacon:thisOne];
+        return beaconLocaton;
     }else{
         return @"新设备";
     }
@@ -199,21 +202,23 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    NSInteger i = 0;
-    if ([self.namedBeacon count] > 0) {
-        i++;
+    NSInteger count = [self.namedBeacon count];
+    if ([self.unamedBeacon count]) {
+        count++;
     }
-    if ([self.unamedBeacon count] > 0) {
-        i++;
-    }
-    return i;
+    return count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    if ([self.namedBeacon count] > 0 && (section == 0)) {
-        return [self.namedBeacon count];
+    if (section < [self.namedBeacon count]) {
+        CLBeacon *thisOne = nil;
+        iBeaconUser *user = [iBeaconUser sharedInstance];
+        thisOne = self.namedBeacon[section];
+        NSMutableArray *reminderOfBeacon = [user findRemindersWith:thisOne];
+        NSInteger count = [reminderOfBeacon count];
+        return count;
     }else{
         return 1;
     }
@@ -230,21 +235,18 @@
     
     CLBeacon *thisOne = nil;
     iBeaconUser *user = [iBeaconUser sharedInstance];
-
-    if ([self.namedBeacon count] > 0 && indexPath.section == 0) {
-        thisOne = self.namedBeacon[indexPath.row];
-        NSString *beaconLocaton = [user findNameByBeacon:thisOne];
-
-        cell.textLabel.text = beaconLocaton;
+    
+    if (indexPath.section < [self.namedBeacon count]) {
+        thisOne = self.namedBeacon[indexPath.section];
         NSMutableArray *reminderOfBeacon = [user findRemindersWith:thisOne];
-        NSInteger count = [reminderOfBeacon count];
-        NSString *thingsToDo = @"来添加第一个事情吧";
-        if (count != 0) {
-            thingsToDo = [NSString stringWithFormat:@"%d件事情", count];
+        NSDictionary *reminderDict = [reminderOfBeacon objectAtIndex:indexPath.row];
+        NSString *reminder = [reminderDict objectForKey:@"reminder"];
+        cell.textLabel.text = reminder;
+        NSString *friends = [reminderDict objectForKey:@"friends"];
+        if (friends && [friends length] != 0) {
+            cell.detailTextLabel.text = [@"@" stringByAppendingString: friends];
         }
-        cell.detailTextLabel.text = thingsToDo;
         return cell;
-
     }else{
         cell.textLabel.text = [NSString stringWithFormat:@"发现 %d 个", [self.unamedBeacon count]];
         return cell;
@@ -319,33 +321,17 @@
     CLBeacon *thisOne = nil;
     iBeaconUser *user = [iBeaconUser sharedInstance];
 
-    if ([self.namedBeacon count] > 0 && indexPath.section == 0) {
-        thisOne = self.namedBeacon[indexPath.row];
+    if (indexPath.section < [self.namedBeacon count]) {
+        thisOne = self.namedBeacon[indexPath.section];
         CLBeacon *selectedBeacon = thisOne;
-
         NSMutableArray *reminderOfBeacon = [user findRemindersWith:selectedBeacon];
-        NSInteger count = [reminderOfBeacon count];
-        if (count == 0) {
-#if 0
-            AddReminderOfBeacon *detailViewController = [[AddReminderOfBeacon alloc] initWithNibName:@"AddReminderOfBeacon" bundle:nil];
-            detailViewController.myBeacon = selectedBeacon;
-            detailViewController.reminder = nil;
-            [self.navigationController pushViewController:detailViewController animated:YES];
-            return;
-#endif
-            graAddReminderTableView *vc  = [[graAddReminderTableView alloc] initWithNibName:@"graAddReminderTableView" bundle:nil];
-            vc.myBeacon = selectedBeacon;
-            vc.reminder = nil;
-            [self.navigationController pushViewController:vc animated:YES];
-            
-        }else{
-            NSString *beaconName = [user findNameByBeacon:selectedBeacon];
-            reminderOnBeaconViewController *detailViewController = [[reminderOnBeaconViewController alloc] initWithNibName:@"reminderOnBeaconViewController" bundle:nil];
-            detailViewController.myBeacon = selectedBeacon;
-            detailViewController.title = beaconName;
-            [self.navigationController pushViewController:detailViewController animated:YES];
-            return;
-        }
+        graAddReminderTableView *vc  = [[graAddReminderTableView alloc] initWithNibName:@"graAddReminderTableView" bundle:nil];
+        vc.myBeacon = selectedBeacon;
+        NSDictionary *reminderDict = [reminderOfBeacon objectAtIndex:indexPath.row];
+        NSString *reminder = [reminderDict objectForKey:@"reminder"];
+        vc.reminder = reminder;
+
+        [self.navigationController pushViewController:vc animated:YES];
     }else{
         thisOne = self.unamedBeacon[indexPath.row];
         graCreateBeaconNameTableViewController *vc = [[graCreateBeaconNameTableViewController alloc] initWithNibName:@"graCreateBeaconNameTableViewController" bundle:nil];
