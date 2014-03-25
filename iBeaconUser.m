@@ -21,7 +21,7 @@
 @property (atomic) BOOL enableInRegionPush;
 @property (nonatomic, strong) NSString *nextLeaveString;
 @property (atomic) BOOL leaveRegionEnventTriggered;
-@property (atomic) BOOL loading;
+@property (atomic) BOOL canCancelPreviousPush;
 @end
 
 
@@ -34,7 +34,7 @@
         sharedInstance = [[iBeaconUser alloc] init];
         // Do any other initialisation stuff here
         sharedInstance.loggedIn = NO;
-        sharedInstance.loading = NO;
+        sharedInstance.canCancelPreviousPush = NO;
         [sharedInstance startMonitor];
         [UIDevice currentDevice].batteryMonitoringEnabled = YES;
     });
@@ -309,6 +309,9 @@
         localNotif.soundName = @"alarmsound.caf";
         [[UIApplication sharedApplication] presentLocalNotificationNow:localNotif];
     }
+    self.beaconRegion.notifyEntryStateOnDisplay  = YES;
+    self.beaconRegion.notifyOnEntry = NO;
+    [self.locatinManager startMonitoringForRegion:self.beaconRegion];
 }
 
 -(void) locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region{
@@ -442,31 +445,6 @@
             }
         }
 #endif
-#if 0
-        if (self.loading == NO) {
-            self.loading = YES;
-            if ([self needFireNotificationWithMajorID:thisBeacon.major minorID:thisBeacon.minor]) {
-//                [self fireNotificationWithMajor:thisBeacon.major minorID:thisBeacon.minor];
-                [self fireNotificationWithCLBeacon:thisBeacon];
-            }
-#if 0
-            CLProximity beaconLocation = thisBeacon.proximity;
-            if (beaconLocation == CLProximityFar) {
-                NSLog(@"proxi now");
-            }
-            if (beaconLocation == CLProximityImmediate){
-                NSLog(@"proxi imm");
-            }
-            if (beaconLocation == CLProximityNear) {
-                NSLog(@"proxi near");
-            }
-            if (beaconLocation == CLProximityUnknown) {
-                NSLog(@"proxi unknown");
-            }
-            #endif
-        }
-#endif
-
     }
 }
 
@@ -537,14 +515,8 @@
         NSLog(@"region state outside");
 
 //        [self.locatinManager stopRangingBeaconsInRegion:self.beaconRegion];
-        if (self.enterRegionEnventTriggered == YES){
-            [self pushLocal:@"Exit"];
-        }
         self.enableInRegionPush = NO;
-        self.enterRegionEnventTriggered = NO;
         self.recent40Beacon = nil;
-        [self createBeaconRegionOfUser];
-        [self.locatinManager startMonitoringForRegion:self.beaconRegion];
     }
     if (state == CLRegionStateInside) {
 //        [[UIApplication sharedApplication] cancelAllLocalNotifications];
