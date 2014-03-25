@@ -36,6 +36,14 @@
     self.toolbarItems = @[flexSpace, saveBtn, flexSpace, cancelBtn, flexSpace];
     self.navigationController.toolbarHidden = NO;
     self.currentRowCount = 2;
+    iBeaconUser *user = [iBeaconUser sharedInstance];
+    if ([user.namesOfBeacon count] == 1) {
+        NSDictionary *each = [user.namesOfBeacon objectAtIndex:0];
+        NSData *archieved = [each objectForKey:@"beacon"];
+        CLBeacon *thisBeacon = [NSKeyedUnarchiver unarchiveObjectWithData:archieved];
+        self.selectedBeacon = thisBeacon;
+        self.selectedBeaconName = [each objectForKey:@"name"];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -85,13 +93,8 @@
             CGFloat widthOfTextLabel = CGRectGetWidth(cell.textLabel.frame);
             // Don't align the field exactly in the vertical middle, as the text
             // is not actually in the middle of the field.
-            CGRect aRect = CGRectMake(widthOfTextLabel + textFieldBorder, 5.f, CGRectGetWidth(cellBounds)-(2*textFieldBorder) - widthOfTextLabel, 31.f );
+            CGRect aRect = CGRectMake(widthOfTextLabel + textFieldBorder, 5.f, CGRectGetWidth(cellBounds)-(2*textFieldBorder), 31.f );
             UITextField *titleField = [[UITextField alloc] initWithFrame:aRect];
-            if ([self.selectedBeaconName isEqualToString:@""]) {
-                titleField.placeholder = @"比如中午交个外卖";
-            }else{
-                titleField.text = self.selectedBeaconName;
-            }
             titleField.enablesReturnKeyAutomatically = YES;
             
             titleField.tintColor = [colorForMarker markerColor];
@@ -198,7 +201,7 @@
 
 -(void) Save
 {
-    if (self.titleField.text && ![self.titleField.text isEqualToString:@""]) {
+    if (self.titleField.text && ![self.titleField.text isEqualToString:@""] && self.selectedBeacon) {
         iBeaconUser *user = [iBeaconUser sharedInstance];
         [user AddRemindersWith:self.selectedBeacon with:self.titleField.text friends:@""];
         [self.navigationController popViewControllerAnimated:YES];
