@@ -7,7 +7,7 @@
 //
 
 #import "graAddReminderTableView.h"
-
+#import "colorForMarker.h"
 @interface graAddReminderTableView ()
 @property (nonatomic, strong) UITextField *reminderTextField;
 @property (nonatomic, strong) NSString *friends;
@@ -79,7 +79,7 @@
             CGRect cellBounds = cell.bounds;
             CGFloat textFieldBorder = 100;
             cell.textLabel.text = @"标题";
-            cell.textLabel.textColor = [UIColor purpleColor];
+            cell.textLabel.textColor = [colorForMarker markerColor];
             CGFloat widthOfTextLabel = CGRectGetWidth(cell.textLabel.frame);
             // Don't align the field exactly in the vertical middle, as the text
             // is not actually in the middle of the field.
@@ -92,7 +92,7 @@
             }
             titleField.enablesReturnKeyAutomatically = YES;
             
-            titleField.tintColor = [UIColor redColor];
+            titleField.tintColor = [colorForMarker markerColor];
             titleField.returnKeyType = UIReturnKeyDone;
             [titleField setDelegate:self];
             UIToolbar *doneButtonbar = [[UIToolbar alloc] init];

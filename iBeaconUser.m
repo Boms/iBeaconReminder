@@ -417,7 +417,10 @@
                                 NSString *eachReminder = [eachReminderDict objectForKey:@"reminder"];
                                 NSString *friends = [eachReminderDict objectForKey:@"friends"];
                                 eachReminder = [eachReminder stringByAppendingString:@" @"];
-                                eachReminder = [eachReminder stringByAppendingString:friends];
+                                if (friends) {
+                                    eachReminder = [eachReminder stringByAppendingString:friends];
+                                }
+
                                 [self pushLocal:[eachReminder stringByAppendingString:append]];
                             }
                         }

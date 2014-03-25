@@ -8,6 +8,7 @@
 
 #import "graCreateReminderTableViewController.h"
 #import "graSelectBeaconTableViewController.h"
+#import "colorForMarker.h"
 @interface graCreateReminderTableViewController ()
 @property (nonatomic, strong) UITextField *titleField;
 @property (nonatomic, strong) UITextField *locationField;
@@ -80,7 +81,7 @@
             CGRect cellBounds = cell.bounds;
             CGFloat textFieldBorder = 100;
             cell.textLabel.text = @"标题";
-            cell.textLabel.textColor = [UIColor purpleColor];
+            cell.textLabel.textColor = [colorForMarker markerColor];
             CGFloat widthOfTextLabel = CGRectGetWidth(cell.textLabel.frame);
             // Don't align the field exactly in the vertical middle, as the text
             // is not actually in the middle of the field.
@@ -108,7 +109,7 @@
         CGRect cellBounds = cell.bounds;
         CGFloat textFieldBorder = 100;
         cell.textLabel.text = @"提醒位置";
-        cell.textLabel.textColor = [UIColor purpleColor];
+        cell.textLabel.textColor = [colorForMarker markerColor];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         CGRect aRect = CGRectMake(textFieldBorder, 5.f, CGRectGetWidth(cellBounds)-(2*textFieldBorder), 31.f );
         UILabel *selectedBeaconName = [[UILabel alloc] initWithFrame:aRect];
