@@ -410,6 +410,9 @@
 
 -(void) locationManager:(CLLocationManager *)manager didRangeBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region{
     for (CLBeacon *thisBeacon in beacons) {
+        if (thisBeacon.rssi == 0) {
+            continue;
+        }
         [self.recent40Beacon addObject:thisBeacon];
         if ([self isKnownBeacon:thisBeacon] == NO) {
             [self.beaconsNearMe addObject:thisBeacon];
@@ -425,6 +428,11 @@
                         [self.beaconsNearMe replaceObjectAtIndex:i withObject:thisBeacon];
                         if (self.foundBeacon) {
                             self.foundBeacon(thisBeacon);
+                            if (self.beaconRegion.notifyEntryStateOnDisplay == NO) {
+                                self.beaconRegion.notifyEntryStateOnDisplay = YES;
+                                self.beaconRegion.notifyOnEntry = NO;
+                                [self.locatinManager startMonitoringForRegion:self.beaconRegion];
+                            }
                         }
                     }
                     break;
@@ -432,10 +440,13 @@
             }
         }
 #if 1
-        if (self.enableInRegionPush) {
+         {
             if([UIApplication sharedApplication].applicationState == UIApplicationStateBackground){
                 NSMutableArray *foundBeacon = [self UniqueBeaconInRecent40Beacon];
                 for (CLBeacon *eachBeacon in foundBeacon) {
+                    if (eachBeacon.rssi == 0) {
+                        continue;
+                    }
                     NSLog(@"each beacon in unique array for pushed with %@", eachBeacon);
                     if ([self isBeacon:eachBeacon inArray:self.pushedBeacon] == NO) {
                         NSLog(@"never pushed");
