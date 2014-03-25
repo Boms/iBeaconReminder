@@ -15,6 +15,7 @@
 #import "graBeaconManagerTableViewController.h"
 #import "graCreateReminderTableViewController.h"
 #import "graCreateBeaconNameTableViewController.h"
+#import "graAddReminderTableView.h"
 @interface nearBeaconViewController ()
 @property (nonatomic, strong) iBeaconUser *myUser;
 @property (nonatomic, strong) NSMutableArray *beaconArray;
@@ -325,11 +326,18 @@
         NSMutableArray *reminderOfBeacon = [user findRemindersWith:selectedBeacon];
         NSInteger count = [reminderOfBeacon count];
         if (count == 0) {
+#if 0
             AddReminderOfBeacon *detailViewController = [[AddReminderOfBeacon alloc] initWithNibName:@"AddReminderOfBeacon" bundle:nil];
             detailViewController.myBeacon = selectedBeacon;
             detailViewController.reminder = nil;
             [self.navigationController pushViewController:detailViewController animated:YES];
             return;
+#endif
+            graAddReminderTableView *vc  = [[graAddReminderTableView alloc] initWithNibName:@"graAddReminderTableView" bundle:nil];
+            vc.myBeacon = selectedBeacon;
+            vc.reminder = nil;
+            [self.navigationController pushViewController:vc animated:YES];
+            
         }else{
             NSString *beaconName = [user findNameByBeacon:selectedBeacon];
             reminderOnBeaconViewController *detailViewController = [[reminderOnBeaconViewController alloc] initWithNibName:@"reminderOnBeaconViewController" bundle:nil];

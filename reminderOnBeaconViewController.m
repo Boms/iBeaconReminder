@@ -9,6 +9,7 @@
 #import "reminderOnBeaconViewController.h"
 #import "updateNameViewController.h"
 #import "AddReminderOfBeacon.h"
+#import "graAddReminderTableView.h"
 @interface reminderOnBeaconViewController ()
 @property (nonatomic, strong) UIBarButtonItem *removeButton;
 @property (nonatomic, strong) UIBarButtonItem *composeButton;
@@ -183,7 +184,7 @@
     // Create the next view controller.
     iBeaconUser *user  = [iBeaconUser sharedInstance];
 
-        AddReminderOfBeacon *vc = [[AddReminderOfBeacon alloc] initWithNibName:@"AddReminderOfBeacon" bundle:nil];
+        graAddReminderTableView *vc = [[graAddReminderTableView alloc] initWithNibName:@"graAddReminderTableView" bundle:nil];
         NSMutableArray *reminderStringArray = [user findRemindersWith:self.myBeacon];
         NSDictionary *reminderDict = [reminderStringArray objectAtIndex:indexPath.row];
         NSString *reminderString = [reminderDict objectForKey:@"reminder"];
