@@ -75,32 +75,32 @@
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-        
-    }
-    if (indexPath.row == 0) {
-        
-        CGRect cellBounds = cell.bounds;
-        CGFloat textFieldBorder = 70.0f;
-        cell.textLabel.text = @"标题";
-        CGFloat widthOfTextLabel = CGRectGetWidth(cell.textLabel.frame);
-        // Don't align the field exactly in the vertical middle, as the text
-        // is not actually in the middle of the field.
-        CGRect aRect = CGRectMake(widthOfTextLabel + textFieldBorder, 5.f, CGRectGetWidth(cellBounds)-(2*textFieldBorder) - widthOfTextLabel, 31.f );
-        UITextField *titleField = [[UITextField alloc] initWithFrame:aRect];
-        if ([self.selectedBeaconName isEqualToString:@""]) {
-            titleField.placeholder = @"比如中午交个外卖";
-        }else{
-            titleField.text = self.selectedBeaconName;
+        if (indexPath.row == 0) {
+            
+            CGRect cellBounds = cell.bounds;
+            CGFloat textFieldBorder = 70.0f;
+            cell.textLabel.text = @"标题";
+            CGFloat widthOfTextLabel = CGRectGetWidth(cell.textLabel.frame);
+            // Don't align the field exactly in the vertical middle, as the text
+            // is not actually in the middle of the field.
+            CGRect aRect = CGRectMake(widthOfTextLabel + textFieldBorder, 5.f, CGRectGetWidth(cellBounds)-(2*textFieldBorder) - widthOfTextLabel, 31.f );
+            UITextField *titleField = [[UITextField alloc] initWithFrame:aRect];
+            if ([self.selectedBeaconName isEqualToString:@""]) {
+                titleField.placeholder = @"比如中午交个外卖";
+            }else{
+                titleField.text = self.selectedBeaconName;
+            }
+            titleField.enablesReturnKeyAutomatically = YES;
+            
+            titleField.tintColor = [UIColor redColor];
+            titleField.returnKeyType = UIReturnKeyDone;
+            [titleField setDelegate:self];
+            
+            //        titleField.borderStyle = UITextBorderStyleRoundedRect;
+            self.titleField = titleField;
+            [cell.contentView addSubview:titleField];
+            return cell;
         }
-        titleField.enablesReturnKeyAutomatically = YES;
-
-        titleField.tintColor = [UIColor redColor];
-        titleField.returnKeyType = UIReturnKeyNext;
-        [titleField setDelegate:self];
-        
-        //        titleField.borderStyle = UITextBorderStyleRoundedRect;
-        self.titleField = titleField;
-        [cell.contentView addSubview:titleField];
     }
     if (indexPath.row == 1) {
         cell.textLabel.text = @"提醒位置";
@@ -159,6 +159,7 @@
  // Navigation logic may go here, for example:
  // Create the next view controller.
      graSelectBeaconTableViewController *detailViewController = [[graSelectBeaconTableViewController alloc] initWithNibName:@"graSelectBeaconTableViewController" bundle:nil];
+     detailViewController.seletedBeacon = self.selectedBeacon;
      detailViewController.beaconSelected = ^(CLBeacon *thisBeacon){
          self.selectedBeacon = thisBeacon;
          iBeaconUser *user = [iBeaconUser sharedInstance];
@@ -198,10 +199,13 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-#pragma mark PickerView delegate
 
 #pragma mark textfield delegate
-
+-(BOOL) textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
 
 
 @end

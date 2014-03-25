@@ -57,6 +57,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     
+    }
         NSString *title = nil;
         iBeaconUser *user = [iBeaconUser sharedInstance];
         NSDictionary *each = [user.namesOfBeacon objectAtIndex:indexPath.row];
@@ -69,7 +70,6 @@
         if ([user isBeacon:self.seletedBeacon SameWith:thisBeacon]) {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }
-    }
 
     return cell;
 }
