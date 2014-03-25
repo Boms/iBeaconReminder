@@ -7,7 +7,7 @@
 //
 
 #import "graCreateReminderTableViewController.h"
-
+#import "graSelectBeaconTableViewController.h"
 @interface graCreateReminderTableViewController ()
 @property (nonatomic, strong) UITextField *titleField;
 @property (nonatomic, strong) UITextField *locationField;
@@ -46,18 +46,13 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self.titleField becomeFirstResponder];
-    
-}
-
--(void)viewWillDisappear:(BOOL)animated
-{
-    if (self.currentRowCount == 3) {
-        [self RemovePickerView];
+    if ([self.titleField.text isEqualToString:@""]) {
+        [self.titleField becomeFirstResponder];
+    }else{
+        [self.tableView reloadData];
     }
-
-    [super viewWillDisappear:animated];
 }
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -69,77 +64,52 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return self.currentRowCount;
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
+
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
         
-        if (indexPath.row == 0) {
-            
-            CGRect cellBounds = cell.bounds;
-            CGFloat textFieldBorder = 10.f;
-            // Don't align the field exactly in the vertical middle, as the text
-            // is not actually in the middle of the field.
-            CGRect aRect = CGRectMake(textFieldBorder, 9.f, CGRectGetWidth(cellBounds)-(2*textFieldBorder), 31.f );
-            UITextField *titleField = [[UITextField alloc] initWithFrame:aRect];
-            titleField.enablesReturnKeyAutomatically = YES;
-            titleField.placeholder = @"比如中午交个外卖";
-            titleField.tintColor = [UIColor redColor];
-            titleField.returnKeyType = UIReturnKeyNext;
-            [titleField setDelegate:self];
-            //        titleField.borderStyle = UITextBorderStyleRoundedRect;
-            self.titleField = titleField;
-            [cell.contentView addSubview:titleField];
-        }
-        if (indexPath.row == 1) {
-            CGRect cellBounds = cell.bounds;
-            CGFloat textFieldBorder = 10.f;
-            CGRect aRect = CGRectMake(textFieldBorder, 9.f, CGRectGetWidth(cellBounds)-(2*textFieldBorder), 31.f );
-            UITextField *titleField = [[UITextField alloc] initWithFrame:aRect];
-            titleField.enablesReturnKeyAutomatically = YES;
-            titleField.placeholder = @"位置";
-            titleField.tintColor = [UIColor redColor];
-            titleField.returnKeyType = UIReturnKeyGo;
-            [titleField setDelegate:self];
-            self.locationField = titleField;
-            [cell.contentView addSubview:titleField];
-            
-            cell.textLabel.text = self.selectedBeaconName;
-            
-        }
-        if (indexPath.row ==2 ) {
-            CGRect cellBounds = cell.bounds;
-            cell.frame = CGRectMake(cellBounds.origin.x, cellBounds.origin.y, cellBounds.size.width, 162);
-            CGFloat textFieldBorder = 10.f;
-            CGRect aRect = CGRectMake(textFieldBorder, 9.f, CGRectGetWidth(cellBounds)-(2*textFieldBorder), 150.f );
-            UIPickerView *beaconPicker = [[UIPickerView alloc] initWithFrame:aRect];
-            beaconPicker.delegate = self;
-            beaconPicker.dataSource = self;
-            self.beaconPickerView = beaconPicker;
-            [cell.contentView addSubview:beaconPicker];
-            
-        }
     }
-    
+    if (indexPath.row == 0) {
+        
+        CGRect cellBounds = cell.bounds;
+        CGFloat textFieldBorder = 70.0f;
+        cell.textLabel.text = @"标题";
+        CGFloat widthOfTextLabel = CGRectGetWidth(cell.textLabel.frame);
+        // Don't align the field exactly in the vertical middle, as the text
+        // is not actually in the middle of the field.
+        CGRect aRect = CGRectMake(widthOfTextLabel + textFieldBorder, 5.f, CGRectGetWidth(cellBounds)-(2*textFieldBorder) - widthOfTextLabel, 31.f );
+        UITextField *titleField = [[UITextField alloc] initWithFrame:aRect];
+        if ([self.selectedBeaconName isEqualToString:@""]) {
+            titleField.placeholder = @"比如中午交个外卖";
+        }else{
+            titleField.text = self.selectedBeaconName;
+        }
+        titleField.enablesReturnKeyAutomatically = YES;
+
+        titleField.tintColor = [UIColor redColor];
+        titleField.returnKeyType = UIReturnKeyNext;
+        [titleField setDelegate:self];
+        
+        //        titleField.borderStyle = UITextBorderStyleRoundedRect;
+        self.titleField = titleField;
+        [cell.contentView addSubview:titleField];
+    }
+    if (indexPath.row == 1) {
+        cell.textLabel.text = @"提醒位置";
+        cell.detailTextLabel.text = self.selectedBeaconName;
+    }
     
     // Configure the cell...
     
     return cell;
-}
-
--(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.row == 2) {
-        return 162.0f;
-    }else{
-        return 40.0f;
-    }
 }
 
 /*
@@ -180,7 +150,7 @@
  }
  */
 
-/*
+
  #pragma mark - Table view delegate
  
  // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
@@ -188,14 +158,27 @@
  {
  // Navigation logic may go here, for example:
  // Create the next view controller.
- <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
+     graSelectBeaconTableViewController *detailViewController = [[graSelectBeaconTableViewController alloc] initWithNibName:@"graSelectBeaconTableViewController" bundle:nil];
+     detailViewController.beaconSelected = ^(CLBeacon *thisBeacon){
+         self.selectedBeacon = thisBeacon;
+         iBeaconUser *user = [iBeaconUser sharedInstance];
+         for (NSDictionary *each in user.namesOfBeacon) {
+             NSData *archieved = [each objectForKey:@"beacon"];
+             CLBeacon *thisBeacon = [NSKeyedUnarchiver unarchiveObjectWithData:archieved];
+             NSString *beaconName = [each objectForKey:@"name"];
+             if ([user isBeacon:thisBeacon SameWith:self.selectedBeacon]) {
+                 self.selectedBeaconName = beaconName;
+                 [self.tableView reloadData];
+             }
+         }
+     };
  
  // Pass the selected object to the new view controller.
  
  // Push the view controller.
  [self.navigationController pushViewController:detailViewController animated:YES];
  }
- */
+
 
 
 #pragma mark toolbar
@@ -216,106 +199,9 @@
 }
 
 #pragma mark PickerView delegate
--(NSInteger) numberOfComponentsInPickerView:(UIPickerView *)pickerView
-{
-    if (pickerView == self.beaconPickerView) {
-        return 1;
-    }
-    return 1;
-}
-
--(NSInteger) pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
-{
-    iBeaconUser *user = [iBeaconUser sharedInstance];
-    if(pickerView == self.beaconPickerView){
-        return [user.namesOfBeacon count];
-    }
-    return 0;
-}
-
--(NSString *) pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-{
-    NSString *title = nil;
-    iBeaconUser *user = [iBeaconUser sharedInstance];
-    if (pickerView == self.beaconPickerView) {
-        NSDictionary *each = [user.namesOfBeacon objectAtIndex:row];
-        NSString *beaconName = [each objectForKey:@"name"];
-        title = beaconName;
-    }
-    return title;
-}
--(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
-    iBeaconUser *user = [iBeaconUser sharedInstance];
-    
-    if (pickerView == self.beaconPickerView) {
-        NSDictionary *each = [user.namesOfBeacon objectAtIndex:row];
-        NSData *archieved = [each objectForKey:@"beacon"];
-        CLBeacon *thisBeacon = [NSKeyedUnarchiver unarchiveObjectWithData:archieved];
-        self.selectedBeacon =thisBeacon;
-        NSString *beaconName = [each objectForKey:@"name"];
-        self.locationField.text = beaconName;
-    }
-}
-
--(void)RemovePickerView
-{
-    NSArray *insertIndexPaths = @[[NSIndexPath indexPathForRow:2 inSection:0]];
-    self.currentRowCount = 2;
-    [self.tableView beginUpdates];
-    [self.tableView deleteRowsAtIndexPaths:insertIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
-    [self.tableView endUpdates];
-    
-}
-
-
--(void)AddPickerView
-{
-    NSArray *insertIndexPaths = @[[NSIndexPath indexPathForRow:2 inSection:0]];
-    self.currentRowCount = 3;
-    [self.tableView beginUpdates];
-    [self.tableView insertRowsAtIndexPaths:insertIndexPaths withRowAnimation:UITableViewRowAnimationBottom];
-    [self.tableView endUpdates];
-}
 
 #pragma mark textfield delegate
--(BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    [textField resignFirstResponder];
-    if (textField == self.locationField) {
-        [self RemovePickerView];
-        [self Save];
-    }
-    if (textField == self.titleField) {
-        [self.locationField becomeFirstResponder];
-    }
 
-    return YES;
-    
-}
-
--(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
-{
-    if (textField == self.titleField) {
-        if (self.currentRowCount == 3) {
-            [self RemovePickerView];
-        }
-    }
-    if (textField == self.locationField) {
-        [self AddPickerView];
-        if (!self.selectedBeacon) {
-            [self.beaconPickerView selectedRowInComponent:0];
-            iBeaconUser *user = [iBeaconUser sharedInstance];
-            NSDictionary *each = [user.namesOfBeacon objectAtIndex:0];
-            NSData *archieved = [each objectForKey:@"beacon"];
-            NSString *beaconName = [each objectForKey:@"name"];
-            self.locationField.text = beaconName;
-            CLBeacon *thisBeacon = [NSKeyedUnarchiver unarchiveObjectWithData:archieved];
-            self.selectedBeacon =thisBeacon;
-        }
-        return YES;
-    }
-    return YES;
-}
 
 
 @end
