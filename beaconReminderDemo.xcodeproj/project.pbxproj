@@ -11,6 +11,9 @@
 		F21111E518DC2CA600CDE562 /* graCreateBeaconNameTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F21111E318DC2CA600CDE562 /* graCreateBeaconNameTableViewController.xib */; };
 		F214B28518DBCE420028286F /* graCreateReminderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F214B28318DBCE420028286F /* graCreateReminderTableViewController.m */; };
 		F214B28618DBCE420028286F /* graCreateReminderTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F214B28418DBCE420028286F /* graCreateReminderTableViewController.xib */; };
+		F21FA5DC18E2A5A800A06FE8 /* graSelectTimeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F21FA5DA18E2A5A800A06FE8 /* graSelectTimeTableViewController.m */; };
+		F21FA5DD18E2A5A800A06FE8 /* graSelectTimeTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F21FA5DB18E2A5A800A06FE8 /* graSelectTimeTableViewController.xib */; };
+		F21FA5E018E2B24B00A06FE8 /* reminderExtInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F21FA5DF18E2B24B00A06FE8 /* reminderExtInfo.m */; };
 		F260073318DA7D4A00637821 /* graBeaconManagerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F260073118DA7D4A00637821 /* graBeaconManagerTableViewController.m */; };
 		F260073418DA7D4A00637821 /* graBeaconManagerTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F260073218DA7D4A00637821 /* graBeaconManagerTableViewController.xib */; };
 		F26E872318D9DF2500A8D55E /* selectNameForBeaconTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F26E872118D9DF2500A8D55E /* selectNameForBeaconTableViewController.m */; };
@@ -60,6 +63,11 @@
 		F214B28218DBCE420028286F /* graCreateReminderTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = graCreateReminderTableViewController.h; sourceTree = "<group>"; };
 		F214B28318DBCE420028286F /* graCreateReminderTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = graCreateReminderTableViewController.m; sourceTree = "<group>"; };
 		F214B28418DBCE420028286F /* graCreateReminderTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = graCreateReminderTableViewController.xib; sourceTree = "<group>"; };
+		F21FA5D918E2A5A800A06FE8 /* graSelectTimeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = graSelectTimeTableViewController.h; sourceTree = "<group>"; };
+		F21FA5DA18E2A5A800A06FE8 /* graSelectTimeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = graSelectTimeTableViewController.m; sourceTree = "<group>"; };
+		F21FA5DB18E2A5A800A06FE8 /* graSelectTimeTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = graSelectTimeTableViewController.xib; sourceTree = "<group>"; };
+		F21FA5DE18E2B24B00A06FE8 /* reminderExtInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reminderExtInfo.h; sourceTree = "<group>"; };
+		F21FA5DF18E2B24B00A06FE8 /* reminderExtInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = reminderExtInfo.m; sourceTree = "<group>"; };
 		F260073018DA7D4A00637821 /* graBeaconManagerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = graBeaconManagerTableViewController.h; sourceTree = "<group>"; };
 		F260073118DA7D4A00637821 /* graBeaconManagerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = graBeaconManagerTableViewController.m; sourceTree = "<group>"; };
 		F260073218DA7D4A00637821 /* graBeaconManagerTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = graBeaconManagerTableViewController.xib; sourceTree = "<group>"; };
@@ -220,6 +228,9 @@
 				F28C60E718E149BF00D64DE6 /* graAddReminderTableView.h */,
 				F28C60E818E149BF00D64DE6 /* graAddReminderTableView.m */,
 				F28C60E918E149BF00D64DE6 /* graAddReminderTableView.xib */,
+				F21FA5D918E2A5A800A06FE8 /* graSelectTimeTableViewController.h */,
+				F21FA5DA18E2A5A800A06FE8 /* graSelectTimeTableViewController.m */,
+				F21FA5DB18E2A5A800A06FE8 /* graSelectTimeTableViewController.xib */,
 				F26E872018D9DF2500A8D55E /* selectNameForBeaconTableViewController.h */,
 				F26E872118D9DF2500A8D55E /* selectNameForBeaconTableViewController.m */,
 				F26E872218D9DF2500A8D55E /* selectNameForBeaconTableViewController.xib */,
@@ -246,6 +257,8 @@
 			children = (
 				F2EE4B2518D6946F00E5EEE6 /* iBeaconUser.h */,
 				F2EE4B2618D6946F00E5EEE6 /* iBeaconUser.m */,
+				F21FA5DE18E2B24B00A06FE8 /* reminderExtInfo.h */,
+				F21FA5DF18E2B24B00A06FE8 /* reminderExtInfo.m */,
 			);
 			name = iBeacon;
 			sourceTree = "<group>";
@@ -335,6 +348,7 @@
 				F260073418DA7D4A00637821 /* graBeaconManagerTableViewController.xib in Resources */,
 				F26E872418D9DF2500A8D55E /* selectNameForBeaconTableViewController.xib in Resources */,
 				F2EE4B2D18D6964700E5EEE6 /* nearBeaconViewController.xib in Resources */,
+				F21FA5DD18E2A5A800A06FE8 /* graSelectTimeTableViewController.xib in Resources */,
 				F28C60EB18E149BF00D64DE6 /* graAddReminderTableView.xib in Resources */,
 				F21111E518DC2CA600CDE562 /* graCreateBeaconNameTableViewController.xib in Resources */,
 				F214B28618DBCE420028286F /* graCreateReminderTableViewController.xib in Resources */,
@@ -369,11 +383,13 @@
 				F214B28518DBCE420028286F /* graCreateReminderTableViewController.m in Sources */,
 				F2EE4B1F18D6941900E5EEE6 /* reminderOnBeaconViewController.m in Sources */,
 				F2EE4AF718D693DC00E5EEE6 /* graViewController.m in Sources */,
+				F21FA5DC18E2A5A800A06FE8 /* graSelectTimeTableViewController.m in Sources */,
 				F26E872318D9DF2500A8D55E /* selectNameForBeaconTableViewController.m in Sources */,
 				F21111E418DC2CA600CDE562 /* graCreateBeaconNameTableViewController.m in Sources */,
 				F2EE4B2118D6941900E5EEE6 /* updateNameViewController.m in Sources */,
 				F28C60EA18E149BF00D64DE6 /* graAddReminderTableView.m in Sources */,
 				F2EE4B2718D6946F00E5EEE6 /* iBeaconUser.m in Sources */,
+				F21FA5E018E2B24B00A06FE8 /* reminderExtInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

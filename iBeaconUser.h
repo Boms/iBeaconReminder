@@ -49,4 +49,6 @@
 -(void)removeReminderWith:(CLBeacon *)beaconOne with:(NSString *)reminder;
 -(void)AddRemindersWith:(CLBeacon *)beaconOne with:(NSString *)reminder;
 -(void)AddRemindersWith:(CLBeacon *)beaconOne with:(NSString *)reminder friends:(NSString *)friends;
+-(void)AddRemindersWith:(CLBeacon *)beaconOne withFullInfo:(NSDictionary *)reminderDict;
+-(void)AddRemindersWith:(CLBeacon *)beaconOne with:(NSString *)reminder  withFullInfo:(NSDictionary *)reminderDict;
 @end

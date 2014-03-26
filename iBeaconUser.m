@@ -115,7 +115,20 @@
     [self.reminderOfBeacon addObject:newDict];
 }
 
+-(void)AddRemindersWith:(CLBeacon *)beaconOne withFullInfo:(NSDictionary *)reminderDict
+{
 
+    NSString *reminderString = reminderDict[@"reminderString"];
+    NSDictionary *fullInfoDict = @{@"major": beaconOne.major, @"minor": beaconOne.minor, @"reminder": reminderString, @"fullInfo":reminderDict};
+    [self.reminderOfBeacon addObject:fullInfoDict];
+}
+
+
+-(void)AddRemindersWith:(CLBeacon *)beaconOne with:(NSString *)reminder  withFullInfo:(NSDictionary *)reminderDict
+{
+    NSDictionary *fullInfoDict = @{@"major": beaconOne.major, @"minor": beaconOne.minor, @"reminder": reminder, @"fullInfo":reminderDict};
+    [self.reminderOfBeacon addObject:fullInfoDict];
+}
 
 -(void)removeReminderWith:(CLBeacon *)beaconOne with:(NSString *)reminder
 {

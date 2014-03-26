@@ -9,17 +9,36 @@
 #import "graCreateReminderTableViewController.h"
 #import "graSelectBeaconTableViewController.h"
 #import "colorForMarker.h"
+#import "graSelectTimeTableViewController.h"
 @interface graCreateReminderTableViewController ()
 @property (nonatomic, strong) UITextField *titleField;
 @property (nonatomic, strong) UITextField *locationField;
 @property (nonatomic, strong) UITextView *content;
 @property (nonatomic, strong) NSString *selectedBeaconName;
 @property (nonatomic, strong) CLBeacon *selectedBeacon;
+@property (nonatomic, strong) NSDictionary *selectedTimerDict;
+@property (nonatomic, strong) NSString *selectedTimerString;
+@property (nonatomic, strong) UILabel *selectedTimerLabel;
+@property (nonatomic, strong) UILabel *selectedBeaconNameLabe;
 @property (nonatomic, strong) UIPickerView* beaconPickerView;
+@property (nonatomic, strong) NSMutableDictionary *reminderDict;
+
 @property (nonatomic) NSInteger currentRowCount;
 @end
 
 @implementation graCreateReminderTableViewController
+
+
+-(NSMutableDictionary *)reminderDict
+{
+    if (!_reminderDict) {
+        NSDictionary *timer = @{@"textPresent":@"上午", @"standard":@"AM"};
+        self.selectedTimerString = timer[@"textPresent"];
+        NSMutableDictionary *fullInfovalue  = [NSMutableDictionary dictionaryWithDictionary:@{@"timer":timer}];
+        _reminderDict = [NSMutableDictionary dictionaryWithDictionary: @{@"fullInfo":fullInfovalue}];
+    }
+    return _reminderDict;
+}
 
 - (void)viewDidLoad
 {
@@ -73,7 +92,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 2;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -107,18 +126,33 @@
             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
             return cell;
         }
+        if (indexPath.row == 2) {
+            CGRect cellBounds = cell.bounds;
+            CGFloat textFieldBorder = 100;
+            cell.textLabel.text = @"提醒于";
+            cell.textLabel.textColor = [colorForMarker markerColor];
+            CGRect aRect = CGRectMake(textFieldBorder, 5.f, CGRectGetWidth(cellBounds)-(2*textFieldBorder), 31.f );
+            UILabel *reminderTimer = [[UILabel alloc] initWithFrame:aRect];
+            self.selectedTimerLabel = reminderTimer;
+            reminderTimer.text = self.selectedTimerString;
+            [cell.contentView addSubview:reminderTimer];
+            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        }
+        if (indexPath.row == 1) {
+            CGRect cellBounds = cell.bounds;
+            CGFloat textFieldBorder = 100;
+            cell.textLabel.text = @"提醒位置";
+            cell.textLabel.textColor = [colorForMarker markerColor];
+            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+            CGRect aRect = CGRectMake(textFieldBorder, 5.f, CGRectGetWidth(cellBounds)-(2*textFieldBorder), 31.f );
+            UILabel *selectedBeaconName = [[UILabel alloc] initWithFrame:aRect];
+            self.selectedBeaconNameLabe = selectedBeaconName;
+            selectedBeaconName.text = self.selectedBeaconName;
+            [cell.contentView addSubview:selectedBeaconName];
+        }
     }
-    if (indexPath.row == 1) {
-        CGRect cellBounds = cell.bounds;
-        CGFloat textFieldBorder = 100;
-        cell.textLabel.text = @"提醒位置";
-        cell.textLabel.textColor = [colorForMarker markerColor];
-        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-        CGRect aRect = CGRectMake(textFieldBorder, 5.f, CGRectGetWidth(cellBounds)-(2*textFieldBorder), 31.f );
-        UILabel *selectedBeaconName = [[UILabel alloc] initWithFrame:aRect];
-        selectedBeaconName.text = self.selectedBeaconName;
-        [cell.contentView addSubview:selectedBeaconName];
-    }
+
+
     
     // Configure the cell...
     
@@ -183,6 +217,7 @@
                  NSString *beaconName = [each objectForKey:@"name"];
                  if ([user isBeacon:thisBeacon SameWith:self.selectedBeacon]) {
                      self.selectedBeaconName = beaconName;
+                     self.selectedBeaconNameLabe.text = beaconName;
                      [self.tableView reloadData];
                  }
              }
@@ -192,6 +227,24 @@
          
          // Push the view controller.
          [self.navigationController pushViewController:detailViewController animated:YES];
+     }
+     if (indexPath.row == 2) {
+         graSelectTimeTableViewController *vc = [[graSelectTimeTableViewController alloc]  initWithNibName:@"graSelectTimeTableViewController" bundle:nil];
+         vc.reminderDict = self.reminderDict;
+         vc.timerSelected = ^(NSDictionary *selectedTimer){
+             NSMutableDictionary *fullInfo = self.reminderDict[@"fullInfo"];
+             if (fullInfo) {
+                 [fullInfo setValue:selectedTimer forKey:@"timer"];
+             }else{
+                 fullInfo = [NSMutableDictionary dictionaryWithDictionary:@{@"timer":selectedTimer}];
+             }
+             [self.reminderDict setValue:fullInfo forKey:@"fullInfo"];
+             self.selectedTimerString = selectedTimer[@"textPresent"];
+             self.selectedTimerLabel.text = self.selectedTimerString;
+             [self.tableView reloadData];
+         };
+         [self.navigationController pushViewController:vc animated:YES];
+
      }
  }
 
@@ -203,7 +256,11 @@
 {
     if (self.titleField.text && ![self.titleField.text isEqualToString:@""] && self.selectedBeacon) {
         iBeaconUser *user = [iBeaconUser sharedInstance];
-        [user AddRemindersWith:self.selectedBeacon with:self.titleField.text friends:@""];
+        if (self.reminderDict[@"fullInfo"]) {
+            [user AddRemindersWith:self.selectedBeacon with:self.titleField.text withFullInfo:self.reminderDict[@"fullInfo"]];
+        }else{
+            [user AddRemindersWith:self.selectedBeacon with:self.titleField.text friends:@""];
+        }
         [self.navigationController popViewControllerAnimated:YES];
     }
 }

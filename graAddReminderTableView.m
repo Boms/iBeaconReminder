@@ -8,6 +8,7 @@
 
 #import "graAddReminderTableView.h"
 #import "colorForMarker.h"
+#import "graSelectTimeTableViewController.h"
 @interface graAddReminderTableView ()
 @property (nonatomic, strong) UITextField *reminderTextField;
 @property (nonatomic, strong) NSString *friends;
@@ -62,7 +63,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 2;
+    return 3;
 }
 
 
@@ -131,6 +132,29 @@
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
 
+    if (indexPath.row == 2) {
+        CGRect cellBounds = cell.bounds;
+        CGFloat textFieldBorder = 100;
+        cell.textLabel.text = @"提醒于";
+        cell.textLabel.textColor = [colorForMarker markerColor];
+        CGRect aRect = CGRectMake(textFieldBorder, 5.f, CGRectGetWidth(cellBounds)-(2*textFieldBorder), 31.f );
+        UILabel *reminderTimer = [[UILabel alloc] initWithFrame:aRect];
+        if (self.reminderDict) {
+            NSDictionary *fullInfo = self.reminderDict[@"fullInfo"];
+            if (fullInfo) {
+                NSDictionary *reminderTimerInfo = fullInfo[@"timer"];
+                if (reminderTimerInfo) {
+                    NSString *reminderTimerInfoText = reminderTimerInfo[@"textPresent"];
+                    reminderTimer.text = reminderTimerInfoText;
+                }
+            }else{
+                reminderTimer.text = @"";
+            }
+        }
+        [cell.contentView addSubview:reminderTimer];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    }
+    
     
     // Configure the cell...
     
@@ -163,7 +187,12 @@
     
     if (self.reminderTextField.text && ![self.reminderTextField.text isEqualToString:@""]) {
         [self removeMySelf];
-        [user AddRemindersWith:self.myBeacon with:self.reminderTextField.text friends:self.friends];
+        if (self.reminderDict[@"fullInfo"]) {
+            [user AddRemindersWith:self.myBeacon with:self.reminderTextField.text withFullInfo:self.reminderDict[@"fullInfo"]];
+        }else{
+            [user AddRemindersWith:self.myBeacon with:self.reminderTextField.text friends:self.friends];
+        }
+
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
@@ -225,6 +254,23 @@
     // Create the next view controller.
     if (indexPath.row == 0) {
         [self.reminderTextField becomeFirstResponder];
+    }
+    
+    //select timer
+    if (indexPath.row == 2) {
+        graSelectTimeTableViewController *vc = [[graSelectTimeTableViewController alloc]  initWithNibName:@"graSelectTimeTableViewController" bundle:nil];
+        vc.reminderDict = self.reminderDict;
+        vc.timerSelected = ^(NSDictionary *selectedTimer){
+            NSDictionary *fullInfo = self.reminderDict[@"fullInfo"];
+            if (fullInfo) {
+                [fullInfo setValue:selectedTimer forKey:@"timer"];
+            }else{
+                fullInfo = @{@"timer":selectedTimer};
+            }
+            [self.reminderDict setValue:fullInfo forKey:@"fullInfo"];
+            [self.tableView reloadData];            
+        };
+        [self.navigationController pushViewController:vc animated:YES];
     }
 }
 

@@ -330,6 +330,7 @@
         NSDictionary *reminderDict = [reminderOfBeacon objectAtIndex:indexPath.row];
         NSString *reminder = [reminderDict objectForKey:@"reminder"];
         vc.reminder = reminder;
+        vc.reminderDict = reminderDict;
 
         [self.navigationController pushViewController:vc animated:YES];
     }else{
