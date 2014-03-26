@@ -79,7 +79,7 @@
                 cell.textLabel.text = @"上午";
                 break;
             case 2:
-                cell.textLabel.text = @"下午";
+                cell.textLabel.text = @"中午";
                 break;
 
             case 3:
@@ -154,22 +154,23 @@
     // Pass the selected object to the new view controller.
     
     // Push the view controller.
+    iBeaconUser *user = [iBeaconUser sharedInstance];
     if (indexPath.section == 0) {
         switch (indexPath.row) {
             case 0:
-                self.timerSelected(@{@"Standard":@"MORNING", @"textPresent":@"早上"});
+                self.timerSelected([user selectMorningTimer]);
                 break;
             case 1:
-                self.timerSelected(@{@"Standard":@"AM", @"textPresent":@"上午"});
+                self.timerSelected([user selectAMTimer]);
                 break;
             case 2:
-                self.timerSelected(@{@"Standard":@"NOON", @"textPresent":@"中午"});
+                self.timerSelected([user selectNoonTimer]);
                 break;
             case 3:
-                self.timerSelected(@{@"Standard":@"AFTERNOON", @"textPresent":@"下午"});
+                self.timerSelected([user selectAfterNoonTimer]);
                 break;
             case 4:
-                self.timerSelected(@{@"Standard":@"EVENING", @"textPresent":@"晚上"});
+                self.timerSelected([user selectEvevningTimer]);
                 break;
             default:
                 break;

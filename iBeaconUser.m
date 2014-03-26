@@ -421,6 +421,82 @@
     return nil;
 }
 
+-(NSDictionary *)selectMorningTimer
+{
+    return   @{@"Standard":@"MORNING", @"textPresent":@"早上"};
+}
+-(NSDictionary *)selectAMTimer
+{
+    return   @{@"Standard":@"AM", @"textPresent":@"上午"};
+}
+-(NSDictionary *)selectNoonTimer
+{
+    return   @{@"Standard":@"NOON", @"textPresent":@"中午"};
+}
+-(NSDictionary *)selectAfterNoonTimer
+{
+    return   @{@"Standard":@"AFTERNOON", @"textPresent":@"下午"};
+}
+-(NSDictionary *)selectEvevningTimer
+{
+    return   @{@"Standard":@"AFTERNOON", @"textPresent":@"晚上"};
+}
+
+-(BOOL)reminderHasTimer:(NSDictionary *)reminderDict
+{
+    NSDictionary *fullInfo = reminderDict[@"fullInfo"];
+    if (fullInfo) {
+        NSDictionary *timerobj = fullInfo[@"timer"];
+        if (timerobj) {
+            return YES;
+        }
+
+    }
+    return NO;
+}
+
+-(BOOL)timerRangeNeedToPush:(NSDictionary *)reminderDict
+{
+    NSDictionary *fullInfo = reminderDict[@"fullInfo"];
+    NSDictionary *timerobj = fullInfo[@"timer"];
+    NSString *selectedTimer = timerobj[@"Standard"];
+    NSDate *now = [NSDate date];
+    NSCalendar *calender = [NSCalendar currentCalendar];
+    NSDateComponents *component = [calender components:NSHourCalendarUnit fromDate:now];
+    if ([selectedTimer isEqualToString:@"MORNING"]) {
+        if (component.hour <= 9 && component.hour >= 7) {
+            return YES;
+        }
+        return NO;
+    }
+    if ([selectedTimer isEqualToString:@"AM"]) {
+        if (component.hour <= 12 && component.hour > 9) {
+            return YES;
+        }
+        return NO;
+    }
+    if ([selectedTimer isEqualToString:@"NOON"]) {
+        if (component.hour <= 13 && component.hour > 12) {
+            return YES;
+        }
+        return NO;
+    }
+    if ([selectedTimer isEqualToString:@"AFTERNOON"]) {
+        if (component.hour <= 18 && component.hour > 13) {
+            return YES;
+        }
+        return NO;
+    }
+    if ([selectedTimer isEqualToString:@"MORNING"]) {
+        if (component.hour <= 23 && component.hour >18 ) {
+            return YES;
+        }
+        return NO;
+    }
+    return NO;
+    
+}
+
 -(void) locationManager:(CLLocationManager *)manager didRangeBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region{
     for (CLBeacon *thisBeacon in beacons) {
         if (thisBeacon.rssi == 0) {
@@ -468,14 +544,25 @@
                             NSString *append = [@" in" stringByAppendingString:beaconName];
                             NSArray *todoList = [self findRemindersWith:eachBeacon];
                             for (NSDictionary *eachReminderDict in todoList) {
-                                NSString *eachReminder = [eachReminderDict objectForKey:@"reminder"];
-                                NSString *friends = [eachReminderDict objectForKey:@"friends"];
-                                eachReminder = [eachReminder stringByAppendingString:@" @"];
-                                if (friends) {
-                                    eachReminder = [eachReminder stringByAppendingString:friends];
+                                NSString *eachReminder = eachReminderDict[@"reminder"];
+                                NSString *friends = eachReminderDict[@"friends"];
+                                if ([self reminderHasTimer:eachReminderDict]) {
+                                    if ([self timerRangeNeedToPush:eachReminderDict]) {
+                                        eachReminder = [eachReminder stringByAppendingString:@" @"];
+                                        if (friends) {
+                                            eachReminder = [eachReminder stringByAppendingString:friends];
+                                        }
+                                        
+                                        [self pushLocal:[eachReminder stringByAppendingString:append]];
+                                    }
+                                }else{
+                                    eachReminder = [eachReminder stringByAppendingString:@" @"];
+                                    if (friends) {
+                                        eachReminder = [eachReminder stringByAppendingString:friends];
+                                    }
+                                    
+                                    [self pushLocal:[eachReminder stringByAppendingString:append]];
                                 }
-
-                                [self pushLocal:[eachReminder stringByAppendingString:append]];
                             }
                         }
                         [self.pushedBeacon addObject:eachBeacon];

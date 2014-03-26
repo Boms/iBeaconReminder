@@ -45,6 +45,13 @@
 -(void) removeNameForBeacon:(CLBeacon *)beaconOne;
 -(void)saveAllData;
 
+
+-(NSDictionary *)selectMorningTimer;
+-(NSDictionary *)selectAMTimer;
+-(NSDictionary *)selectNoonTimer;
+-(NSDictionary *)selectAfterNoonTimer;
+-(NSDictionary *)selectEvevningTimer;
+
 -(NSMutableArray *)findRemindersWith:(CLBeacon *)beaconOne;
 -(void)removeReminderWith:(CLBeacon *)beaconOne with:(NSString *)reminder;
 -(void)AddRemindersWith:(CLBeacon *)beaconOne with:(NSString *)reminder;
