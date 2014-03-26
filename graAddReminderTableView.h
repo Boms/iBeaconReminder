@@ -10,6 +10,6 @@
 #import "iBeaconUser.h"
 @interface graAddReminderTableView : UITableViewController<UITextFieldDelegate>
 @property (nonatomic, strong) NSString *reminder;
-@property (nonatomic, strong) NSDictionary *reminderDict;
+@property (nonatomic, strong) NSMutableDictionary *reminderDict;
 @property (nonatomic, strong) CLBeacon *myBeacon;
 @end

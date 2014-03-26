@@ -439,7 +439,7 @@
 }
 -(NSDictionary *)selectEvevningTimer
 {
-    return   @{@"Standard":@"AFTERNOON", @"textPresent":@"晚上"};
+    return   @{@"Standard":@"EVENING", @"textPresent":@"晚上"};
 }
 
 -(BOOL)reminderHasTimer:(NSDictionary *)reminderDict
@@ -487,7 +487,7 @@
         }
         return NO;
     }
-    if ([selectedTimer isEqualToString:@"MORNING"]) {
+    if ([selectedTimer isEqualToString:@"EVENING"]) {
         if (component.hour <= 23 && component.hour >18 ) {
             return YES;
         }

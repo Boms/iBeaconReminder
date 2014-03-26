@@ -36,6 +36,21 @@
     return self;
 }
 
+-(NSMutableArray *)namedBeacon
+{
+    if (!_namedBeacon) {
+        iBeaconUser *user = [iBeaconUser sharedInstance];
+        _myUser = user;
+        NSMutableArray *result = [[NSMutableArray alloc] init];
+        for (NSDictionary *eachBeaconName in user.namesOfBeacon) {
+            NSData *archieved = [eachBeaconName objectForKey:@"beacon"];
+            CLBeacon *beacon = [NSKeyedUnarchiver unarchiveObjectWithData:archieved];
+            [result addObject:beacon];
+        }
+        _namedBeacon = result;
+    }
+    return _namedBeacon;
+}
 
 - (void)viewDidLoad
 {
@@ -49,11 +64,7 @@
     iBeaconUser *user = [iBeaconUser sharedInstance];
     _myUser = user;
     [self.myUser stopMonitor];
-    for (NSDictionary *eachBeaconName in user.namesOfBeacon) {
-        NSData *archieved = [eachBeaconName objectForKey:@"beacon"];
-        CLBeacon *beacon = [NSKeyedUnarchiver unarchiveObjectWithData:archieved];
-        [self.namedBeacon addObject:beacon];
-    }
+
     UIBarButtonItem *btnItem =[[UIBarButtonItem alloc] initWithTitle:@"设备管理" style:UIBarButtonItemStyleBordered target:self action:@selector(showBeaconManagement)];
     [btnItem setTitle:@"位置管理"];
     self.navigationItem.rightBarButtonItem = btnItem;
@@ -73,6 +84,10 @@
 {
     [super viewWillAppear:animated];
     [self.tableView reloadData];
+
+}
+
+-(void)viewDidAppear:(BOOL)animated{
     iBeaconUser *user = [iBeaconUser sharedInstance];
     if ([user.namesOfBeacon count] == 0) {
         [self.composeButton setEnabled:NO];
@@ -80,10 +95,7 @@
         [self.composeButton setEnabled:YES];
     }
     self.navigationController.toolbarHidden = NO;
-}
-
--(void)viewDidAppear:(BOOL)animated{
-    iBeaconUser *user = [iBeaconUser sharedInstance];
+    self.namedBeacon = nil;
     _myUser = user;
     [self.myUser startMonitorWithFoundNewBeacon:^(CLBeacon *foundOne){
         ;
@@ -143,13 +155,7 @@
     return _unamedBeacon;
 }
 
--(NSMutableArray *)namedBeacon
-{
-    if(_namedBeacon == nil){
-        _namedBeacon = [[NSMutableArray alloc] init];
-    }
-    return _namedBeacon;
-}
+
 #pragma mark button action
 -(void)showBeaconManagement
 {
@@ -330,7 +336,7 @@
         NSDictionary *reminderDict = [reminderOfBeacon objectAtIndex:indexPath.row];
         NSString *reminder = [reminderDict objectForKey:@"reminder"];
         vc.reminder = reminder;
-        vc.reminderDict = reminderDict;
+        vc.reminderDict = [NSMutableDictionary dictionaryWithDictionary:reminderDict];
 
         [self.navigationController pushViewController:vc animated:YES];
     }else{

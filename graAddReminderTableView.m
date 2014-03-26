@@ -12,6 +12,7 @@
 @interface graAddReminderTableView ()
 @property (nonatomic, strong) UITextField *reminderTextField;
 @property (nonatomic, strong) NSString *friends;
+@property (nonatomic, strong) UILabel *selectTimeLabel;
 @end
 
 @implementation graAddReminderTableView
@@ -112,6 +113,18 @@
             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
             return cell;
         }
+        if (indexPath.row == 2) {
+            CGRect cellBounds = cell.bounds;
+            CGFloat textFieldBorder = 100;
+            cell.textLabel.text = @"提醒于";
+            cell.textLabel.textColor = [colorForMarker markerColor];
+            CGRect aRect = CGRectMake(textFieldBorder, 5.f, CGRectGetWidth(cellBounds)-(2*textFieldBorder), 31.f );
+            UILabel *reminderTimer = [[UILabel alloc] initWithFrame:aRect];
+            self.selectTimeLabel = reminderTimer;
+            [cell.contentView addSubview:reminderTimer];
+            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        }
+
     }
     if (indexPath.row == 1) {
         CGRect cellBounds = cell.bounds;
@@ -131,29 +144,21 @@
         [cell.contentView addSubview:friendsLabel];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
-
     if (indexPath.row == 2) {
-        CGRect cellBounds = cell.bounds;
-        CGFloat textFieldBorder = 100;
-        cell.textLabel.text = @"提醒于";
-        cell.textLabel.textColor = [colorForMarker markerColor];
-        CGRect aRect = CGRectMake(textFieldBorder, 5.f, CGRectGetWidth(cellBounds)-(2*textFieldBorder), 31.f );
-        UILabel *reminderTimer = [[UILabel alloc] initWithFrame:aRect];
         if (self.reminderDict) {
             NSDictionary *fullInfo = self.reminderDict[@"fullInfo"];
             if (fullInfo) {
                 NSDictionary *reminderTimerInfo = fullInfo[@"timer"];
                 if (reminderTimerInfo) {
                     NSString *reminderTimerInfoText = reminderTimerInfo[@"textPresent"];
-                    reminderTimer.text = reminderTimerInfoText;
+                    self.selectTimeLabel.text = reminderTimerInfoText;
                 }
             }else{
-                reminderTimer.text = @"";
+                self.selectTimeLabel.text = @"";
             }
         }
-        [cell.contentView addSubview:reminderTimer];
-        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
+
     
     
     // Configure the cell...

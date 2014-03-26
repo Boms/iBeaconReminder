@@ -187,7 +187,7 @@
         NSString *reminderString = [reminderDict objectForKey:@"reminder"];
         vc.reminder = reminderString;
         vc.myBeacon = self.myBeacon;
-        vc.reminderDict = reminderDict;
+        vc.reminderDict = [NSMutableDictionary dictionaryWithDictionary:reminderDict];
         vc.title = [@"in " stringByAppendingString:[user findNameByBeacon:self.myBeacon]];
         [self.navigationController pushViewController:vc animated:YES];
     return;
