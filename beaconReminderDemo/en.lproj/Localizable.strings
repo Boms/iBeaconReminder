@@ -16,10 +16,21 @@
 "WHAT" = "What";
 "WHEN" = "When";
 "WHERE" = "Where";
+"WHO" = "Who";
+"INVITE" = "Invite";
 "NEWREMINDER_TITLE"  = "New reminder";
 
 //predefine beacon Name
-"HANDBAG" = "hand bag";
+"ALLTIME" = "Hand bag";
 "HOME" = "Home";
 "OFFICE" = "Office";
 "CAR" = "Car";
+//nearBeacon show
+"BEACONMANAGEMENT" = "Edit location";
+"FOUNDNEWDEVICE" = "New Device";
+"ADDFIRSTREMINDER" = "Add 1st reminder";
+//new beacon management
+"WHERE_BEACON_IS" = "where is the device located?";
+"FAR" = "Far";
+"NEAR" = "Near";
+"IMM" = "Immediate";

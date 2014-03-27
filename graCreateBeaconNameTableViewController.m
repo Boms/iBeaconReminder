@@ -114,21 +114,21 @@
     
     switch (thisOne.proximity) {
         case CLProximityFar:
-            distance = @"                                远";
+            distance = [@"                                " stringByAppendingString:NSLocalizedString(@"FAR", @"the distance of beacon")];
             break;
         case CLProximityNear:
-            distance = @"               近";
+            distance = [@"               " stringByAppendingString:NSLocalizedString(@"NEAR", @"the distance of beacon")];
             break;
         case CLProximityImmediate:
-            distance = @" 贴住";
+            distance = [@" " stringByAppendingString:NSLocalizedString(@"IMM", @"closest to iPhone")];
             break;
         default:
             break;
     }
     
 
-    cell.textLabel.text = @"起个名字吧";
-    cell.detailTextLabel.text = [uuid stringByAppendingString:distance];
+    cell.textLabel.text = uuid;
+    cell.detailTextLabel.text = distance;
     return cell;
 }
 

@@ -55,7 +55,7 @@
 -(NSString *)iPhone
 {
 //    return [[NSString emojizedStringWithString:@":iphone:"] stringByAppendingString: @"  手机"];
-    return [NSLocalizedString(@"HANDBAG", @"all time reminder") stringByAppendingString:[NSString emojizedStringWithString:@":handbag:"]];
+    return [NSLocalizedString(@"ALLTIME", @"all time reminder") stringByAppendingString:[NSString emojizedStringWithString:@":handbag:"]];
 }
 
 -(NSString *)home

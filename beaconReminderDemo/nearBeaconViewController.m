@@ -65,8 +65,7 @@
     _myUser = user;
     [self.myUser stopMonitor];
 
-    UIBarButtonItem *btnItem =[[UIBarButtonItem alloc] initWithTitle:@"设备管理" style:UIBarButtonItemStyleBordered target:self action:@selector(showBeaconManagement)];
-    [btnItem setTitle:@"位置管理"];
+    UIBarButtonItem *btnItem =[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"BEACONMANAGEMENT", @"edit for location") style:UIBarButtonItemStyleBordered target:self action:@selector(showBeaconManagement)];
     self.navigationItem.rightBarButtonItem = btnItem;
     
     UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(createNewReminder)];
@@ -194,7 +193,7 @@
         NSString *beaconLocaton = [user findNameByBeacon:thisOne];
         return beaconLocaton;
     }else{
-        return @"新设备";
+        return NSLocalizedString(@"FOUNDNEWDEVICE", @"found new device title");
     }
 }
 
@@ -217,6 +216,9 @@
         thisOne = self.namedBeacon[section];
         NSMutableArray *reminderOfBeacon = [user findRemindersWith:thisOne];
         NSInteger count = [reminderOfBeacon count];
+        if (count == 0) {
+            return 1;
+        }
         return count;
     }else{
         return 1;
@@ -236,8 +238,13 @@
     iBeaconUser *user = [iBeaconUser sharedInstance];
     
     if (indexPath.section < [self.namedBeacon count]) {
+
         thisOne = self.namedBeacon[indexPath.section];
         NSMutableArray *reminderOfBeacon = [user findRemindersWith:thisOne];
+        if ([reminderOfBeacon count] == 0) {
+            cell.textLabel.text = NSLocalizedString(@"ADDFIRSTREMINDER", @"encourage user to input 1st reminder");
+            return cell;
+        }
         NSDictionary *reminderDict = [reminderOfBeacon objectAtIndex:indexPath.row];
         NSString *reminder = [reminderDict objectForKey:@"reminder"];
         cell.textLabel.text = reminder;
@@ -326,15 +333,19 @@
         NSMutableArray *reminderOfBeacon = [user findRemindersWith:selectedBeacon];
         graAddReminderTableView *vc  = [[graAddReminderTableView alloc] initWithNibName:@"graAddReminderTableView" bundle:nil];
         vc.myBeacon = selectedBeacon;
-        NSDictionary *reminderDict = [reminderOfBeacon objectAtIndex:indexPath.row];
-        NSString *reminder = [reminderDict objectForKey:@"reminder"];
-        vc.reminder = reminder;
-        vc.reminderDict = [NSMutableDictionary dictionaryWithDictionary:reminderDict];
 
+        if ([reminderOfBeacon count]) {
+            NSDictionary *reminderDict = [reminderOfBeacon objectAtIndex:indexPath.row];
+            NSString *reminder = [reminderDict objectForKey:@"reminder"];
+            vc.reminder = reminder;
+            vc.reminderDict = [NSMutableDictionary dictionaryWithDictionary:reminderDict];
+        }
+        
         [self.navigationController pushViewController:vc animated:YES];
     }else{
         thisOne = self.unamedBeacon[indexPath.row];
         graCreateBeaconNameTableViewController *vc = [[graCreateBeaconNameTableViewController alloc] initWithNibName:@"graCreateBeaconNameTableViewController" bundle:nil];
+        vc.title = NSLocalizedString(@"WHERE_BEACON_IS", @"title for select location for beacon");
         [self.navigationController pushViewController:vc animated:YES];
         return;
     }

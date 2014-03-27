@@ -13,13 +13,26 @@
 "OTHERCALENDER" = "另选时间";
 
 //create reminder table view controller
-"WHAT" =  "标题";
-"WHEN" = "提醒于";
-"WHERE" = "提醒位置";
+"WHAT" =  "何事";
+"WHEN" = "何时";
+"WHERE" = "何处";
+"WHO" = "何人";
+"INVITE" = "邀请";
 "NEWREMINDER_TITLE"  = "创建新提醒";
 
 //predefine beacon Name
-"HANDBAG" = "手包";
-"HOME" = "回家";
-"OFFICE" = "上班";
-"CAR" = "开车";
+"ALLTIME" = "钱包";
+"HOME" = "家里";
+"OFFICE" = "公司";
+"CAR" = "汽车";
+
+//nearBeacon show
+"BEACONMANAGEMENT" = "编辑位置";
+"FOUNDNEWDEVICE" = "新设备";
+"ADDFIRSTREMINDER" = "新建一个";
+
+//new beacon management
+"WHERE_BEACON_IS" = "设备放在哪里";
+"FAR" = "远";
+"NEAR" = "近";
+"IMM" = "贴住";

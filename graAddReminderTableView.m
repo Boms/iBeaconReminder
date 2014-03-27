@@ -80,7 +80,7 @@
             
             CGRect cellBounds = cell.bounds;
             CGFloat textFieldBorder = 100;
-            cell.textLabel.text = @"标题";
+            cell.textLabel.text = NSLocalizedString(@"WHAT", @"what to do");
             cell.textLabel.textColor = [colorForMarker markerColor];
             CGFloat widthOfTextLabel = CGRectGetWidth(cell.textLabel.frame);
             // Don't align the field exactly in the vertical middle, as the text
@@ -102,7 +102,7 @@
             UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(okButtonAction)];
             UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonAction)];
             UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-            UIBarButtonItem *inviteFriendsButton = [[UIBarButtonItem alloc] initWithTitle:@"邀请" style:UIBarButtonItemStylePlain target:self action:@selector(inviteFriendsButtonAction)];
+            UIBarButtonItem *inviteFriendsButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"INVITE", @"invite others") style:UIBarButtonItemStylePlain target:self action:@selector(inviteFriendsButtonAction)];
             
             [doneButtonbar setItems:@[flexSpace, inviteFriendsButton, doneButton, cancelButton]];
             titleField.inputAccessoryView = doneButtonbar;
@@ -116,7 +116,7 @@
         if (indexPath.row == 2) {
             CGRect cellBounds = cell.bounds;
             CGFloat textFieldBorder = 100;
-            cell.textLabel.text = @"提醒于";
+            cell.textLabel.text = NSLocalizedString(@"WHEN", @"effective timer for reminder");
             cell.textLabel.textColor = [colorForMarker markerColor];
             CGRect aRect = CGRectMake(textFieldBorder, 5.f, CGRectGetWidth(cellBounds)-(2*textFieldBorder), 31.f );
             UILabel *reminderTimer = [[UILabel alloc] initWithFrame:aRect];
@@ -129,7 +129,7 @@
     if (indexPath.row == 1) {
         CGRect cellBounds = cell.bounds;
         CGFloat textFieldBorder = 100;
-        cell.textLabel.text = @"邀请朋友";
+        cell.textLabel.text = NSLocalizedString(@"WHO", @"invited people");
         cell.textLabel.textColor = [colorForMarker markerColor];
         CGRect aRect = CGRectMake(textFieldBorder, 5.f, CGRectGetWidth(cellBounds)-(2*textFieldBorder), 31.f );
         UILabel *friendsLabel = [[UILabel alloc] initWithFrame:aRect];
