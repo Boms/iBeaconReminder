@@ -29,8 +29,13 @@
 "BEACONMANAGEMENT" = "Edit location";
 "FOUNDNEWDEVICE" = "New Device";
 "ADDFIRSTREMINDER" = "Add 1st reminder";
+"LISTS" = "Lists";
+"AT" = "@";
 //new beacon management
 "WHERE_BEACON_IS" = "where is the device located?";
 "FAR" = "Far";
 "NEAR" = "Near";
 "IMM" = "Immediate";
+
+//in iBeacon user
+"READMESSAGE" = "open reminder";

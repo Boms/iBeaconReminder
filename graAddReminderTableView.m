@@ -35,6 +35,13 @@
     UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     self.toolbarItems = @[flexSpace, saveBtn, flexSpace, cancelBtn, flexSpace];
     self.navigationController.toolbarHidden = NO;
+    
+    
+    iBeaconUser *user = [iBeaconUser sharedInstance];
+    CLBeacon *thisOne = self.myBeacon;
+    NSString *beaconLocaton = [user findNameByBeacon:thisOne];
+    self.title =  [NSLocalizedString(@"AT", @"prefix word for location") stringByAppendingString:beaconLocaton];
+
 
 
 }

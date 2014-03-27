@@ -390,7 +390,7 @@
     if(localNotif){
 //        [[UIApplication sharedApplication] cancelAllLocalNotifications];
         localNotif.alertBody = content;
-        localNotif.alertAction = @"Read Message";
+        localNotif.alertAction = NSLocalizedString(@"READMESSAGE", @"check the reminder");
         localNotif.applicationIconBadgeNumber = 1;
 //        localNotif.soundName = @"alarmsound.caf";
         [[UIApplication sharedApplication] presentLocalNotificationNow:localNotif];

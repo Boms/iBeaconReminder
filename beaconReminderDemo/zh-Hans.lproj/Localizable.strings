@@ -30,9 +30,13 @@
 "BEACONMANAGEMENT" = "编辑位置";
 "FOUNDNEWDEVICE" = "新设备";
 "ADDFIRSTREMINDER" = "新建一个";
-
+"LISTS" = "全部列表";
+"AT" = "在";
 //new beacon management
 "WHERE_BEACON_IS" = "设备放在哪里";
 "FAR" = "远";
 "NEAR" = "近";
 "IMM" = "贴住";
+
+//in iBeacon user
+"READMESSAGE" = "查看详细内容";

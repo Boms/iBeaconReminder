@@ -68,10 +68,11 @@
     UIBarButtonItem *btnItem =[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"BEACONMANAGEMENT", @"edit for location") style:UIBarButtonItemStyleBordered target:self action:@selector(showBeaconManagement)];
     self.navigationItem.rightBarButtonItem = btnItem;
     
-    UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(createNewReminder)];
+    UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(createNewReminder)];
     self.composeButton = btn;
     UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     self.toolbarItems = @[flexSpace, btn, flexSpace];
+    self.title = NSLocalizedString(@"LISTS", @"this page title");
 
 //    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
 //        self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -191,7 +192,7 @@
         iBeaconUser *user = [iBeaconUser sharedInstance];
         CLBeacon *thisOne = self.namedBeacon[section];
         NSString *beaconLocaton = [user findNameByBeacon:thisOne];
-        return beaconLocaton;
+        return [NSLocalizedString(@"AT", @"prefix word for location") stringByAppendingString:beaconLocaton];
     }else{
         return NSLocalizedString(@"FOUNDNEWDEVICE", @"found new device title");
     }
