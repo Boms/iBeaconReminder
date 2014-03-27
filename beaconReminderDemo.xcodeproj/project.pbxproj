@@ -1,1811 +1,665 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>archiveVersion</key>
-	<string>1</string>
-	<key>classes</key>
-	<dict/>
-	<key>objectVersion</key>
-	<string>46</string>
-	<key>objects</key>
-	<dict>
-		<key>075D806821694603857606F1</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Copy Pods Resources</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>"${SRCROOT}/Pods/Pods-resources.sh"
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-		<key>16412E80829D4CC98CC60BF8</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Check Pods Manifest.lock</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
-if [[ $? != 0 ]] ; then
-    cat &lt;&lt; EOM
-error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
-EOM
-    exit 1
-fi
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-		<key>854F8B6652E74185835D0ACE</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>archive.ar</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>libPods.a</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>B747038253E44ED494166B04</key>
-		<dict>
-			<key>fileRef</key>
-			<string>854F8B6652E74185835D0ACE</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F11AD25BBEE14CE7A9C5E624</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>name</key>
-			<string>Pods.xcconfig</string>
-			<key>path</key>
-			<string>Pods/Pods.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F21111E118DC2CA600CDE562</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>graCreateBeaconNameTableViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F21111E218DC2CA600CDE562</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>graCreateBeaconNameTableViewController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F21111E318DC2CA600CDE562</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>path</key>
-			<string>graCreateBeaconNameTableViewController.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F21111E418DC2CA600CDE562</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F21111E218DC2CA600CDE562</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F21111E518DC2CA600CDE562</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F21111E318DC2CA600CDE562</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F214B28218DBCE420028286F</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>graCreateReminderTableViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F214B28318DBCE420028286F</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>graCreateReminderTableViewController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F214B28418DBCE420028286F</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>path</key>
-			<string>graCreateReminderTableViewController.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F214B28518DBCE420028286F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F214B28318DBCE420028286F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F214B28618DBCE420028286F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F214B28418DBCE420028286F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F21FA5D918E2A5A800A06FE8</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>graSelectTimeTableViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F21FA5DA18E2A5A800A06FE8</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>graSelectTimeTableViewController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F21FA5DB18E2A5A800A06FE8</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>path</key>
-			<string>graSelectTimeTableViewController.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F21FA5DC18E2A5A800A06FE8</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F21FA5DA18E2A5A800A06FE8</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F21FA5DD18E2A5A800A06FE8</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F21FA5DB18E2A5A800A06FE8</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F21FA5DE18E2B24B00A06FE8</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>reminderExtInfo.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F21FA5DF18E2B24B00A06FE8</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>reminderExtInfo.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F21FA5E018E2B24B00A06FE8</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F21FA5DF18E2B24B00A06FE8</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F260073018DA7D4A00637821</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>graBeaconManagerTableViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F260073118DA7D4A00637821</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>graBeaconManagerTableViewController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F260073218DA7D4A00637821</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>path</key>
-			<string>graBeaconManagerTableViewController.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F260073318DA7D4A00637821</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F260073118DA7D4A00637821</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F260073418DA7D4A00637821</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F260073218DA7D4A00637821</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F26E872018D9DF2500A8D55E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>selectNameForBeaconTableViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F26E872118D9DF2500A8D55E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>selectNameForBeaconTableViewController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F26E872218D9DF2500A8D55E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>path</key>
-			<string>selectNameForBeaconTableViewController.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F26E872318D9DF2500A8D55E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F26E872118D9DF2500A8D55E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F26E872418D9DF2500A8D55E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F26E872218D9DF2500A8D55E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F28C60E218E122A700D64DE6</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>graSelectBeaconTableViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F28C60E318E122A700D64DE6</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>graSelectBeaconTableViewController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F28C60E418E122A700D64DE6</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>path</key>
-			<string>graSelectBeaconTableViewController.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F28C60E518E122A700D64DE6</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F28C60E318E122A700D64DE6</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F28C60E618E122A700D64DE6</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F28C60E418E122A700D64DE6</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F28C60E718E149BF00D64DE6</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>graAddReminderTableView.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F28C60E818E149BF00D64DE6</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>graAddReminderTableView.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F28C60E918E149BF00D64DE6</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>path</key>
-			<string>graAddReminderTableView.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F28C60EA18E149BF00D64DE6</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F28C60E818E149BF00D64DE6</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F28C60EB18E149BF00D64DE6</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F28C60E918E149BF00D64DE6</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F28C60EC18E15C0D00D64DE6</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>colorForMarker.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F28C60ED18E15C0D00D64DE6</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>colorForMarker.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F28C60EE18E15C0D00D64DE6</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F28C60ED18E15C0D00D64DE6</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F2EE4AD418D693DC00E5EEE6</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F2EE4B2818D6947600E5EEE6</string>
-				<string>F2EE4B1518D6941100E5EEE6</string>
-				<string>F2EE4AE618D693DC00E5EEE6</string>
-				<string>F2EE4B0518D693DC00E5EEE6</string>
-				<string>F2EE4ADF18D693DC00E5EEE6</string>
-				<string>F2EE4ADE18D693DC00E5EEE6</string>
-				<string>F11AD25BBEE14CE7A9C5E624</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F2EE4AD518D693DC00E5EEE6</key>
-		<dict>
-			<key>attributes</key>
-			<dict>
-				<key>CLASSPREFIX</key>
-				<string>gra</string>
-				<key>LastUpgradeCheck</key>
-				<string>0510</string>
-				<key>ORGANIZATIONNAME</key>
-				<string>li lin</string>
-				<key>TargetAttributes</key>
-				<dict>
-					<key>F2EE4ADC18D693DC00E5EEE6</key>
-					<dict>
-						<key>DevelopmentTeam</key>
-						<string>29T9RVU57K</string>
-					</dict>
-					<key>F2EE4AFD18D693DC00E5EEE6</key>
-					<dict>
-						<key>TestTargetID</key>
-						<string>F2EE4ADC18D693DC00E5EEE6</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>buildConfigurationList</key>
-			<string>F2EE4AD818D693DC00E5EEE6</string>
-			<key>compatibilityVersion</key>
-			<string>Xcode 3.2</string>
-			<key>developmentRegion</key>
-			<string>English</string>
-			<key>hasScannedForEncodings</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXProject</string>
-			<key>knownRegions</key>
-			<array>
-				<string>en</string>
-				<string>Base</string>
-			</array>
-			<key>mainGroup</key>
-			<string>F2EE4AD418D693DC00E5EEE6</string>
-			<key>productRefGroup</key>
-			<string>F2EE4ADE18D693DC00E5EEE6</string>
-			<key>projectDirPath</key>
-			<string></string>
-			<key>projectReferences</key>
-			<array/>
-			<key>projectRoot</key>
-			<string></string>
-			<key>targets</key>
-			<array>
-				<string>F2EE4ADC18D693DC00E5EEE6</string>
-				<string>F2EE4AFD18D693DC00E5EEE6</string>
-			</array>
-		</dict>
-		<key>F2EE4AD818D693DC00E5EEE6</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>F2EE4B0D18D693DC00E5EEE6</string>
-				<string>F2EE4B0E18D693DC00E5EEE6</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>F2EE4AD918D693DC00E5EEE6</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>F2EE4AED18D693DC00E5EEE6</string>
-				<string>F28C60EE18E15C0D00D64DE6</string>
-				<string>F2EE4AF118D693DC00E5EEE6</string>
-				<string>F2EE4B2C18D6964700E5EEE6</string>
-				<string>F28C60E518E122A700D64DE6</string>
-				<string>F260073318DA7D4A00637821</string>
-				<string>F214B28518DBCE420028286F</string>
-				<string>F2EE4B1F18D6941900E5EEE6</string>
-				<string>F2EE4AF718D693DC00E5EEE6</string>
-				<string>F21FA5DC18E2A5A800A06FE8</string>
-				<string>F26E872318D9DF2500A8D55E</string>
-				<string>F21111E418DC2CA600CDE562</string>
-				<string>F2EE4B2118D6941900E5EEE6</string>
-				<string>F28C60EA18E149BF00D64DE6</string>
-				<string>F2EE4B2718D6946F00E5EEE6</string>
-				<string>F21FA5E018E2B24B00A06FE8</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>F2EE4ADA18D693DC00E5EEE6</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>F2EE4AE318D693DC00E5EEE6</string>
-				<string>F2EE4AE518D693DC00E5EEE6</string>
-				<string>F2EE4AE118D693DC00E5EEE6</string>
-				<string>B747038253E44ED494166B04</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>F2EE4ADB18D693DC00E5EEE6</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>F2EE4AF918D693DC00E5EEE6</string>
-				<string>F2EE4B2018D6941900E5EEE6</string>
-				<string>F260073418DA7D4A00637821</string>
-				<string>F26E872418D9DF2500A8D55E</string>
-				<string>F2EE4B2D18D6964700E5EEE6</string>
-				<string>F21FA5DD18E2A5A800A06FE8</string>
-				<string>F28C60EB18E149BF00D64DE6</string>
-				<string>F21111E518DC2CA600CDE562</string>
-				<string>F214B28618DBCE420028286F</string>
-				<string>F28C60E618E122A700D64DE6</string>
-				<string>F2EE4AEB18D693DC00E5EEE6</string>
-				<string>F2EE4AF418D693DC00E5EEE6</string>
-				<string>F2EE4B2218D6941900E5EEE6</string>
-			</array>
-			<key>isa</key>
-			<string>PBXResourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>F2EE4ADC18D693DC00E5EEE6</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>F2EE4B0F18D693DC00E5EEE6</string>
-			<key>buildPhases</key>
-			<array>
-				<string>16412E80829D4CC98CC60BF8</string>
-				<string>F2EE4AD918D693DC00E5EEE6</string>
-				<string>F2EE4ADA18D693DC00E5EEE6</string>
-				<string>F2EE4ADB18D693DC00E5EEE6</string>
-				<string>075D806821694603857606F1</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>beaconReminderDemo</string>
-			<key>productName</key>
-			<string>beaconReminderDemo</string>
-			<key>productReference</key>
-			<string>F2EE4ADD18D693DC00E5EEE6</string>
-			<key>productType</key>
-			<string>com.apple.product-type.application</string>
-		</dict>
-		<key>F2EE4ADD18D693DC00E5EEE6</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.application</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>beaconReminderDemo.app</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>F2EE4ADE18D693DC00E5EEE6</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F2EE4ADD18D693DC00E5EEE6</string>
-				<string>F2EE4AFE18D693DC00E5EEE6</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Products</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F2EE4ADF18D693DC00E5EEE6</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F2EE4AE018D693DC00E5EEE6</string>
-				<string>F2EE4AE218D693DC00E5EEE6</string>
-				<string>F2EE4AE418D693DC00E5EEE6</string>
-				<string>F2EE4AFF18D693DC00E5EEE6</string>
-				<string>854F8B6652E74185835D0ACE</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Frameworks</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F2EE4AE018D693DC00E5EEE6</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>Foundation.framework</string>
-			<key>path</key>
-			<string>System/Library/Frameworks/Foundation.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>F2EE4AE118D693DC00E5EEE6</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F2EE4AE018D693DC00E5EEE6</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F2EE4AE218D693DC00E5EEE6</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>CoreGraphics.framework</string>
-			<key>path</key>
-			<string>System/Library/Frameworks/CoreGraphics.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>F2EE4AE318D693DC00E5EEE6</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F2EE4AE218D693DC00E5EEE6</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F2EE4AE418D693DC00E5EEE6</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>UIKit.framework</string>
-			<key>path</key>
-			<string>System/Library/Frameworks/UIKit.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>F2EE4AE518D693DC00E5EEE6</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F2EE4AE418D693DC00E5EEE6</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F2EE4AE618D693DC00E5EEE6</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F2EE4B2918D6964700E5EEE6</string>
-				<string>F2EE4B2A18D6964700E5EEE6</string>
-				<string>F2EE4B2B18D6964700E5EEE6</string>
-				<string>F2EE4AEF18D693DC00E5EEE6</string>
-				<string>F2EE4AF018D693DC00E5EEE6</string>
-				<string>F2EE4AF218D693DC00E5EEE6</string>
-				<string>F2EE4AF518D693DC00E5EEE6</string>
-				<string>F2EE4AF618D693DC00E5EEE6</string>
-				<string>F2EE4AF818D693DC00E5EEE6</string>
-				<string>F2EE4AE718D693DC00E5EEE6</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>beaconReminderDemo</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F2EE4AE718D693DC00E5EEE6</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F2EE4AE818D693DC00E5EEE6</string>
-				<string>F2EE4AE918D693DC00E5EEE6</string>
-				<string>F2EE4AEC18D693DC00E5EEE6</string>
-				<string>F2EE4AEE18D693DC00E5EEE6</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Supporting Files</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F2EE4AE818D693DC00E5EEE6</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>beaconReminderDemo-Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F2EE4AE918D693DC00E5EEE6</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F2EE4AEA18D693DC00E5EEE6</string>
-			</array>
-			<key>isa</key>
-			<string>PBXVariantGroup</string>
-			<key>name</key>
-			<string>InfoPlist.strings</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F2EE4AEA18D693DC00E5EEE6</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.strings</string>
-			<key>name</key>
-			<string>en</string>
-			<key>path</key>
-			<string>en.lproj/InfoPlist.strings</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F2EE4AEB18D693DC00E5EEE6</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F2EE4AE918D693DC00E5EEE6</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F2EE4AEC18D693DC00E5EEE6</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>main.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F2EE4AED18D693DC00E5EEE6</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F2EE4AEC18D693DC00E5EEE6</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F2EE4AEE18D693DC00E5EEE6</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>beaconReminderDemo-Prefix.pch</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F2EE4AEF18D693DC00E5EEE6</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>graAppDelegate.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F2EE4AF018D693DC00E5EEE6</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>graAppDelegate.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F2EE4AF118D693DC00E5EEE6</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F2EE4AF018D693DC00E5EEE6</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F2EE4AF218D693DC00E5EEE6</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F2EE4AF318D693DC00E5EEE6</string>
-			</array>
-			<key>isa</key>
-			<string>PBXVariantGroup</string>
-			<key>name</key>
-			<string>Main.storyboard</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F2EE4AF318D693DC00E5EEE6</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.storyboard</string>
-			<key>name</key>
-			<string>Base</string>
-			<key>path</key>
-			<string>Base.lproj/Main.storyboard</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F2EE4AF418D693DC00E5EEE6</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F2EE4AF218D693DC00E5EEE6</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F2EE4AF518D693DC00E5EEE6</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>graViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F2EE4AF618D693DC00E5EEE6</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>graViewController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F2EE4AF718D693DC00E5EEE6</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F2EE4AF618D693DC00E5EEE6</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F2EE4AF818D693DC00E5EEE6</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>folder.assetcatalog</string>
-			<key>path</key>
-			<string>Images.xcassets</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F2EE4AF918D693DC00E5EEE6</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F2EE4AF818D693DC00E5EEE6</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F2EE4AFA18D693DC00E5EEE6</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>F2EE4B0C18D693DC00E5EEE6</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>F2EE4AFB18D693DC00E5EEE6</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>F2EE4B0018D693DC00E5EEE6</string>
-				<string>F2EE4B0218D693DC00E5EEE6</string>
-				<string>F2EE4B0118D693DC00E5EEE6</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>F2EE4AFC18D693DC00E5EEE6</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>F2EE4B0A18D693DC00E5EEE6</string>
-			</array>
-			<key>isa</key>
-			<string>PBXResourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>F2EE4AFD18D693DC00E5EEE6</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>F2EE4B1218D693DC00E5EEE6</string>
-			<key>buildPhases</key>
-			<array>
-				<string>F2EE4AFA18D693DC00E5EEE6</string>
-				<string>F2EE4AFB18D693DC00E5EEE6</string>
-				<string>F2EE4AFC18D693DC00E5EEE6</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array>
-				<string>F2EE4B0418D693DC00E5EEE6</string>
-			</array>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>beaconReminderDemoTests</string>
-			<key>productName</key>
-			<string>beaconReminderDemoTests</string>
-			<key>productReference</key>
-			<string>F2EE4AFE18D693DC00E5EEE6</string>
-			<key>productType</key>
-			<string>com.apple.product-type.bundle.unit-test</string>
-		</dict>
-		<key>F2EE4AFE18D693DC00E5EEE6</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.cfbundle</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>beaconReminderDemoTests.xctest</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>F2EE4AFF18D693DC00E5EEE6</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>XCTest.framework</string>
-			<key>path</key>
-			<string>Library/Frameworks/XCTest.framework</string>
-			<key>sourceTree</key>
-			<string>DEVELOPER_DIR</string>
-		</dict>
-		<key>F2EE4B0018D693DC00E5EEE6</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F2EE4AFF18D693DC00E5EEE6</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F2EE4B0118D693DC00E5EEE6</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F2EE4AE018D693DC00E5EEE6</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F2EE4B0218D693DC00E5EEE6</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F2EE4AE418D693DC00E5EEE6</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F2EE4B0318D693DC00E5EEE6</key>
-		<dict>
-			<key>containerPortal</key>
-			<string>F2EE4AD518D693DC00E5EEE6</string>
-			<key>isa</key>
-			<string>PBXContainerItemProxy</string>
-			<key>proxyType</key>
-			<string>1</string>
-			<key>remoteGlobalIDString</key>
-			<string>F2EE4ADC18D693DC00E5EEE6</string>
-			<key>remoteInfo</key>
-			<string>beaconReminderDemo</string>
-		</dict>
-		<key>F2EE4B0418D693DC00E5EEE6</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXTargetDependency</string>
-			<key>target</key>
-			<string>F2EE4ADC18D693DC00E5EEE6</string>
-			<key>targetProxy</key>
-			<string>F2EE4B0318D693DC00E5EEE6</string>
-		</dict>
-		<key>F2EE4B0518D693DC00E5EEE6</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F2EE4B0B18D693DC00E5EEE6</string>
-				<string>F2EE4B0618D693DC00E5EEE6</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>beaconReminderDemoTests</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F2EE4B0618D693DC00E5EEE6</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F2EE4B0718D693DC00E5EEE6</string>
-				<string>F2EE4B0818D693DC00E5EEE6</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Supporting Files</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F2EE4B0718D693DC00E5EEE6</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>beaconReminderDemoTests-Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F2EE4B0818D693DC00E5EEE6</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F2EE4B0918D693DC00E5EEE6</string>
-			</array>
-			<key>isa</key>
-			<string>PBXVariantGroup</string>
-			<key>name</key>
-			<string>InfoPlist.strings</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F2EE4B0918D693DC00E5EEE6</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.strings</string>
-			<key>name</key>
-			<string>en</string>
-			<key>path</key>
-			<string>en.lproj/InfoPlist.strings</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F2EE4B0A18D693DC00E5EEE6</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F2EE4B0818D693DC00E5EEE6</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F2EE4B0B18D693DC00E5EEE6</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>beaconReminderDemoTests.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F2EE4B0C18D693DC00E5EEE6</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F2EE4B0B18D693DC00E5EEE6</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F2EE4B0D18D693DC00E5EEE6</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
-				<string>gnu++0x</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>YES</string>
-				<key>CLANG_WARN_BOOL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
-				<string>YES</string>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>NO</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_DYNAMIC_NO_PIC</key>
-				<string>NO</string>
-				<key>GCC_OPTIMIZATION_LEVEL</key>
-				<string>0</string>
-				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
-				<array>
-					<string>DEBUG=1</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
-				<string>NO</string>
-				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
-				<string>YES</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES_ERROR</string>
-				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES_AGGRESSIVE</string>
-				<key>GCC_WARN_UNUSED_FUNCTION</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>7.1</string>
-				<key>ONLY_ACTIVE_ARCH</key>
-				<string>YES</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>F2EE4B0E18D693DC00E5EEE6</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
-				<string>gnu++0x</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>YES</string>
-				<key>CLANG_WARN_BOOL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
-				<string>YES</string>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>YES</string>
-				<key>ENABLE_NS_ASSERTIONS</key>
-				<string>NO</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
-				<string>YES</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES_ERROR</string>
-				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES_AGGRESSIVE</string>
-				<key>GCC_WARN_UNUSED_FUNCTION</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>7.1</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>VALIDATE_PRODUCT</key>
-				<string>YES</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>F2EE4B0F18D693DC00E5EEE6</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>F2EE4B1018D693DC00E5EEE6</string>
-				<string>F2EE4B1118D693DC00E5EEE6</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>F2EE4B1018D693DC00E5EEE6</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>F11AD25BBEE14CE7A9C5E624</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
-				<string>AppIcon</string>
-				<key>ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME</key>
-				<string>LaunchImage</string>
-				<key>CODE_SIGN_IDENTITY</key>
-				<string>iPhone Developer</string>
-				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>beaconReminderDemo/beaconReminderDemo-Prefix.pch</string>
-				<key>INFOPLIST_FILE</key>
-				<string>beaconReminderDemo/beaconReminderDemo-Info.plist</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>6.1</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>WRAPPER_EXTENSION</key>
-				<string>app</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>F2EE4B1118D693DC00E5EEE6</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>F11AD25BBEE14CE7A9C5E624</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
-				<string>AppIcon</string>
-				<key>ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME</key>
-				<string>LaunchImage</string>
-				<key>CODE_SIGN_IDENTITY</key>
-				<string>iPhone Developer</string>
-				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>beaconReminderDemo/beaconReminderDemo-Prefix.pch</string>
-				<key>INFOPLIST_FILE</key>
-				<string>beaconReminderDemo/beaconReminderDemo-Info.plist</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>6.1</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>WRAPPER_EXTENSION</key>
-				<string>app</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>F2EE4B1218D693DC00E5EEE6</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>F2EE4B1318D693DC00E5EEE6</string>
-				<string>F2EE4B1418D693DC00E5EEE6</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>F2EE4B1318D693DC00E5EEE6</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>BUNDLE_LOADER</key>
-				<string>$(BUILT_PRODUCTS_DIR)/beaconReminderDemo.app/beaconReminderDemo</string>
-				<key>FRAMEWORK_SEARCH_PATHS</key>
-				<array>
-					<string>$(SDKROOT)/Developer/Library/Frameworks</string>
-					<string>$(inherited)</string>
-					<string>$(DEVELOPER_FRAMEWORKS_DIR)</string>
-				</array>
-				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>beaconReminderDemo/beaconReminderDemo-Prefix.pch</string>
-				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
-				<array>
-					<string>DEBUG=1</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>INFOPLIST_FILE</key>
-				<string>beaconReminderDemoTests/beaconReminderDemoTests-Info.plist</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>TEST_HOST</key>
-				<string>$(BUNDLE_LOADER)</string>
-				<key>WRAPPER_EXTENSION</key>
-				<string>xctest</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>F2EE4B1418D693DC00E5EEE6</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>BUNDLE_LOADER</key>
-				<string>$(BUILT_PRODUCTS_DIR)/beaconReminderDemo.app/beaconReminderDemo</string>
-				<key>FRAMEWORK_SEARCH_PATHS</key>
-				<array>
-					<string>$(SDKROOT)/Developer/Library/Frameworks</string>
-					<string>$(inherited)</string>
-					<string>$(DEVELOPER_FRAMEWORKS_DIR)</string>
-				</array>
-				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>beaconReminderDemo/beaconReminderDemo-Prefix.pch</string>
-				<key>INFOPLIST_FILE</key>
-				<string>beaconReminderDemoTests/beaconReminderDemoTests-Info.plist</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>TEST_HOST</key>
-				<string>$(BUNDLE_LOADER)</string>
-				<key>WRAPPER_EXTENSION</key>
-				<string>xctest</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>F2EE4B1518D6941100E5EEE6</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F2EE4B1618D6941900E5EEE6</string>
-				<string>F2EE4B1718D6941900E5EEE6</string>
-				<string>F2EE4B1818D6941900E5EEE6</string>
-				<string>F2EE4B1918D6941900E5EEE6</string>
-				<string>F2EE4B1A18D6941900E5EEE6</string>
-				<string>F2EE4B1B18D6941900E5EEE6</string>
-				<string>F28C60E718E149BF00D64DE6</string>
-				<string>F28C60E818E149BF00D64DE6</string>
-				<string>F28C60E918E149BF00D64DE6</string>
-				<string>F21FA5D918E2A5A800A06FE8</string>
-				<string>F21FA5DA18E2A5A800A06FE8</string>
-				<string>F21FA5DB18E2A5A800A06FE8</string>
-				<string>F26E872018D9DF2500A8D55E</string>
-				<string>F26E872118D9DF2500A8D55E</string>
-				<string>F26E872218D9DF2500A8D55E</string>
-				<string>F214B28218DBCE420028286F</string>
-				<string>F214B28318DBCE420028286F</string>
-				<string>F214B28418DBCE420028286F</string>
-				<string>F21111E118DC2CA600CDE562</string>
-				<string>F21111E218DC2CA600CDE562</string>
-				<string>F21111E318DC2CA600CDE562</string>
-				<string>F260073018DA7D4A00637821</string>
-				<string>F260073118DA7D4A00637821</string>
-				<string>F260073218DA7D4A00637821</string>
-				<string>F28C60E218E122A700D64DE6</string>
-				<string>F28C60E318E122A700D64DE6</string>
-				<string>F28C60E418E122A700D64DE6</string>
-				<string>F28C60EC18E15C0D00D64DE6</string>
-				<string>F28C60ED18E15C0D00D64DE6</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>reminder</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F2EE4B1618D6941900E5EEE6</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>reminderOnBeaconViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F2EE4B1718D6941900E5EEE6</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>reminderOnBeaconViewController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F2EE4B1818D6941900E5EEE6</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>path</key>
-			<string>reminderOnBeaconViewController.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F2EE4B1918D6941900E5EEE6</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>updateNameViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F2EE4B1A18D6941900E5EEE6</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>updateNameViewController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F2EE4B1B18D6941900E5EEE6</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>path</key>
-			<string>updateNameViewController.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F2EE4B1F18D6941900E5EEE6</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F2EE4B1718D6941900E5EEE6</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F2EE4B2018D6941900E5EEE6</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F2EE4B1818D6941900E5EEE6</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F2EE4B2118D6941900E5EEE6</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F2EE4B1A18D6941900E5EEE6</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F2EE4B2218D6941900E5EEE6</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F2EE4B1B18D6941900E5EEE6</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F2EE4B2518D6946F00E5EEE6</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>iBeaconUser.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F2EE4B2618D6946F00E5EEE6</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>iBeaconUser.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F2EE4B2718D6946F00E5EEE6</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F2EE4B2618D6946F00E5EEE6</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F2EE4B2818D6947600E5EEE6</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F2EE4B2518D6946F00E5EEE6</string>
-				<string>F2EE4B2618D6946F00E5EEE6</string>
-				<string>F21FA5DE18E2B24B00A06FE8</string>
-				<string>F21FA5DF18E2B24B00A06FE8</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>iBeacon</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F2EE4B2918D6964700E5EEE6</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>nearBeaconViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F2EE4B2A18D6964700E5EEE6</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>nearBeaconViewController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F2EE4B2B18D6964700E5EEE6</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>path</key>
-			<string>nearBeaconViewController.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F2EE4B2C18D6964700E5EEE6</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F2EE4B2A18D6964700E5EEE6</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F2EE4B2D18D6964700E5EEE6</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F2EE4B2B18D6964700E5EEE6</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-	</dict>
-	<key>rootObject</key>
-	<string>F2EE4AD518D693DC00E5EEE6</string>
-</dict>
-</plist>
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B747038253E44ED494166B04 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 854F8B6652E74185835D0ACE /* libPods.a */; };
+		F21111E418DC2CA600CDE562 /* graCreateBeaconNameTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F21111E218DC2CA600CDE562 /* graCreateBeaconNameTableViewController.m */; };
+		F21111E518DC2CA600CDE562 /* graCreateBeaconNameTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F21111E318DC2CA600CDE562 /* graCreateBeaconNameTableViewController.xib */; };
+		F214B28518DBCE420028286F /* graCreateReminderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F214B28318DBCE420028286F /* graCreateReminderTableViewController.m */; };
+		F214B28618DBCE420028286F /* graCreateReminderTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F214B28418DBCE420028286F /* graCreateReminderTableViewController.xib */; };
+		F21FA5DC18E2A5A800A06FE8 /* graSelectTimeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F21FA5DA18E2A5A800A06FE8 /* graSelectTimeTableViewController.m */; };
+		F21FA5DD18E2A5A800A06FE8 /* graSelectTimeTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F21FA5DB18E2A5A800A06FE8 /* graSelectTimeTableViewController.xib */; };
+		F21FA5E018E2B24B00A06FE8 /* reminderExtInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F21FA5DF18E2B24B00A06FE8 /* reminderExtInfo.m */; };
+		F260073318DA7D4A00637821 /* graBeaconManagerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F260073118DA7D4A00637821 /* graBeaconManagerTableViewController.m */; };
+		F260073418DA7D4A00637821 /* graBeaconManagerTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F260073218DA7D4A00637821 /* graBeaconManagerTableViewController.xib */; };
+		F26E872318D9DF2500A8D55E /* selectNameForBeaconTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F26E872118D9DF2500A8D55E /* selectNameForBeaconTableViewController.m */; };
+		F26E872418D9DF2500A8D55E /* selectNameForBeaconTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F26E872218D9DF2500A8D55E /* selectNameForBeaconTableViewController.xib */; };
+		F28C60E518E122A700D64DE6 /* graSelectBeaconTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28C60E318E122A700D64DE6 /* graSelectBeaconTableViewController.m */; };
+		F28C60E618E122A700D64DE6 /* graSelectBeaconTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F28C60E418E122A700D64DE6 /* graSelectBeaconTableViewController.xib */; };
+		F28C60EA18E149BF00D64DE6 /* graAddReminderTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F28C60E818E149BF00D64DE6 /* graAddReminderTableView.m */; };
+		F28C60EB18E149BF00D64DE6 /* graAddReminderTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F28C60E918E149BF00D64DE6 /* graAddReminderTableView.xib */; };
+		F28C60EE18E15C0D00D64DE6 /* colorForMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = F28C60ED18E15C0D00D64DE6 /* colorForMarker.m */; };
+		F2EE4AE118D693DC00E5EEE6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2EE4AE018D693DC00E5EEE6 /* Foundation.framework */; };
+		F2EE4AE318D693DC00E5EEE6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2EE4AE218D693DC00E5EEE6 /* CoreGraphics.framework */; };
+		F2EE4AE518D693DC00E5EEE6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2EE4AE418D693DC00E5EEE6 /* UIKit.framework */; };
+		F2EE4AEB18D693DC00E5EEE6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F2EE4AE918D693DC00E5EEE6 /* InfoPlist.strings */; };
+		F2EE4AED18D693DC00E5EEE6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4AEC18D693DC00E5EEE6 /* main.m */; };
+		F2EE4AF118D693DC00E5EEE6 /* graAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4AF018D693DC00E5EEE6 /* graAppDelegate.m */; };
+		F2EE4AF418D693DC00E5EEE6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2EE4AF218D693DC00E5EEE6 /* Main.storyboard */; };
+		F2EE4AF718D693DC00E5EEE6 /* graViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4AF618D693DC00E5EEE6 /* graViewController.m */; };
+		F2EE4AF918D693DC00E5EEE6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2EE4AF818D693DC00E5EEE6 /* Images.xcassets */; };
+		F2EE4B0018D693DC00E5EEE6 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2EE4AFF18D693DC00E5EEE6 /* XCTest.framework */; };
+		F2EE4B0118D693DC00E5EEE6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2EE4AE018D693DC00E5EEE6 /* Foundation.framework */; };
+		F2EE4B0218D693DC00E5EEE6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2EE4AE418D693DC00E5EEE6 /* UIKit.framework */; };
+		F2EE4B0A18D693DC00E5EEE6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F2EE4B0818D693DC00E5EEE6 /* InfoPlist.strings */; };
+		F2EE4B0C18D693DC00E5EEE6 /* beaconReminderDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4B0B18D693DC00E5EEE6 /* beaconReminderDemoTests.m */; };
+		F2EE4B1F18D6941900E5EEE6 /* reminderOnBeaconViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4B1718D6941900E5EEE6 /* reminderOnBeaconViewController.m */; };
+		F2EE4B2018D6941900E5EEE6 /* reminderOnBeaconViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2EE4B1818D6941900E5EEE6 /* reminderOnBeaconViewController.xib */; };
+		F2EE4B2118D6941900E5EEE6 /* updateNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4B1A18D6941900E5EEE6 /* updateNameViewController.m */; };
+		F2EE4B2218D6941900E5EEE6 /* updateNameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2EE4B1B18D6941900E5EEE6 /* updateNameViewController.xib */; };
+		F2EE4B2718D6946F00E5EEE6 /* iBeaconUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4B2618D6946F00E5EEE6 /* iBeaconUser.m */; };
+		F2EE4B2C18D6964700E5EEE6 /* nearBeaconViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4B2A18D6964700E5EEE6 /* nearBeaconViewController.m */; };
+		F2EE4B2D18D6964700E5EEE6 /* nearBeaconViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2EE4B2B18D6964700E5EEE6 /* nearBeaconViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F2EE4B0318D693DC00E5EEE6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F2EE4AD518D693DC00E5EEE6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F2EE4ADC18D693DC00E5EEE6;
+			remoteInfo = beaconReminderDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		854F8B6652E74185835D0ACE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F11AD25BBEE14CE7A9C5E624 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		F21111E118DC2CA600CDE562 /* graCreateBeaconNameTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = graCreateBeaconNameTableViewController.h; sourceTree = "<group>"; };
+		F21111E218DC2CA600CDE562 /* graCreateBeaconNameTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = graCreateBeaconNameTableViewController.m; sourceTree = "<group>"; };
+		F21111E318DC2CA600CDE562 /* graCreateBeaconNameTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = graCreateBeaconNameTableViewController.xib; sourceTree = "<group>"; };
+		F214B28218DBCE420028286F /* graCreateReminderTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = graCreateReminderTableViewController.h; sourceTree = "<group>"; };
+		F214B28318DBCE420028286F /* graCreateReminderTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = graCreateReminderTableViewController.m; sourceTree = "<group>"; };
+		F214B28418DBCE420028286F /* graCreateReminderTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = graCreateReminderTableViewController.xib; sourceTree = "<group>"; };
+		F21FA5D918E2A5A800A06FE8 /* graSelectTimeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = graSelectTimeTableViewController.h; sourceTree = "<group>"; };
+		F21FA5DA18E2A5A800A06FE8 /* graSelectTimeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = graSelectTimeTableViewController.m; sourceTree = "<group>"; };
+		F21FA5DB18E2A5A800A06FE8 /* graSelectTimeTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = graSelectTimeTableViewController.xib; sourceTree = "<group>"; };
+		F21FA5DE18E2B24B00A06FE8 /* reminderExtInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reminderExtInfo.h; sourceTree = "<group>"; };
+		F21FA5DF18E2B24B00A06FE8 /* reminderExtInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = reminderExtInfo.m; sourceTree = "<group>"; };
+		F260073018DA7D4A00637821 /* graBeaconManagerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = graBeaconManagerTableViewController.h; sourceTree = "<group>"; };
+		F260073118DA7D4A00637821 /* graBeaconManagerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = graBeaconManagerTableViewController.m; sourceTree = "<group>"; };
+		F260073218DA7D4A00637821 /* graBeaconManagerTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = graBeaconManagerTableViewController.xib; sourceTree = "<group>"; };
+		F2670DFB18E3FEAA005B9F6A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		F2670DFC18E3FEAA005B9F6A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		F2670DFD18E3FEAA005B9F6A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		F26E872018D9DF2500A8D55E /* selectNameForBeaconTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = selectNameForBeaconTableViewController.h; sourceTree = "<group>"; };
+		F26E872118D9DF2500A8D55E /* selectNameForBeaconTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = selectNameForBeaconTableViewController.m; sourceTree = "<group>"; };
+		F26E872218D9DF2500A8D55E /* selectNameForBeaconTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = selectNameForBeaconTableViewController.xib; sourceTree = "<group>"; };
+		F28C60E218E122A700D64DE6 /* graSelectBeaconTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = graSelectBeaconTableViewController.h; sourceTree = "<group>"; };
+		F28C60E318E122A700D64DE6 /* graSelectBeaconTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = graSelectBeaconTableViewController.m; sourceTree = "<group>"; };
+		F28C60E418E122A700D64DE6 /* graSelectBeaconTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = graSelectBeaconTableViewController.xib; sourceTree = "<group>"; };
+		F28C60E718E149BF00D64DE6 /* graAddReminderTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = graAddReminderTableView.h; sourceTree = "<group>"; };
+		F28C60E818E149BF00D64DE6 /* graAddReminderTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = graAddReminderTableView.m; sourceTree = "<group>"; };
+		F28C60E918E149BF00D64DE6 /* graAddReminderTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = graAddReminderTableView.xib; sourceTree = "<group>"; };
+		F28C60EC18E15C0D00D64DE6 /* colorForMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = colorForMarker.h; sourceTree = "<group>"; };
+		F28C60ED18E15C0D00D64DE6 /* colorForMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = colorForMarker.m; sourceTree = "<group>"; };
+		F2EE4ADD18D693DC00E5EEE6 /* beaconReminderDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = beaconReminderDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2EE4AE018D693DC00E5EEE6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F2EE4AE218D693DC00E5EEE6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F2EE4AE418D693DC00E5EEE6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F2EE4AE818D693DC00E5EEE6 /* beaconReminderDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "beaconReminderDemo-Info.plist"; sourceTree = "<group>"; };
+		F2EE4AEA18D693DC00E5EEE6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F2EE4AEC18D693DC00E5EEE6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F2EE4AEE18D693DC00E5EEE6 /* beaconReminderDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "beaconReminderDemo-Prefix.pch"; sourceTree = "<group>"; };
+		F2EE4AEF18D693DC00E5EEE6 /* graAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = graAppDelegate.h; sourceTree = "<group>"; };
+		F2EE4AF018D693DC00E5EEE6 /* graAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = graAppDelegate.m; sourceTree = "<group>"; };
+		F2EE4AF318D693DC00E5EEE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F2EE4AF518D693DC00E5EEE6 /* graViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = graViewController.h; sourceTree = "<group>"; };
+		F2EE4AF618D693DC00E5EEE6 /* graViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = graViewController.m; sourceTree = "<group>"; };
+		F2EE4AF818D693DC00E5EEE6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F2EE4AFE18D693DC00E5EEE6 /* beaconReminderDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = beaconReminderDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2EE4AFF18D693DC00E5EEE6 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		F2EE4B0718D693DC00E5EEE6 /* beaconReminderDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "beaconReminderDemoTests-Info.plist"; sourceTree = "<group>"; };
+		F2EE4B0918D693DC00E5EEE6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F2EE4B0B18D693DC00E5EEE6 /* beaconReminderDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = beaconReminderDemoTests.m; sourceTree = "<group>"; };
+		F2EE4B1618D6941900E5EEE6 /* reminderOnBeaconViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reminderOnBeaconViewController.h; sourceTree = "<group>"; };
+		F2EE4B1718D6941900E5EEE6 /* reminderOnBeaconViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = reminderOnBeaconViewController.m; sourceTree = "<group>"; };
+		F2EE4B1818D6941900E5EEE6 /* reminderOnBeaconViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = reminderOnBeaconViewController.xib; sourceTree = "<group>"; };
+		F2EE4B1918D6941900E5EEE6 /* updateNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = updateNameViewController.h; sourceTree = "<group>"; };
+		F2EE4B1A18D6941900E5EEE6 /* updateNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = updateNameViewController.m; sourceTree = "<group>"; };
+		F2EE4B1B18D6941900E5EEE6 /* updateNameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = updateNameViewController.xib; sourceTree = "<group>"; };
+		F2EE4B2518D6946F00E5EEE6 /* iBeaconUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iBeaconUser.h; sourceTree = "<group>"; };
+		F2EE4B2618D6946F00E5EEE6 /* iBeaconUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iBeaconUser.m; sourceTree = "<group>"; };
+		F2EE4B2918D6964700E5EEE6 /* nearBeaconViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nearBeaconViewController.h; sourceTree = "<group>"; };
+		F2EE4B2A18D6964700E5EEE6 /* nearBeaconViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = nearBeaconViewController.m; sourceTree = "<group>"; };
+		F2EE4B2B18D6964700E5EEE6 /* nearBeaconViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = nearBeaconViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F2EE4ADA18D693DC00E5EEE6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2EE4AE318D693DC00E5EEE6 /* CoreGraphics.framework in Frameworks */,
+				F2EE4AE518D693DC00E5EEE6 /* UIKit.framework in Frameworks */,
+				F2EE4AE118D693DC00E5EEE6 /* Foundation.framework in Frameworks */,
+				B747038253E44ED494166B04 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F2EE4AFB18D693DC00E5EEE6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2EE4B0018D693DC00E5EEE6 /* XCTest.framework in Frameworks */,
+				F2EE4B0218D693DC00E5EEE6 /* UIKit.framework in Frameworks */,
+				F2EE4B0118D693DC00E5EEE6 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F2EE4AD418D693DC00E5EEE6 = {
+			isa = PBXGroup;
+			children = (
+				F2EE4B2818D6947600E5EEE6 /* iBeacon */,
+				F2EE4B1518D6941100E5EEE6 /* reminder */,
+				F2EE4AE618D693DC00E5EEE6 /* beaconReminderDemo */,
+				F2EE4B0518D693DC00E5EEE6 /* beaconReminderDemoTests */,
+				F2EE4ADF18D693DC00E5EEE6 /* Frameworks */,
+				F2EE4ADE18D693DC00E5EEE6 /* Products */,
+				F11AD25BBEE14CE7A9C5E624 /* Pods.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		F2EE4ADE18D693DC00E5EEE6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F2EE4ADD18D693DC00E5EEE6 /* beaconReminderDemo.app */,
+				F2EE4AFE18D693DC00E5EEE6 /* beaconReminderDemoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F2EE4ADF18D693DC00E5EEE6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F2EE4AE018D693DC00E5EEE6 /* Foundation.framework */,
+				F2EE4AE218D693DC00E5EEE6 /* CoreGraphics.framework */,
+				F2EE4AE418D693DC00E5EEE6 /* UIKit.framework */,
+				F2EE4AFF18D693DC00E5EEE6 /* XCTest.framework */,
+				854F8B6652E74185835D0ACE /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F2EE4AE618D693DC00E5EEE6 /* beaconReminderDemo */ = {
+			isa = PBXGroup;
+			children = (
+				F2EE4B2918D6964700E5EEE6 /* nearBeaconViewController.h */,
+				F2EE4B2A18D6964700E5EEE6 /* nearBeaconViewController.m */,
+				F2EE4B2B18D6964700E5EEE6 /* nearBeaconViewController.xib */,
+				F2EE4AEF18D693DC00E5EEE6 /* graAppDelegate.h */,
+				F2EE4AF018D693DC00E5EEE6 /* graAppDelegate.m */,
+				F2EE4AF218D693DC00E5EEE6 /* Main.storyboard */,
+				F2EE4AF518D693DC00E5EEE6 /* graViewController.h */,
+				F2EE4AF618D693DC00E5EEE6 /* graViewController.m */,
+				F2EE4AF818D693DC00E5EEE6 /* Images.xcassets */,
+				F2EE4AE718D693DC00E5EEE6 /* Supporting Files */,
+			);
+			path = beaconReminderDemo;
+			sourceTree = "<group>";
+		};
+		F2EE4AE718D693DC00E5EEE6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F2EE4AE818D693DC00E5EEE6 /* beaconReminderDemo-Info.plist */,
+				F2EE4AE918D693DC00E5EEE6 /* InfoPlist.strings */,
+				F2EE4AEC18D693DC00E5EEE6 /* main.m */,
+				F2EE4AEE18D693DC00E5EEE6 /* beaconReminderDemo-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F2EE4B0518D693DC00E5EEE6 /* beaconReminderDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				F2EE4B0B18D693DC00E5EEE6 /* beaconReminderDemoTests.m */,
+				F2EE4B0618D693DC00E5EEE6 /* Supporting Files */,
+			);
+			path = beaconReminderDemoTests;
+			sourceTree = "<group>";
+		};
+		F2EE4B0618D693DC00E5EEE6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F2EE4B0718D693DC00E5EEE6 /* beaconReminderDemoTests-Info.plist */,
+				F2EE4B0818D693DC00E5EEE6 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F2EE4B1518D6941100E5EEE6 /* reminder */ = {
+			isa = PBXGroup;
+			children = (
+				F2EE4B1618D6941900E5EEE6 /* reminderOnBeaconViewController.h */,
+				F2EE4B1718D6941900E5EEE6 /* reminderOnBeaconViewController.m */,
+				F2EE4B1818D6941900E5EEE6 /* reminderOnBeaconViewController.xib */,
+				F2EE4B1918D6941900E5EEE6 /* updateNameViewController.h */,
+				F2EE4B1A18D6941900E5EEE6 /* updateNameViewController.m */,
+				F2EE4B1B18D6941900E5EEE6 /* updateNameViewController.xib */,
+				F28C60E718E149BF00D64DE6 /* graAddReminderTableView.h */,
+				F28C60E818E149BF00D64DE6 /* graAddReminderTableView.m */,
+				F28C60E918E149BF00D64DE6 /* graAddReminderTableView.xib */,
+				F21FA5D918E2A5A800A06FE8 /* graSelectTimeTableViewController.h */,
+				F21FA5DA18E2A5A800A06FE8 /* graSelectTimeTableViewController.m */,
+				F21FA5DB18E2A5A800A06FE8 /* graSelectTimeTableViewController.xib */,
+				F26E872018D9DF2500A8D55E /* selectNameForBeaconTableViewController.h */,
+				F26E872118D9DF2500A8D55E /* selectNameForBeaconTableViewController.m */,
+				F26E872218D9DF2500A8D55E /* selectNameForBeaconTableViewController.xib */,
+				F214B28218DBCE420028286F /* graCreateReminderTableViewController.h */,
+				F214B28318DBCE420028286F /* graCreateReminderTableViewController.m */,
+				F214B28418DBCE420028286F /* graCreateReminderTableViewController.xib */,
+				F21111E118DC2CA600CDE562 /* graCreateBeaconNameTableViewController.h */,
+				F21111E218DC2CA600CDE562 /* graCreateBeaconNameTableViewController.m */,
+				F21111E318DC2CA600CDE562 /* graCreateBeaconNameTableViewController.xib */,
+				F260073018DA7D4A00637821 /* graBeaconManagerTableViewController.h */,
+				F260073118DA7D4A00637821 /* graBeaconManagerTableViewController.m */,
+				F260073218DA7D4A00637821 /* graBeaconManagerTableViewController.xib */,
+				F28C60E218E122A700D64DE6 /* graSelectBeaconTableViewController.h */,
+				F28C60E318E122A700D64DE6 /* graSelectBeaconTableViewController.m */,
+				F28C60E418E122A700D64DE6 /* graSelectBeaconTableViewController.xib */,
+				F28C60EC18E15C0D00D64DE6 /* colorForMarker.h */,
+				F28C60ED18E15C0D00D64DE6 /* colorForMarker.m */,
+			);
+			name = reminder;
+			sourceTree = "<group>";
+		};
+		F2EE4B2818D6947600E5EEE6 /* iBeacon */ = {
+			isa = PBXGroup;
+			children = (
+				F2EE4B2518D6946F00E5EEE6 /* iBeaconUser.h */,
+				F2EE4B2618D6946F00E5EEE6 /* iBeaconUser.m */,
+				F21FA5DE18E2B24B00A06FE8 /* reminderExtInfo.h */,
+				F21FA5DF18E2B24B00A06FE8 /* reminderExtInfo.m */,
+			);
+			name = iBeacon;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F2EE4ADC18D693DC00E5EEE6 /* beaconReminderDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F2EE4B0F18D693DC00E5EEE6 /* Build configuration list for PBXNativeTarget "beaconReminderDemo" */;
+			buildPhases = (
+				16412E80829D4CC98CC60BF8 /* Check Pods Manifest.lock */,
+				F2EE4AD918D693DC00E5EEE6 /* Sources */,
+				F2EE4ADA18D693DC00E5EEE6 /* Frameworks */,
+				F2EE4ADB18D693DC00E5EEE6 /* Resources */,
+				075D806821694603857606F1 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = beaconReminderDemo;
+			productName = beaconReminderDemo;
+			productReference = F2EE4ADD18D693DC00E5EEE6 /* beaconReminderDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F2EE4AFD18D693DC00E5EEE6 /* beaconReminderDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F2EE4B1218D693DC00E5EEE6 /* Build configuration list for PBXNativeTarget "beaconReminderDemoTests" */;
+			buildPhases = (
+				F2EE4AFA18D693DC00E5EEE6 /* Sources */,
+				F2EE4AFB18D693DC00E5EEE6 /* Frameworks */,
+				F2EE4AFC18D693DC00E5EEE6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F2EE4B0418D693DC00E5EEE6 /* PBXTargetDependency */,
+			);
+			name = beaconReminderDemoTests;
+			productName = beaconReminderDemoTests;
+			productReference = F2EE4AFE18D693DC00E5EEE6 /* beaconReminderDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F2EE4AD518D693DC00E5EEE6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = gra;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "li lin";
+				TargetAttributes = {
+					F2EE4ADC18D693DC00E5EEE6 = {
+						DevelopmentTeam = 29T9RVU57K;
+					};
+					F2EE4AFD18D693DC00E5EEE6 = {
+						TestTargetID = F2EE4ADC18D693DC00E5EEE6;
+					};
+				};
+			};
+			buildConfigurationList = F2EE4AD818D693DC00E5EEE6 /* Build configuration list for PBXProject "beaconReminderDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				"zh-Hans",
+			);
+			mainGroup = F2EE4AD418D693DC00E5EEE6;
+			productRefGroup = F2EE4ADE18D693DC00E5EEE6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F2EE4ADC18D693DC00E5EEE6 /* beaconReminderDemo */,
+				F2EE4AFD18D693DC00E5EEE6 /* beaconReminderDemoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F2EE4ADB18D693DC00E5EEE6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2EE4AF918D693DC00E5EEE6 /* Images.xcassets in Resources */,
+				F2EE4B2018D6941900E5EEE6 /* reminderOnBeaconViewController.xib in Resources */,
+				F260073418DA7D4A00637821 /* graBeaconManagerTableViewController.xib in Resources */,
+				F26E872418D9DF2500A8D55E /* selectNameForBeaconTableViewController.xib in Resources */,
+				F2EE4B2D18D6964700E5EEE6 /* nearBeaconViewController.xib in Resources */,
+				F21FA5DD18E2A5A800A06FE8 /* graSelectTimeTableViewController.xib in Resources */,
+				F28C60EB18E149BF00D64DE6 /* graAddReminderTableView.xib in Resources */,
+				F21111E518DC2CA600CDE562 /* graCreateBeaconNameTableViewController.xib in Resources */,
+				F214B28618DBCE420028286F /* graCreateReminderTableViewController.xib in Resources */,
+				F28C60E618E122A700D64DE6 /* graSelectBeaconTableViewController.xib in Resources */,
+				F2EE4AEB18D693DC00E5EEE6 /* InfoPlist.strings in Resources */,
+				F2EE4AF418D693DC00E5EEE6 /* Main.storyboard in Resources */,
+				F2EE4B2218D6941900E5EEE6 /* updateNameViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F2EE4AFC18D693DC00E5EEE6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2EE4B0A18D693DC00E5EEE6 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		075D806821694603857606F1 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		16412E80829D4CC98CC60BF8 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F2EE4AD918D693DC00E5EEE6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2EE4AED18D693DC00E5EEE6 /* main.m in Sources */,
+				F28C60EE18E15C0D00D64DE6 /* colorForMarker.m in Sources */,
+				F2EE4AF118D693DC00E5EEE6 /* graAppDelegate.m in Sources */,
+				F2EE4B2C18D6964700E5EEE6 /* nearBeaconViewController.m in Sources */,
+				F28C60E518E122A700D64DE6 /* graSelectBeaconTableViewController.m in Sources */,
+				F260073318DA7D4A00637821 /* graBeaconManagerTableViewController.m in Sources */,
+				F214B28518DBCE420028286F /* graCreateReminderTableViewController.m in Sources */,
+				F2EE4B1F18D6941900E5EEE6 /* reminderOnBeaconViewController.m in Sources */,
+				F2EE4AF718D693DC00E5EEE6 /* graViewController.m in Sources */,
+				F21FA5DC18E2A5A800A06FE8 /* graSelectTimeTableViewController.m in Sources */,
+				F26E872318D9DF2500A8D55E /* selectNameForBeaconTableViewController.m in Sources */,
+				F21111E418DC2CA600CDE562 /* graCreateBeaconNameTableViewController.m in Sources */,
+				F2EE4B2118D6941900E5EEE6 /* updateNameViewController.m in Sources */,
+				F28C60EA18E149BF00D64DE6 /* graAddReminderTableView.m in Sources */,
+				F2EE4B2718D6946F00E5EEE6 /* iBeaconUser.m in Sources */,
+				F21FA5E018E2B24B00A06FE8 /* reminderExtInfo.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F2EE4AFA18D693DC00E5EEE6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2EE4B0C18D693DC00E5EEE6 /* beaconReminderDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F2EE4B0418D693DC00E5EEE6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F2EE4ADC18D693DC00E5EEE6 /* beaconReminderDemo */;
+			targetProxy = F2EE4B0318D693DC00E5EEE6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F2EE4AE918D693DC00E5EEE6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F2EE4AEA18D693DC00E5EEE6 /* en */,
+				F2670DFB18E3FEAA005B9F6A /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F2EE4AF218D693DC00E5EEE6 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F2EE4AF318D693DC00E5EEE6 /* Base */,
+				F2670DFC18E3FEAA005B9F6A /* zh-Hans */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F2EE4B0818D693DC00E5EEE6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F2EE4B0918D693DC00E5EEE6 /* en */,
+				F2670DFD18E3FEAA005B9F6A /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F2EE4B0D18D693DC00E5EEE6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		F2EE4B0E18D693DC00E5EEE6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F2EE4B1018D693DC00E5EEE6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F11AD25BBEE14CE7A9C5E624 /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "beaconReminderDemo/beaconReminderDemo-Prefix.pch";
+				INFOPLIST_FILE = "beaconReminderDemo/beaconReminderDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		F2EE4B1118D693DC00E5EEE6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F11AD25BBEE14CE7A9C5E624 /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "beaconReminderDemo/beaconReminderDemo-Prefix.pch";
+				INFOPLIST_FILE = "beaconReminderDemo/beaconReminderDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		F2EE4B1318D693DC00E5EEE6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/beaconReminderDemo.app/beaconReminderDemo";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "beaconReminderDemo/beaconReminderDemo-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "beaconReminderDemoTests/beaconReminderDemoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		F2EE4B1418D693DC00E5EEE6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/beaconReminderDemo.app/beaconReminderDemo";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "beaconReminderDemo/beaconReminderDemo-Prefix.pch";
+				INFOPLIST_FILE = "beaconReminderDemoTests/beaconReminderDemoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F2EE4AD818D693DC00E5EEE6 /* Build configuration list for PBXProject "beaconReminderDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2EE4B0D18D693DC00E5EEE6 /* Debug */,
+				F2EE4B0E18D693DC00E5EEE6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F2EE4B0F18D693DC00E5EEE6 /* Build configuration list for PBXNativeTarget "beaconReminderDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2EE4B1018D693DC00E5EEE6 /* Debug */,
+				F2EE4B1118D693DC00E5EEE6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F2EE4B1218D693DC00E5EEE6 /* Build configuration list for PBXNativeTarget "beaconReminderDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2EE4B1318D693DC00E5EEE6 /* Debug */,
+				F2EE4B1418D693DC00E5EEE6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F2EE4AD518D693DC00E5EEE6 /* Project object */;
+}
