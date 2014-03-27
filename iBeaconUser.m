@@ -463,32 +463,33 @@
     NSDate *now = [NSDate date];
     NSCalendar *calender = [NSCalendar currentCalendar];
     NSDateComponents *component = [calender components:NSHourCalendarUnit fromDate:now];
+    NSLog(@"current hour is %@", component);
     if ([selectedTimer isEqualToString:@"MORNING"]) {
-        if (component.hour <= 9 && component.hour >= 7) {
+        if (component.hour < 9 && component.hour >= 7) {
             return YES;
         }
         return NO;
     }
     if ([selectedTimer isEqualToString:@"AM"]) {
-        if (component.hour <= 12 && component.hour > 9) {
+        if (component.hour < 12 && component.hour >= 9) {
             return YES;
         }
         return NO;
     }
     if ([selectedTimer isEqualToString:@"NOON"]) {
-        if (component.hour <= 13 && component.hour > 12) {
+        if (component.hour < 13 && component.hour >= 12) {
             return YES;
         }
         return NO;
     }
     if ([selectedTimer isEqualToString:@"AFTERNOON"]) {
-        if (component.hour <= 18 && component.hour > 13) {
+        if (component.hour < 18 && component.hour >= 13) {
             return YES;
         }
         return NO;
     }
     if ([selectedTimer isEqualToString:@"EVENING"]) {
-        if (component.hour <= 23 && component.hour >18 ) {
+        if (component.hour < 24 && component.hour >=18 ) {
             return YES;
         }
         return NO;
@@ -536,9 +537,7 @@
                     if (eachBeacon.rssi == 0) {
                         continue;
                     }
-                    NSLog(@"each beacon in unique array for pushed with %@", eachBeacon);
                     if ([self isBeacon:eachBeacon inArray:self.pushedBeacon] == NO) {
-                        NSLog(@"never pushed");
                         NSString *beaconName = [self findNameByBeacon:eachBeacon];
                         if (beaconName) {
                             NSString *append = [@" in" stringByAppendingString:beaconName];
@@ -567,7 +566,6 @@
                         }
                         [self.pushedBeacon addObject:eachBeacon];
                     }
-                    NSLog(@"never pushed");
                 }
             }
         }
@@ -580,20 +578,16 @@
     NSInteger count = [group count];
     NSInteger i;
     BOOL result = NO;
-    NSLog(@"one beacon is %@", one);
     for (i = 0; i < count; i++) {
         CLBeacon *foundBeacon = [group objectAtIndex:i];
-        NSLog(@"group beacon is %@", foundBeacon);
         if ([foundBeacon.major isEqualToNumber:one.major] && [foundBeacon.minor isEqualToNumber:one.minor]) {
             break;
         }
     }
     if (i == count) {
         result = NO;
-        NSLog(@"one is not in group");
     }else{
         result = YES;
-        NSLog(@"Bingo one is in group");
     }
     
     return result;

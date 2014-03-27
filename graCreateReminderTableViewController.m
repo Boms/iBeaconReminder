@@ -241,7 +241,6 @@
              [self.reminderDict setValue:fullInfo forKey:@"fullInfo"];
              self.selectedTimerString = selectedTimer[@"textPresent"];
              self.selectedTimerLabel.text = self.selectedTimerString;
-             [self.tableView reloadData];
          };
          [self.navigationController pushViewController:vc animated:YES];
 
