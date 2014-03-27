@@ -255,7 +255,14 @@
         }
         return cell;
     }else{
-        cell.textLabel.text = [NSString stringWithFormat:@"发现 %d 个", [self.unamedBeacon count]];
+        NSString *founded_pre = NSLocalizedString(@"FOUND_PREFIX", @"found");
+        NSString *device =  nil;
+        if ([self.unamedBeacon count] == 1) {
+            device = NSLocalizedString(@"DEVICE", @"device");
+        }else{
+            device = NSLocalizedString(@"DEVICES", @"devices");
+        }
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ %d %@",founded_pre, [self.unamedBeacon count], device];
         return cell;
     }
 }

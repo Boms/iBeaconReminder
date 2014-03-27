@@ -32,6 +32,9 @@
 "ADDFIRSTREMINDER" = "新建一个";
 "LISTS" = "全部列表";
 "AT" = "在";
+"FOUND_PREFIX" = "发现";
+"DEVICE" = "个设备";
+"DEVICES" = "个设备";
 //new beacon management
 "WHERE_BEACON_IS" = "设备放在哪里";
 "FAR" = "远";
