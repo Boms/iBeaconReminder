@@ -61,7 +61,7 @@
 -(NSString *)home
 {
 //    return [[NSString emojizedStringWithString:@":house:"] stringByAppendingString: @"   家"];
-    return [@"回家" stringByAppendingString:[NSString emojizedStringWithString:@":house_with_garden:"]];
+    return [@"回家" stringByAppendingString:[NSString emojizedStringWithString:@":house:"]];
 
 }
 -(NSString *)office
