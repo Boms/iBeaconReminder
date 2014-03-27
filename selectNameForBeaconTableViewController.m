@@ -8,6 +8,7 @@
 
 #import "selectNameForBeaconTableViewController.h"
 #import "updateNameViewController.h"
+#import "NSString+Emojize.h"
 @interface selectNameForBeaconTableViewController ()
 
 @end
@@ -43,7 +44,7 @@
 {
     // Return the number of rows in the section.
     if (section == 0) {
-        return 3;
+        return 4;
     }
     if (section == 1) {
         return 1;
@@ -51,6 +52,30 @@
     return 0;
 }
 
+-(NSString *)iPhone
+{
+//    return [[NSString emojizedStringWithString:@":iphone:"] stringByAppendingString: @"  手机"];
+    return [@"手包" stringByAppendingString:[NSString emojizedStringWithString:@":handbag:"]];
+}
+
+-(NSString *)home
+{
+//    return [[NSString emojizedStringWithString:@":house:"] stringByAppendingString: @"   家"];
+    return [@"回家" stringByAppendingString:[NSString emojizedStringWithString:@":house_with_garden:"]];
+
+}
+-(NSString *)office
+{
+//    return [[NSString emojizedStringWithString:@":computer:"] stringByAppendingString: @"办公室"];
+    return [@"上班" stringByAppendingString:[NSString emojizedStringWithString:@":computer:"]];
+
+}
+-(NSString *)car
+{
+//    return [[NSString emojizedStringWithString:@":red_car:"] stringByAppendingString:  @"   车"];
+    return [@"开车" stringByAppendingString:[NSString emojizedStringWithString:@":red_car:"]];
+
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -62,20 +87,21 @@
     }
 
     // Configure the cell...
+    
     if (indexPath.section == 0) {
         //show know name
         switch (indexPath.row) {
             case 0:
-                cell.textLabel.text = @"随时提醒";
+                cell.textLabel.text = [self iPhone];
                 break;
             case 1:
-                cell.textLabel.text = @"家";
+                cell.textLabel.text = [self home];
                 break;
             case 2:
-                cell.textLabel.text = @"办公室";
+                cell.textLabel.text = [self office];
                 break;
             case 3:
-                cell.textLabel.text = @"车";
+                cell.textLabel.text = [self car];
                 break;
             default:
                 break;
@@ -147,16 +173,16 @@
         NSString *beaconName = nil;
         switch (indexPath.row) {
             case 0:
-                beaconName = @"随时提醒";
+                beaconName = [self iPhone];
                 break;
             case 1:
-                beaconName = @"家";
+                beaconName = [self home];
                 break;
             case 2:
-                beaconName = @"办公室";
+                beaconName = [self office];
                 break;
             case 3:
-                beaconName = @"车";
+                beaconName = [self car];
                 break;
             default:
                 break;
