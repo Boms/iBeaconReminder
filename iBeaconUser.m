@@ -542,7 +542,7 @@
                         NSString *beaconName = [self findNameByBeacon:eachBeacon];
                         if (beaconName) {
                             NSString *footPrint = [NSString emojizedStringWithString:@":footprints:"];
-                            NSString *append = [@"@" stringByAppendingString:beaconName];
+                            NSString *append = @"";//[@"@" stringByAppendingString:beaconName];
                             NSArray *todoList = [self findRemindersWith:eachBeacon];
                             for (NSDictionary *eachReminderDict in todoList) {
                                 NSString *eachReminder = eachReminderDict[@"reminder"];
@@ -557,7 +557,6 @@
                                         [self pushLocal:[eachReminder stringByAppendingString:append]];
                                     }
                                 }else{
-                                    eachReminder = [eachReminder stringByAppendingString:@" @"];
                                     if (friends) {
                                         eachReminder = [eachReminder stringByAppendingString:friends];
                                     }
