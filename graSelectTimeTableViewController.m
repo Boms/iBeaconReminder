@@ -54,7 +54,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
     
@@ -69,24 +69,31 @@
             }
         }
     }
+    
     if (indexPath.section == 0) {
         //show know name
         switch (indexPath.row) {
             case 0:
                 cell.textLabel.text = @"早上";
+                cell.detailTextLabel.text = @"7:00-9:00";
                 break;
             case 1:
                 cell.textLabel.text = @"上午";
+                cell.detailTextLabel.text = @"9:00-12:00";
                 break;
             case 2:
                 cell.textLabel.text = @"中午";
+                cell.detailTextLabel.text = @"12:00-13:00";
                 break;
 
             case 3:
                 cell.textLabel.text = @"下午";
+                cell.detailTextLabel.text = @"13:00-18:00";
+
                 break;
             case 4:
                 cell.textLabel.text = @"晚上";
+                cell.detailTextLabel.text = @"18:00-24:00";
                 break;
             default:
                 break;
