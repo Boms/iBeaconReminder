@@ -109,7 +109,7 @@
     }
     if (indexPath.section == 1) {
         if (indexPath.row == 0) {
-            cell.textLabel.text = @"我要自己想一个的名字";
+            cell.textLabel.text = NSLocalizedString(@"NEED_USER_DEFINED_NAME", @"a better name");
             cell.textLabel.textAlignment = NSTextAlignmentCenter;
         }
     }

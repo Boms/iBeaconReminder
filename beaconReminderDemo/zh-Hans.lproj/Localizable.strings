@@ -25,7 +25,7 @@
 "HOME" = "家里";
 "OFFICE" = "公司";
 "CAR" = "汽车";
-
+"NEED_USER_DEFINED_NAME" = "我有更好的名字";
 //nearBeacon show
 "BEACONMANAGEMENT" = "编辑位置";
 "FOUNDNEWDEVICE" = "新设备";

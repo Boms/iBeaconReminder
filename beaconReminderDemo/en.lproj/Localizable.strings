@@ -25,6 +25,7 @@
 "HOME" = "Home";
 "OFFICE" = "Office";
 "CAR" = "Car";
+"NEED_USER_DEFINED_NAME" = "I have better name for it";
 //nearBeacon show
 "BEACONMANAGEMENT" = "Edit location";
 "FOUNDNEWDEVICE" = "New Device";
