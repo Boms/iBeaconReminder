@@ -10,7 +10,7 @@
 "NOON" = "Noon";
 "PM" = "PM";
 "EVENING" = "Evening";
-"OTHERCALENDER" = "另选时间";
+"OTHERCALENDER" = "more precise calender";
 
 //create reminder table view controller
 "WHAT" = "What";
