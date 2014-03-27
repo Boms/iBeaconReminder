@@ -165,7 +165,7 @@
 #endif
 
     graCreateReminderTableViewController *vc = [[graCreateReminderTableViewController alloc] initWithNibName:@"graCreateReminderTableViewController" bundle:nil];
-    vc.title = @"创建新提醒";
+    vc.title = NSLocalizedString(@"NEWREMINDER_TITLE", @"user compose new reminder title for view controller ");
     [self.navigationController pushViewController:vc animated:YES];
 }
 

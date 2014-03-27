@@ -1,0 +1,25 @@
+/* 
+  Localizable.strings
+  beaconReminderDemo
+
+  Created by li lin on 3/27/14.
+  Copyright (c) 2014 li lin. All rights reserved.
+*/
+"MORNING" = "早上";
+"AM" = "上午";
+"NOON" = "中午";
+"PM" = "下午";
+"EVENING" = "晚上";
+"OTHERCALENDER" = "另选时间";
+
+//create reminder table view controller
+"WHAT" =  "标题";
+"WHEN" = "提醒于";
+"WHERE" = "提醒位置";
+"NEWREMINDER_TITLE"  = "创建新提醒";
+
+//predefine beacon Name
+"HANDBAG" = "手包";
+"HOME" = "回家";
+"OFFICE" = "上班";
+"CAR" = "开车";

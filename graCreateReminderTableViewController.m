@@ -107,7 +107,7 @@
             
             CGRect cellBounds = cell.bounds;
             CGFloat textFieldBorder = 100;
-            cell.textLabel.text = @"标题";
+            cell.textLabel.text = NSLocalizedString(@"WHAT", @"reminder title");
             cell.textLabel.textColor = [colorForMarker markerColor];
             CGFloat widthOfTextLabel = CGRectGetWidth(cell.textLabel.frame);
             // Don't align the field exactly in the vertical middle, as the text
@@ -129,7 +129,7 @@
         if (indexPath.row == 2) {
             CGRect cellBounds = cell.bounds;
             CGFloat textFieldBorder = 100;
-            cell.textLabel.text = @"提醒于";
+            cell.textLabel.text = NSLocalizedString(@"WHEN", @"the reminder timer");
             cell.textLabel.textColor = [colorForMarker markerColor];
             CGRect aRect = CGRectMake(textFieldBorder, 5.f, CGRectGetWidth(cellBounds)-(2*textFieldBorder), 31.f );
             UILabel *reminderTimer = [[UILabel alloc] initWithFrame:aRect];
@@ -141,7 +141,7 @@
         if (indexPath.row == 1) {
             CGRect cellBounds = cell.bounds;
             CGFloat textFieldBorder = 100;
-            cell.textLabel.text = @"提醒位置";
+            cell.textLabel.text = NSLocalizedString(@"WHERE", @"which beacon is monitor");
             cell.textLabel.textColor = [colorForMarker markerColor];
             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
             CGRect aRect = CGRectMake(textFieldBorder, 5.f, CGRectGetWidth(cellBounds)-(2*textFieldBorder), 31.f );

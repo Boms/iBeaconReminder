@@ -55,25 +55,25 @@
 -(NSString *)iPhone
 {
 //    return [[NSString emojizedStringWithString:@":iphone:"] stringByAppendingString: @"  手机"];
-    return [@"手包" stringByAppendingString:[NSString emojizedStringWithString:@":handbag:"]];
+    return [NSLocalizedString(@"HANDBAG", @"all time reminder") stringByAppendingString:[NSString emojizedStringWithString:@":handbag:"]];
 }
 
 -(NSString *)home
 {
 //    return [[NSString emojizedStringWithString:@":house:"] stringByAppendingString: @"   家"];
-    return [@"回家" stringByAppendingString:[NSString emojizedStringWithString:@":house:"]];
+    return [NSLocalizedString(@"HOME", @"arrive at home") stringByAppendingString:[NSString emojizedStringWithString:@":house:"]];
 
 }
 -(NSString *)office
 {
 //    return [[NSString emojizedStringWithString:@":computer:"] stringByAppendingString: @"办公室"];
-    return [@"上班" stringByAppendingString:[NSString emojizedStringWithString:@":computer:"]];
+    return [NSLocalizedString(@"OFFICE", @"arrive at office") stringByAppendingString:[NSString emojizedStringWithString:@":computer:"]];
 
 }
 -(NSString *)car
 {
 //    return [[NSString emojizedStringWithString:@":red_car:"] stringByAppendingString:  @"   车"];
-    return [@"开车" stringByAppendingString:[NSString emojizedStringWithString:@":red_car:"]];
+    return [NSLocalizedString(@"CAR", @"enter car") stringByAppendingString:[NSString emojizedStringWithString:@":red_car:"]];
 
 }
 

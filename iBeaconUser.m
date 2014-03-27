@@ -424,23 +424,23 @@
 
 -(NSDictionary *)selectMorningTimer
 {
-    return   @{@"Standard":@"MORNING", @"textPresent":@"早上"};
+    return   @{@"Standard":@"MORNING", @"textPresent":NSLocalizedString(@"MORNING", @"morning")};
 }
 -(NSDictionary *)selectAMTimer
 {
-    return   @{@"Standard":@"AM", @"textPresent":@"上午"};
+    return   @{@"Standard":@"AM", @"textPresent":NSLocalizedString(@"AM", @"am")};
 }
 -(NSDictionary *)selectNoonTimer
 {
-    return   @{@"Standard":@"NOON", @"textPresent":@"中午"};
+    return   @{@"Standard":@"NOON", @"textPresent":NSLocalizedString(@"NOON", @"NOON")};
 }
 -(NSDictionary *)selectAfterNoonTimer
 {
-    return   @{@"Standard":@"AFTERNOON", @"textPresent":@"下午"};
+    return   @{@"Standard":@"AFTERNOON", @"textPresent":NSLocalizedString(@"PM", @"PM")};
 }
 -(NSDictionary *)selectEvevningTimer
 {
-    return   @{@"Standard":@"EVENING", @"textPresent":@"晚上"};
+    return   @{@"Standard":@"EVENING", @"textPresent":NSLocalizedString(@"EVENING", @"EVENING")};
 }
 
 -(BOOL)reminderHasTimer:(NSDictionary *)reminderDict

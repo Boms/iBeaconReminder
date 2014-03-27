@@ -17,6 +17,7 @@
 		F21FA5E018E2B24B00A06FE8 /* reminderExtInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F21FA5DF18E2B24B00A06FE8 /* reminderExtInfo.m */; };
 		F260073318DA7D4A00637821 /* graBeaconManagerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F260073118DA7D4A00637821 /* graBeaconManagerTableViewController.m */; };
 		F260073418DA7D4A00637821 /* graBeaconManagerTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F260073218DA7D4A00637821 /* graBeaconManagerTableViewController.xib */; };
+		F2670E0A18E400B4005B9F6A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F2670E0C18E400B4005B9F6A /* Localizable.strings */; };
 		F26E872318D9DF2500A8D55E /* selectNameForBeaconTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F26E872118D9DF2500A8D55E /* selectNameForBeaconTableViewController.m */; };
 		F26E872418D9DF2500A8D55E /* selectNameForBeaconTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F26E872218D9DF2500A8D55E /* selectNameForBeaconTableViewController.xib */; };
 		F28C60E518E122A700D64DE6 /* graSelectBeaconTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28C60E318E122A700D64DE6 /* graSelectBeaconTableViewController.m */; };
@@ -77,6 +78,8 @@
 		F2670DFB18E3FEAA005B9F6A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		F2670DFC18E3FEAA005B9F6A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		F2670DFD18E3FEAA005B9F6A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		F2670E0B18E400B4005B9F6A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		F2670E0D18E40146005B9F6A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F26E872018D9DF2500A8D55E /* selectNameForBeaconTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = selectNameForBeaconTableViewController.h; sourceTree = "<group>"; };
 		F26E872118D9DF2500A8D55E /* selectNameForBeaconTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = selectNameForBeaconTableViewController.m; sourceTree = "<group>"; };
 		F26E872218D9DF2500A8D55E /* selectNameForBeaconTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = selectNameForBeaconTableViewController.xib; sourceTree = "<group>"; };
@@ -203,6 +206,7 @@
 				F2EE4AE918D693DC00E5EEE6 /* InfoPlist.strings */,
 				F2EE4AEC18D693DC00E5EEE6 /* main.m */,
 				F2EE4AEE18D693DC00E5EEE6 /* beaconReminderDemo-Prefix.pch */,
+				F2670E0C18E400B4005B9F6A /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -366,6 +370,7 @@
 				F214B28618DBCE420028286F /* graCreateReminderTableViewController.xib in Resources */,
 				F28C60E618E122A700D64DE6 /* graSelectBeaconTableViewController.xib in Resources */,
 				F2EE4AEB18D693DC00E5EEE6 /* InfoPlist.strings in Resources */,
+				F2670E0A18E400B4005B9F6A /* Localizable.strings in Resources */,
 				F2EE4AF418D693DC00E5EEE6 /* Main.storyboard in Resources */,
 				F2EE4B2218D6941900E5EEE6 /* updateNameViewController.xib in Resources */,
 			);
@@ -457,6 +462,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		F2670E0C18E400B4005B9F6A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F2670E0B18E400B4005B9F6A /* zh-Hans */,
+				F2670E0D18E40146005B9F6A /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		F2EE4AE918D693DC00E5EEE6 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

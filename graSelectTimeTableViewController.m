@@ -74,25 +74,25 @@
         //show know name
         switch (indexPath.row) {
             case 0:
-                cell.textLabel.text = @"早上";
+                cell.textLabel.text = NSLocalizedString(@"MORNING", @"show morning title in cell");
                 cell.detailTextLabel.text = @"7:00-9:00";
                 break;
             case 1:
-                cell.textLabel.text = @"上午";
+                cell.textLabel.text = NSLocalizedString(@"AM", @"show morning title in cell");
                 cell.detailTextLabel.text = @"9:00-12:00";
                 break;
             case 2:
-                cell.textLabel.text = @"中午";
+                cell.textLabel.text = NSLocalizedString(@"NOON", @"show morning title in cell");
                 cell.detailTextLabel.text = @"12:00-13:00";
                 break;
 
             case 3:
-                cell.textLabel.text = @"下午";
+                cell.textLabel.text = NSLocalizedString(@"PM", @"show morning title in cell");
                 cell.detailTextLabel.text = @"13:00-18:00";
 
                 break;
             case 4:
-                cell.textLabel.text = @"晚上";
+                cell.textLabel.text = NSLocalizedString(@"EVENING", @"show morning title in cell");
                 cell.detailTextLabel.text = @"18:00-24:00";
                 break;
             default:
@@ -104,7 +104,7 @@
     }
     if (indexPath.section == 1) {
         if (indexPath.row == 0) {
-            cell.textLabel.text = @"另选时间";
+            cell.textLabel.text =NSLocalizedString(@"OTHERCALENDER", @"user prefer to define a more precise calender");
             cell.textLabel.textAlignment = NSTextAlignmentCenter;
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
