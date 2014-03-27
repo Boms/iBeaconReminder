@@ -7,6 +7,7 @@
 //
 
 #import "iBeaconUser.h"
+#import "NSString+Emojize.h"
 @interface iBeaconUser()
 @property (nonatomic, strong) NSMutableArray *beaconRegionArray;//content is CLBeacionRegion
 @property (nonatomic, strong) CLBeaconRegion *beaconRegion;
@@ -540,15 +541,16 @@
                     if ([self isBeacon:eachBeacon inArray:self.pushedBeacon] == NO) {
                         NSString *beaconName = [self findNameByBeacon:eachBeacon];
                         if (beaconName) {
-                            NSString *append = [@" in" stringByAppendingString:beaconName];
+                            NSString *footPrint = [NSString emojizedStringWithString:@":footprints:"];
+                            NSString *append = [@"@" stringByAppendingString:beaconName];
                             NSArray *todoList = [self findRemindersWith:eachBeacon];
                             for (NSDictionary *eachReminderDict in todoList) {
                                 NSString *eachReminder = eachReminderDict[@"reminder"];
                                 NSString *friends = eachReminderDict[@"friends"];
                                 if ([self reminderHasTimer:eachReminderDict]) {
                                     if ([self timerRangeNeedToPush:eachReminderDict]) {
-                                        eachReminder = [eachReminder stringByAppendingString:@" @"];
                                         if (friends) {
+                                            eachReminder = [eachReminder stringByAppendingString:[NSString emojizedStringWithString:@":busts_in_silhouette:"]];
                                             eachReminder = [eachReminder stringByAppendingString:friends];
                                         }
                                         

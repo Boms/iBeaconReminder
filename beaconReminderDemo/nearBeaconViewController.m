@@ -192,7 +192,7 @@
         iBeaconUser *user = [iBeaconUser sharedInstance];
         CLBeacon *thisOne = self.namedBeacon[section];
         NSString *beaconLocaton = [user findNameByBeacon:thisOne];
-        return [@"在" stringByAppendingString: beaconLocaton];
+        return beaconLocaton;
     }else{
         return @"新设备";
     }
