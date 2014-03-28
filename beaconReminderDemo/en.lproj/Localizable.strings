@@ -43,3 +43,8 @@
 
 //in iBeacon user
 "READMESSAGE" = "open reminder";
+
+//check app enviroment
+"PLEASE_ENABLE_BACKGROUND_APP" = "Please enable app background execution in settings";
+"PLEASE_ENABLE_LOCATING_APP" = "Locating service has been disable";
+"APP_FAILED_TO_WORK" = "App will failed to work";

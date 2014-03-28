@@ -43,3 +43,7 @@
 
 //in iBeacon user
 "READMESSAGE" = "查看详细内容";
+//check app enviroment
+"PLEASE_ENABLE_BACKGROUND_APP" = "后台应用程序刷新已经被禁用";
+"PLEASE_ENABLE_LOCATING_APP" = "定位服务已经被关闭";
+"APP_FAILED_TO_WORK" = "App将无法正常为您服务";
