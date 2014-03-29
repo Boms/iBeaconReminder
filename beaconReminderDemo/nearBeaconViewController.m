@@ -216,7 +216,7 @@
 
 
 #pragma mark - Table view data source
-
+#if 0
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     if (section < [self.namedBeacon count]) {
@@ -227,6 +227,43 @@
     }else{
         return NSLocalizedString(@"FOUNDNEWDEVICE", @"found new device title");
     }
+}
+#endif
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    static UIView *footerView;
+    
+    if (footerView != nil)
+        return footerView;
+    
+    // set the container width to a known value so that we can center a label in it
+    // it will get resized by the tableview since we set autoresizeflags
+    float footerWidth = 150.0f;
+    float padding = 10.0f; // an arbitrary amount to center the label in the container
+    
+    // create the label centered in the container, then set the appropriate autoresize mask
+    UILabel *footerLabel = [[UILabel alloc] initWithFrame:CGRectMake(padding, 0, footerWidth - 2.0f * padding, 44.0f)];
+    footerLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    footerLabel.textAlignment = NSTextAlignmentRight;
+    footerLabel.textColor = [UIColor grayColor];
+    NSString *title = nil;
+    if (section < [self.namedBeacon count]) {
+        iBeaconUser *user = [iBeaconUser sharedInstance];
+        CLBeacon *thisOne = self.namedBeacon[section];
+        NSString *beaconLocaton = [user findNameByBeacon:thisOne];
+        title =  [NSLocalizedString(@"AT", @"prefix word for location") stringByAppendingString:beaconLocaton];
+    }else{
+        title =  NSLocalizedString(@"FOUNDNEWDEVICE", @"found new device title");
+    }
+
+    footerLabel.text = title;
+    return footerLabel;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 30;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

@@ -104,6 +104,7 @@
             titleField.tintColor = [colorForMarker markerColor];
             titleField.returnKeyType = UIReturnKeyDone;
             [titleField setDelegate:self];
+#if 0
             UIToolbar *doneButtonbar = [[UIToolbar alloc] init];
             [doneButtonbar sizeToFit];
             UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(okButtonAction)];
@@ -113,7 +114,7 @@
             
             [doneButtonbar setItems:@[flexSpace, inviteFriendsButton, doneButton, cancelButton]];
             titleField.inputAccessoryView = doneButtonbar;
-            
+#endif
             //        titleField.borderStyle = UITextBorderStyleRoundedRect;
             self.reminderTextField = titleField;
             [cell.contentView addSubview:titleField];
