@@ -29,16 +29,7 @@
 @implementation graCreateReminderTableViewController
 
 
--(NSMutableDictionary *)reminderDict
-{
-    if (!_reminderDict) {
-        NSDictionary *timer = @{@"textPresent":@"上午", @"standard":@"AM"};
-        self.selectedTimerString = timer[@"textPresent"];
-        NSMutableDictionary *fullInfovalue  = [NSMutableDictionary dictionaryWithDictionary:@{@"timer":timer}];
-        _reminderDict = [NSMutableDictionary dictionaryWithDictionary: @{@"fullInfo":fullInfovalue}];
-    }
-    return _reminderDict;
-}
+
 
 - (void)viewDidLoad
 {
@@ -232,13 +223,19 @@
          graSelectTimeTableViewController *vc = [[graSelectTimeTableViewController alloc]  initWithNibName:@"graSelectTimeTableViewController" bundle:nil];
          vc.reminderDict = self.reminderDict;
          vc.timerSelected = ^(NSDictionary *selectedTimer){
-             NSMutableDictionary *fullInfo = self.reminderDict[@"fullInfo"];
-             if (fullInfo) {
-                 [fullInfo setValue:selectedTimer forKey:@"timer"];
+             if (self.reminderDict) {
+                 NSMutableDictionary *fullInfo = self.reminderDict[@"fullInfo"];
+                 if (fullInfo) {
+                     [fullInfo setValue:selectedTimer forKey:@"timer"];
+                 }else{
+                     fullInfo = [NSMutableDictionary dictionaryWithDictionary:@{@"timer":selectedTimer}];
+                 }
+                [self.reminderDict setValue:fullInfo forKey:@"fullInfo"];
              }else{
-                 fullInfo = [NSMutableDictionary dictionaryWithDictionary:@{@"timer":selectedTimer}];
+                 NSMutableDictionary *fullInfovalue  = [NSMutableDictionary dictionaryWithDictionary:@{@"timer":selectedTimer}];
+                 _reminderDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:fullInfovalue, @"fullInfo", nil];
              }
-             [self.reminderDict setValue:fullInfo forKey:@"fullInfo"];
+
              self.selectedTimerString = selectedTimer[@"textPresent"];
              self.selectedTimerLabel.text = self.selectedTimerString;
          };

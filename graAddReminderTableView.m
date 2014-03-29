@@ -41,9 +41,15 @@
     CLBeacon *thisOne = self.myBeacon;
     NSString *beaconLocaton = [user findNameByBeacon:thisOne];
     self.title =  [NSLocalizedString(@"AT", @"prefix word for location") stringByAppendingString:beaconLocaton];
-
-
-
+    
+    
+    
+    //http://stackoverflow.com/a/11876855/1412128
+    NSData *buffer;
+    // Deep copy "all" objects in _dict1 pointers and all to _dict2
+    buffer = [NSKeyedArchiver archivedDataWithRootObject: self.reminderDict];
+    self.reminderDictTemp = [NSKeyedUnarchiver unarchiveObjectWithData: buffer];
+    //end of http://stackoverflow.com/a/11876855/1412128
 }
 
 - (void)didReceiveMemoryWarning
@@ -141,9 +147,9 @@
         cell.textLabel.textColor = [colorForMarker markerColor];
         CGRect aRect = CGRectMake(textFieldBorder, 5.f, CGRectGetWidth(cellBounds)-(2*textFieldBorder), 31.f );
         UILabel *friendsLabel = [[UILabel alloc] initWithFrame:aRect];
-        if (self.reminderDict) {
+        if (self.reminderDictTemp) {
             
-            friendsLabel.text = [self.reminderDict objectForKey:@"friends"];
+            friendsLabel.text = [self.reminderDictTemp objectForKey:@"friends"];
             self.friends = friendsLabel.text;
             if (self.friends == nil) {
                 self.friends = @"";
@@ -153,8 +159,8 @@
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
     if (indexPath.row == 2) {
-        if (self.reminderDict) {
-            NSDictionary *fullInfo = self.reminderDict[@"fullInfo"];
+        if (self.reminderDictTemp) {
+            NSDictionary *fullInfo = self.reminderDictTemp[@"fullInfo"];
             if (fullInfo) {
                 NSDictionary *reminderTimerInfo = fullInfo[@"timer"];
                 if (reminderTimerInfo) {
@@ -200,8 +206,8 @@
     
     if (self.reminderTextField.text && ![self.reminderTextField.text isEqualToString:@""]) {
         [self removeMySelf];
-        if (self.reminderDict[@"fullInfo"]) {
-            [user AddRemindersWith:self.myBeacon with:self.reminderTextField.text withFullInfo:self.reminderDict[@"fullInfo"]];
+        if (self.reminderDictTemp[@"fullInfo"]) {
+            [user AddRemindersWith:self.myBeacon with:self.reminderTextField.text withFullInfo:self.reminderDictTemp[@"fullInfo"]];
         }else{
             [user AddRemindersWith:self.myBeacon with:self.reminderTextField.text friends:self.friends];
         }
@@ -272,15 +278,15 @@
     //select timer
     if (indexPath.row == 2) {
         graSelectTimeTableViewController *vc = [[graSelectTimeTableViewController alloc]  initWithNibName:@"graSelectTimeTableViewController" bundle:nil];
-        vc.reminderDict = self.reminderDict;
+        vc.reminderDict = self.reminderDictTemp;
         vc.timerSelected = ^(NSDictionary *selectedTimer){
-            NSDictionary *fullInfo = self.reminderDict[@"fullInfo"];
+            NSDictionary *fullInfo = self.reminderDictTemp[@"fullInfo"];
             if (fullInfo) {
                 [fullInfo setValue:selectedTimer forKey:@"timer"];
             }else{
                 fullInfo = @{@"timer":selectedTimer};
             }
-            [self.reminderDict setValue:fullInfo forKey:@"fullInfo"];
+            [self.reminderDictTemp setValue:fullInfo forKey:@"fullInfo"];
             [self.tableView reloadData];            
         };
         [self.navigationController pushViewController:vc animated:YES];
