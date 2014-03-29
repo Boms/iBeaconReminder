@@ -142,6 +142,7 @@
                                                    otherButtonItems:nil, nil];
         [alertView show];
     }
+    [self.tableView reloadData];
 }
 
 -(void)viewDidDisappear:(BOOL)animated
