@@ -35,6 +35,8 @@
 "FOUND_PREFIX" = "Discovered";
 "DEVICE" = "device";
 "DEVICES" = "devices";
+"GO_BUY_ONE" = "Visit our website to buy a beacon";
+"WEBSITE_URL" = "http://www.wheni.in";
 //new beacon management
 "WHERE_BEACON_IS" = "where is the device located?";
 "FAR" = "Far";

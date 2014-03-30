@@ -237,6 +237,9 @@
     if (footerView != nil)
         return footerView;
     
+    if ([self isNoneBeaconFound]) {
+        return nil;
+    }
     // set the container width to a known value so that we can center a label in it
     // it will get resized by the tableview since we set autoresizeflags
     float footerWidth = 150.0f;
@@ -266,6 +269,17 @@
     return 30;
 }
 
+-(BOOL)isNoneBeaconFound
+{
+    NSInteger count = [self.namedBeacon count];
+    if ([self.unamedBeacon count]) {
+        count++;
+    }
+    if(count == 0)
+        return YES;
+    return NO;
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
@@ -273,11 +287,17 @@
     if ([self.unamedBeacon count]) {
         count++;
     }
+    if (count == 0) {
+        return 1;
+    }
     return count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if ([self isNoneBeaconFound]) {
+        return 1;
+    }
     // Return the number of rows in the section.
     if (section < [self.namedBeacon count]) {
         CLBeacon *thisOne = nil;
@@ -306,6 +326,12 @@
     CLBeacon *thisOne = nil;
     iBeaconUser *user = [iBeaconUser sharedInstance];
     
+    if ([self isNoneBeaconFound]) {
+        
+        cell.textLabel.text = NSLocalizedString(@"GO_BUY_ONE", @"enable user to buy one through website");
+        return cell;
+        
+    }
     if (indexPath.section < [self.namedBeacon count]) {
 
         thisOne = self.namedBeacon[indexPath.section];
@@ -330,7 +356,7 @@
         }else{
             device = NSLocalizedString(@"DEVICES", @"devices");
         }
-        cell.textLabel.text = [NSString stringWithFormat:@"%@ %d %@",founded_pre, [self.unamedBeacon count], device];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ %ld %@",founded_pre, [self.unamedBeacon count], device];
         return cell;
     }
 }
@@ -402,6 +428,10 @@
     // Push the view controller.
     CLBeacon *thisOne = nil;
     iBeaconUser *user = [iBeaconUser sharedInstance];
+    if ([self isNoneBeaconFound]) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:NSLocalizedString(@"WEBSITE_URL", @"url to buy beacon")]];
+        return;
+    }
 
     if (indexPath.section < [self.namedBeacon count]) {
         thisOne = self.namedBeacon[indexPath.section];
