@@ -284,9 +284,14 @@
             if (fullInfo) {
                 [fullInfo setValue:selectedTimer forKey:@"timer"];
             }else{
-                fullInfo = @{@"timer":selectedTimer};
+                fullInfo =[NSMutableDictionary dictionaryWithDictionary:@{@"timer":selectedTimer}];
             }
-            [self.reminderDictTemp setValue:fullInfo forKey:@"fullInfo"];
+            if (self.reminderDictTemp) {
+                [self.reminderDictTemp setValue:fullInfo forKey:@"fullInfo"];
+            }else{
+                self.reminderDictTemp = [NSMutableDictionary dictionaryWithDictionary:@{@"fullInfo": fullInfo}];
+            }
+
             [self.tableView reloadData];            
         };
         [self.navigationController pushViewController:vc animated:YES];

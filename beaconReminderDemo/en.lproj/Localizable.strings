@@ -35,6 +35,7 @@
 "FOUND_PREFIX" = "Discovered";
 "DEVICE" = "device";
 "DEVICES" = "devices";
+"NO_BEACON_FOUND" = "Nothing happened";
 "GO_BUY_ONE" = "Visit our website to buy a beacon";
 "WEBSITE_URL" = "http://www.wheni.in";
 //new beacon management

@@ -329,6 +329,7 @@
     if ([self isNoneBeaconFound]) {
         
         cell.textLabel.text = NSLocalizedString(@"GO_BUY_ONE", @"enable user to buy one through website");
+        cell.detailTextLabel.text = NSLocalizedString(@"NO_BEACON_FOUND", @"nothing found now");
         return cell;
         
     }
@@ -357,6 +358,7 @@
             device = NSLocalizedString(@"DEVICES", @"devices");
         }
         cell.textLabel.text = [NSString stringWithFormat:@"%@ %ld %@",founded_pre, [self.unamedBeacon count], device];
+        cell.detailTextLabel.text = @"";
         return cell;
     }
 }
