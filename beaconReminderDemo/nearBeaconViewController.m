@@ -245,7 +245,7 @@
     // create the label centered in the container, then set the appropriate autoresize mask
     UILabel *footerLabel = [[UILabel alloc] initWithFrame:CGRectMake(padding, 0, footerWidth - 2.0f * padding, 44.0f)];
     footerLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-    footerLabel.textAlignment = NSTextAlignmentRight;
+    footerLabel.textAlignment = NSTextAlignmentCenter;
     footerLabel.textColor = [UIColor grayColor];
     NSString *title = nil;
     if (section < [self.namedBeacon count]) {
