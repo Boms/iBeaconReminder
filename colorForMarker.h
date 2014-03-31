@@ -10,4 +10,6 @@
 
 @interface colorForMarker : UIColor
 +(UIColor *)markerColor;
++(UIColor *)buttonColor;
++(UIColor *)toolBarBackGroundColor;
 @end

@@ -41,10 +41,13 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     UIBarButtonItem *saveBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(Save)];
+    saveBtn.tintColor = [colorForMarker buttonColor];
     UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(Cancel)];
+    cancelBtn.tintColor = [colorForMarker buttonColor];
     UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     self.toolbarItems = @[flexSpace, saveBtn, flexSpace, cancelBtn, flexSpace];
     self.navigationController.toolbarHidden = NO;
+    self.navigationController.toolbar.backgroundColor = [colorForMarker toolBarBackGroundColor];
     self.currentRowCount = 2;
     iBeaconUser *user = [iBeaconUser sharedInstance];
     if ([user.namesOfBeacon count] == 1) {

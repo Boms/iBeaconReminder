@@ -11,6 +11,10 @@
 #import "reminderOnBeaconViewController.h"
 #import "nearBeaconViewController.h"
 #import "graBeaconManagerTableViewController.h"
+#import "FBTweak.h"
+#import "FBTweakShakeWindow.h"
+#import "FBTweakInline.h"
+#import "FBTweakViewController.h"
 @implementation graAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -27,7 +31,16 @@
     self.user = beaconUser;
     return YES;
 }
-							
+
+- (UIWindow *)window
+{
+    if (!_window) {
+        _window = [[FBTweakShakeWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    }
+    
+    return _window;
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

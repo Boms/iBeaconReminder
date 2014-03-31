@@ -73,11 +73,13 @@
     self.navigationItem.rightBarButtonItem = btnItem;
     
     UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(createNewReminder)];
+    
     self.composeButton = btn;
     UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     self.toolbarItems = @[flexSpace, btn, flexSpace];
     self.title = NSLocalizedString(@"LISTS", @"this page title");
-    self.tableView.separatorColor = [colorForMarker markerColor];
+//    self.tableView.separatorColor = [colorForMarker markerColor];
+    
 //    self.navigationController.toolbar.barTintColor
 //    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
 //        self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -146,6 +148,9 @@
         [alertView show];
     }
     [self.tableView reloadData];
+    self.navigationController.toolbar.barTintColor = [colorForMarker toolBarBackGroundColor];
+    self.composeButton.tintColor = [colorForMarker buttonColor];
+
 }
 
 -(void)viewDidDisappear:(BOOL)animated

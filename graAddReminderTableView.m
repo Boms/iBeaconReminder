@@ -30,8 +30,12 @@
 
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(trashAction)];
     self.navigationController.toolbarHidden = YES;
+    self.navigationController.toolbar.backgroundColor = [colorForMarker toolBarBackGroundColor];
+    
     UIBarButtonItem *saveBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(okButtonAction)];
+    saveBtn.tintColor = [colorForMarker buttonColor];
     UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonAction)];
+    cancelBtn.tintColor = [colorForMarker buttonColor];
     UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     self.toolbarItems = @[flexSpace, saveBtn, flexSpace, cancelBtn, flexSpace];
     self.navigationController.toolbarHidden = NO;

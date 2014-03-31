@@ -28,8 +28,6 @@
     frame.origin.x += inset;
     frame.size.width -= 2* inset;
     self.layer.cornerRadius = 4;
-//    self.layer.borderWidth = 1;
-//    self.layer.borderColor = [colorForMarker markerColor].CGColor;
     [self.layer setMasksToBounds:YES];
     [super setFrame:frame];
 }
