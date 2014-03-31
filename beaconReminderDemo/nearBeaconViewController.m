@@ -150,6 +150,7 @@
     [self.tableView reloadData];
     self.navigationController.toolbar.barTintColor = [colorForMarker toolBarBackGroundColor];
     self.composeButton.tintColor = [colorForMarker buttonColor];
+//    self.navigationController.navigationBar.backgroundColor = [colorForMarker toolBarBackGroundColor];
 
 }
 
