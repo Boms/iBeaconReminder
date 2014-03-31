@@ -17,6 +17,8 @@
 #import "graAddReminderTableView.h"
 #import "RIButtonItem.h"
 #import "UIAlertView+Blocks.h"
+#import "graUITableViewCell.h"
+#import "colorForMarker.h"
 @interface nearBeaconViewController ()
 @property (nonatomic, strong) iBeaconUser *myUser;
 @property (nonatomic, strong) NSMutableArray *beaconArray;
@@ -75,7 +77,8 @@
     UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     self.toolbarItems = @[flexSpace, btn, flexSpace];
     self.title = NSLocalizedString(@"LISTS", @"this page title");
-
+    self.tableView.separatorColor = [colorForMarker markerColor];
+//    self.navigationController.toolbar.barTintColor
 //    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
 //        self.edgesForExtendedLayout = UIRectEdgeNone;
 }
@@ -317,9 +320,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    graUITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell = [[graUITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     

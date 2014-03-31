@@ -17,6 +17,8 @@
 		F21FA5E018E2B24B00A06FE8 /* reminderExtInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F21FA5DF18E2B24B00A06FE8 /* reminderExtInfo.m */; };
 		F260073318DA7D4A00637821 /* graBeaconManagerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F260073118DA7D4A00637821 /* graBeaconManagerTableViewController.m */; };
 		F260073418DA7D4A00637821 /* graBeaconManagerTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F260073218DA7D4A00637821 /* graBeaconManagerTableViewController.xib */; };
+		F261304318E836250091FB13 /* graUITableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F261304118E836250091FB13 /* graUITableViewCell.m */; };
+		F261304418E836250091FB13 /* graUITableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F261304218E836250091FB13 /* graUITableViewCell.xib */; };
 		F2670E0A18E400B4005B9F6A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F2670E0C18E400B4005B9F6A /* Localizable.strings */; };
 		F26E872318D9DF2500A8D55E /* selectNameForBeaconTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F26E872118D9DF2500A8D55E /* selectNameForBeaconTableViewController.m */; };
 		F26E872418D9DF2500A8D55E /* selectNameForBeaconTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F26E872218D9DF2500A8D55E /* selectNameForBeaconTableViewController.xib */; };
@@ -75,6 +77,9 @@
 		F260073018DA7D4A00637821 /* graBeaconManagerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = graBeaconManagerTableViewController.h; sourceTree = "<group>"; };
 		F260073118DA7D4A00637821 /* graBeaconManagerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = graBeaconManagerTableViewController.m; sourceTree = "<group>"; };
 		F260073218DA7D4A00637821 /* graBeaconManagerTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = graBeaconManagerTableViewController.xib; sourceTree = "<group>"; };
+		F261304018E836250091FB13 /* graUITableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = graUITableViewCell.h; sourceTree = "<group>"; };
+		F261304118E836250091FB13 /* graUITableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = graUITableViewCell.m; sourceTree = "<group>"; };
+		F261304218E836250091FB13 /* graUITableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = graUITableViewCell.xib; sourceTree = "<group>"; };
 		F2670DFB18E3FEAA005B9F6A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		F2670DFC18E3FEAA005B9F6A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		F2670DFD18E3FEAA005B9F6A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -261,6 +266,9 @@
 				F28C60E418E122A700D64DE6 /* graSelectBeaconTableViewController.xib */,
 				F28C60EC18E15C0D00D64DE6 /* colorForMarker.h */,
 				F28C60ED18E15C0D00D64DE6 /* colorForMarker.m */,
+				F261304018E836250091FB13 /* graUITableViewCell.h */,
+				F261304118E836250091FB13 /* graUITableViewCell.m */,
+				F261304218E836250091FB13 /* graUITableViewCell.xib */,
 			);
 			name = reminder;
 			sourceTree = "<group>";
@@ -371,6 +379,7 @@
 				F28C60E618E122A700D64DE6 /* graSelectBeaconTableViewController.xib in Resources */,
 				F2EE4AEB18D693DC00E5EEE6 /* InfoPlist.strings in Resources */,
 				F2670E0A18E400B4005B9F6A /* Localizable.strings in Resources */,
+				F261304418E836250091FB13 /* graUITableViewCell.xib in Resources */,
 				F2EE4AF418D693DC00E5EEE6 /* Main.storyboard in Resources */,
 				F2EE4B2218D6941900E5EEE6 /* updateNameViewController.xib in Resources */,
 			);
@@ -431,6 +440,7 @@
 				F28C60E518E122A700D64DE6 /* graSelectBeaconTableViewController.m in Sources */,
 				F260073318DA7D4A00637821 /* graBeaconManagerTableViewController.m in Sources */,
 				F214B28518DBCE420028286F /* graCreateReminderTableViewController.m in Sources */,
+				F261304318E836250091FB13 /* graUITableViewCell.m in Sources */,
 				F2EE4B1F18D6941900E5EEE6 /* reminderOnBeaconViewController.m in Sources */,
 				F2EE4AF718D693DC00E5EEE6 /* graViewController.m in Sources */,
 				F21FA5DC18E2A5A800A06FE8 /* graSelectTimeTableViewController.m in Sources */,
