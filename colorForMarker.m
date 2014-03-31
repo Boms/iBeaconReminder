@@ -26,9 +26,17 @@
 }
 +(UIColor *)toolBarBackGroundColor
 {
-    return [UIColor colorWithRed:FBTweakValue(@"Window", @"Color", @"Red", 0.9, 0.0, 1.0)
-                           green:FBTweakValue(@"Window", @"Color", @"Green", 0.9, 0.0, 1.0)
-                            blue:FBTweakValue(@"Window", @"Color", @"Blue", 0.9, 0.0, 1.0)
+    return [UIColor colorWithRed:FBTweakValue(@"Window", @"ToolBarColor", @"Red", 0.0, 0.0, 1.0)
+                           green:FBTweakValue(@"Window", @"ToolBarColor", @"Green", 0.5, 0.0, 1.0)
+                            blue:FBTweakValue(@"Window", @"ToolBarColor", @"Blue", 0.8, 0.0, 1.0)
                            alpha:1.0];
 }
++(UIColor *)navBarBackGroundColor
+{
+    return [UIColor colorWithRed:FBTweakValue(@"Window", @"NavColor", @"Red", 0.9, 0.0, 1.0)
+                           green:FBTweakValue(@"Window", @"NavColor", @"Green", 0.9, 0.0, 1.0)
+                            blue:FBTweakValue(@"Window", @"NavColor", @"Blue", 0.9, 0.0, 1.0)
+                           alpha:1.0];
+}
+
 @end

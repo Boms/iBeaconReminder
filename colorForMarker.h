@@ -12,4 +12,5 @@
 +(UIColor *)markerColor;
 +(UIColor *)buttonColor;
 +(UIColor *)toolBarBackGroundColor;
++(UIColor *)navBarBackGroundColor;
 @end
