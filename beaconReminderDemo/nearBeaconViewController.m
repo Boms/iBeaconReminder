@@ -97,6 +97,42 @@
     self.navigationController.toolbarHidden = NO;
     self.namedBeacon = nil;
     _myUser = user;
+
+    
+    //check background status
+    if (!([UIApplication sharedApplication].backgroundRefreshStatus == UIBackgroundRefreshStatusAvailable)) {
+        RIButtonItem *cancelItem = [RIButtonItem itemWithLabel:@"Got it" action:^{
+            // this is the code that will be executed when the user taps "No"
+            // this is optional... if you leave the action as nil, it won't do anything
+            // but here, I'm showing a block just to show that you can use one if you want to.
+        }];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"PLEASE_ENABLE_BACKGROUND_APP", @"app background is disable")
+                                                            message:NSLocalizedString(@"APP_FAILED_TO_WORK", @"app will failed to serve you")
+                                                   cancelButtonItem:cancelItem
+                                                   otherButtonItems:nil, nil];
+        [alertView show];
+    }
+    
+    //check location monitor status
+    CLAuthorizationStatus loc_auth_status = [CLLocationManager authorizationStatus];
+    
+    if(loc_auth_status == kCLAuthorizationStatusDenied || kCLAuthorizationStatusRestricted == loc_auth_status ||  loc_auth_status == kCLAuthorizationStatusNotDetermined)
+    {
+        RIButtonItem *cancelItem = [RIButtonItem itemWithLabel:@"Got it" action:^{
+            // this is the code that will be executed when the user taps "No"
+            // this is optional... if you leave the action as nil, it won't do anything
+            // but here, I'm showing a block just to show that you can use one if you want to.
+        }];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"PLEASE_ENABLE_LOCATING_APP", @"location service is disable")
+                                                            message:NSLocalizedString(@"APP_FAILED_TO_WORK", @"app will failed to serve you")
+                                                   cancelButtonItem:cancelItem
+                                                   otherButtonItems:nil, nil];
+        [alertView show];
+    }else{
+    [self.tableView reloadData];
+    self.navigationController.toolbar.barTintColor = [colorForMarker toolBarBackGroundColor];
+    self.composeButton.tintColor = [colorForMarker buttonColor];
+    self.navigationController.navigationBar.backgroundColor = [colorForMarker navBarBackGroundColor];
     [self.myUser startMonitorWithFoundNewBeacon:^(CLBeacon *foundOne){
         ;
     } withKnowBeacon:^(CLBeacon *foundOne){
@@ -118,39 +154,7 @@
             [self.tableView reloadData];
         }
     }];
-    
-    //check background status
-    if (!([UIApplication sharedApplication].backgroundRefreshStatus == UIBackgroundRefreshStatusAvailable)) {
-        RIButtonItem *cancelItem = [RIButtonItem itemWithLabel:@"Got it" action:^{
-            // this is the code that will be executed when the user taps "No"
-            // this is optional... if you leave the action as nil, it won't do anything
-            // but here, I'm showing a block just to show that you can use one if you want to.
-        }];
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"PLEASE_ENABLE_BACKGROUND_APP", @"app background is disable")
-                                                            message:NSLocalizedString(@"APP_FAILED_TO_WORK", @"app will failed to serve you")
-                                                   cancelButtonItem:cancelItem
-                                                   otherButtonItems:nil, nil];
-        [alertView show];
     }
-    
-    //check location monitor status
-    if([CLLocationManager  authorizationStatus] == kCLAuthorizationStatusDenied || kCLAuthorizationStatusRestricted == [CLLocationManager  authorizationStatus])
-    {
-        RIButtonItem *cancelItem = [RIButtonItem itemWithLabel:@"Got it" action:^{
-            // this is the code that will be executed when the user taps "No"
-            // this is optional... if you leave the action as nil, it won't do anything
-            // but here, I'm showing a block just to show that you can use one if you want to.
-        }];
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"PLEASE_ENABLE_LOCATING_APP", @"location service is disable")
-                                                            message:NSLocalizedString(@"APP_FAILED_TO_WORK", @"app will failed to serve you")
-                                                   cancelButtonItem:cancelItem
-                                                   otherButtonItems:nil, nil];
-        [alertView show];
-    }
-    [self.tableView reloadData];
-    self.navigationController.toolbar.barTintColor = [colorForMarker toolBarBackGroundColor];
-    self.composeButton.tintColor = [colorForMarker buttonColor];
-    self.navigationController.navigationBar.backgroundColor = [colorForMarker navBarBackGroundColor];
 //    self.navigationController.navigationBar.tintColor = ;
 //    self.navigationController.navigationController.
 

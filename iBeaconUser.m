@@ -262,8 +262,21 @@
 -(void)startMonitor
 {
     [self createBeaconRegionOfUser];
-    [self.locatinManager startMonitoringForRegion:self.beaconRegion];
-    [self.locatinManager startRangingBeaconsInRegion:self.beaconRegion];
+    CLAuthorizationStatus location_auth_status = [CLLocationManager authorizationStatus];
+    switch (location_auth_status) {
+        case kCLAuthorizationStatusAuthorizedAlways:
+        case kCLAuthorizationStatusAuthorizedWhenInUse:
+            [self.locatinManager startMonitoringForRegion:self.beaconRegion];
+            break;
+        case kCLAuthorizationStatusDenied:
+        case kCLAuthorizationStatusNotDetermined:
+        case kCLAuthorizationStatusRestricted:
+            [self.locatinManager requestAlwaysAuthorization];
+        default:
+            break;
+    }
+
+//    [self.locatinManager startRangingBeaconsInRegion:self.beaconRegion];
 
 //    [self.locatinManager startUpdatingHeading];
 }

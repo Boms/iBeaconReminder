@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B747038253E44ED494166B04 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 854F8B6652E74185835D0ACE /* libPods.a */; };
+		C0DE989819D2847C00B99A4E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0DE989719D2847C00B99A4E /* CoreLocation.framework */; };
 		F21111E418DC2CA600CDE562 /* graCreateBeaconNameTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F21111E218DC2CA600CDE562 /* graCreateBeaconNameTableViewController.m */; };
 		F21111E518DC2CA600CDE562 /* graCreateBeaconNameTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F21111E318DC2CA600CDE562 /* graCreateBeaconNameTableViewController.xib */; };
 		F214B28518DBCE420028286F /* graCreateReminderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F214B28318DBCE420028286F /* graCreateReminderTableViewController.m */; };
@@ -62,6 +63,7 @@
 
 /* Begin PBXFileReference section */
 		854F8B6652E74185835D0ACE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0DE989719D2847C00B99A4E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		F11AD25BBEE14CE7A9C5E624 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		F21111E118DC2CA600CDE562 /* graCreateBeaconNameTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = graCreateBeaconNameTableViewController.h; sourceTree = "<group>"; };
 		F21111E218DC2CA600CDE562 /* graCreateBeaconNameTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = graCreateBeaconNameTableViewController.m; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0DE989819D2847C00B99A4E /* CoreLocation.framework in Frameworks */,
 				F2EE4AE318D693DC00E5EEE6 /* CoreGraphics.framework in Frameworks */,
 				F2EE4AE518D693DC00E5EEE6 /* UIKit.framework in Frameworks */,
 				F2EE4AE118D693DC00E5EEE6 /* Foundation.framework in Frameworks */,
@@ -178,6 +181,7 @@
 		F2EE4ADF18D693DC00E5EEE6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C0DE989719D2847C00B99A4E /* CoreLocation.framework */,
 				F2EE4AE018D693DC00E5EEE6 /* Foundation.framework */,
 				F2EE4AE218D693DC00E5EEE6 /* CoreGraphics.framework */,
 				F2EE4AE418D693DC00E5EEE6 /* UIKit.framework */,
@@ -335,9 +339,15 @@
 				ORGANIZATIONNAME = "li lin";
 				TargetAttributes = {
 					F2EE4ADC18D693DC00E5EEE6 = {
-						DevelopmentTeam = 29T9RVU57K;
+						DevelopmentTeam = 63EZR3ZRAC;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					F2EE4AFD18D693DC00E5EEE6 = {
+						DevelopmentTeam = 63EZR3ZRAC;
 						TestTargetID = F2EE4ADC18D693DC00E5EEE6;
 					};
 				};
@@ -594,7 +604,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "beaconReminderDemo/beaconReminderDemo-Prefix.pch";
 				INFOPLIST_FILE = "beaconReminderDemo/beaconReminderDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -612,7 +622,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "beaconReminderDemo/beaconReminderDemo-Prefix.pch";
 				INFOPLIST_FILE = "beaconReminderDemo/beaconReminderDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -623,6 +633,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/beaconReminderDemo.app/beaconReminderDemo";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -636,6 +648,7 @@
 				);
 				INFOPLIST_FILE = "beaconReminderDemoTests/beaconReminderDemoTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -645,6 +658,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/beaconReminderDemo.app/beaconReminderDemo";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -654,6 +669,7 @@
 				GCC_PREFIX_HEADER = "beaconReminderDemo/beaconReminderDemo-Prefix.pch";
 				INFOPLIST_FILE = "beaconReminderDemoTests/beaconReminderDemoTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
